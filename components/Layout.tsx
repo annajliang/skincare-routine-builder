@@ -30,6 +30,7 @@ const Layout: React.FC = ({ children }) => {
             layout="fill"
             objectFit="cover"
             objectPosition="bottom"
+            priority
           />
         ) : (
           <Image
@@ -38,11 +39,12 @@ const Layout: React.FC = ({ children }) => {
             layout="fill"
             objectFit="cover"
             objectPosition="bottom"
+            priority
           />
         )}
-          <StyledContainer>
-            <StyledMain>{children}</StyledMain>
-          </StyledContainer>
+        <StyledContainer>
+          <StyledMain>{children}</StyledMain>
+        </StyledContainer>
       </>
     );
 }
