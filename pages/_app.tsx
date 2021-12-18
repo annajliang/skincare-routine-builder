@@ -1,6 +1,6 @@
-import "../styles/normalize.css";
-import "../styles/globals.css";
-import Layout from "../components/Layout";
+import "../client/styles/normalize.css";
+import "../client/styles/globals.css";
+import Layout from "../client/components/Layout";
 import type { AppProps } from "next/app";
 
 
