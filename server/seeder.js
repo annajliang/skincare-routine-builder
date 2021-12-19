@@ -31,7 +31,7 @@ const data = [
           "water",
           "dipropylene glycol",
           "glycerin",
-          "methl trimethicone",
+          "methyl trimethicone",
           "alcohol denat",
           "dimethicone",
           "cyclopentasiloxane",
