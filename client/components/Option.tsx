@@ -1,5 +1,6 @@
 import Link from "next/link";
 import questions from '../data/questions';
+import { IUserChoices } from './Question';
 import styled from "styled-components";
 
 const StyledGridItem = styled.a`
@@ -21,7 +22,35 @@ const StyledGridItem = styled.a`
   }
 `;
 
-const Option: React.FC<{ children: string, index: number }> = ({ children, index }) => {
+const Option: React.FC<{
+  children: string;
+  index: number;
+  userChoices: IUserChoices[];
+  setUserChoices: (arr: IUserChoices[]) => void;
+  question: string
+}> = ({ children, index, userChoices, setUserChoices, question }) => {
+    // console.log("userChoices", userChoices);
+
+  const getUserAnswer: React.MouseEventHandler<
+    HTMLButtonElement | HTMLAnchorElement
+  > = (e) => {
+    const selection = {
+      id: '' + (index + 1),
+      question,
+      answer: e.currentTarget.dataset.option,
+    };
+
+    const userChoicesCopy = userChoices;
+
+    userChoicesCopy.push({
+      id: '' + (index + 1),
+      question,
+      answer: e.currentTarget.dataset.option,
+    });
+    
+    setUserChoices([...userChoicesCopy]);
+  };
+
   return (
     <Link
       href={
@@ -31,7 +60,9 @@ const Option: React.FC<{ children: string, index: number }> = ({ children, index
       }
       passHref
     >
-      <StyledGridItem>{children}</StyledGridItem>
+      <StyledGridItem data-option={children} onClick={(e) => getUserAnswer(e)}>
+        {children}
+      </StyledGridItem>
     </Link>
   );
 };

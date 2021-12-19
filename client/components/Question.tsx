@@ -22,8 +22,14 @@ const StyledGrid = styled.div`
   height: 28rem;
 `;
 
+export interface IUserChoices {
+  id: string,
+  question: string,
+  answer: string | undefined
+}
 
 const Question: React.FC = () => {
+  const [userChoices, setUserChoices] = useState<Array<IUserChoices>>([]);
   const route = useRouter();
 
   return (
@@ -49,7 +55,13 @@ const Question: React.FC = () => {
                 <StyledGrid>
                   {question.options.map((option, j) => {
                     return (
-                      <Option key={i + j} index={i}>
+                      <Option
+                        key={i + j}
+                        index={i}
+                        userChoices={userChoices}
+                        setUserChoices={setUserChoices}
+                        question={`${questions[i].questionSpanOne} ${questions[i].questionSpanTwo}`}
+                      >
                         {option}
                       </Option>
                     );
