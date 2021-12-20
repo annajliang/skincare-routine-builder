@@ -1,7 +1,8 @@
 import React from "react";
+import type { NextPage } from "next";
 import Question from "../../client/components/Question";
 
-const Quiz: React.FC = () => {
+const Quiz: NextPage = () => {
   return <Question />;
 };
 
