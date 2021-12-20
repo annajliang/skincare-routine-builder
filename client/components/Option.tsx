@@ -1,5 +1,6 @@
 import Link from "next/link";
 import questions from '../data/questions';
+import { useRouter } from "next/router";
 import { IUserChoices } from './Question';
 import styled from "styled-components";
 
@@ -27,15 +28,16 @@ const Option: React.FC<{
   index: number;
   userChoices: IUserChoices[];
   setUserChoices: (arr: IUserChoices[]) => void;
-  question: string
+  question: string;
 }> = ({ children, index, userChoices, setUserChoices, question }) => {
-    // console.log("userChoices", userChoices);
+  // console.log("userChoices", userChoices);
+  const route = useRouter();
 
   const getUserAnswer: React.MouseEventHandler<
     HTMLButtonElement | HTMLAnchorElement
   > = (e) => {
     const selection = {
-      id: '' + (index + 1),
+      id: "" + (index + 1),
       question,
       answer: e.currentTarget.dataset.option,
     };
@@ -43,27 +45,43 @@ const Option: React.FC<{
     const userChoicesCopy = userChoices;
 
     userChoicesCopy.push({
-      id: '' + (index + 1),
+      id: "" + (index + 1),
       question,
       answer: e.currentTarget.dataset.option,
     });
-    
+
     setUserChoices([...userChoicesCopy]);
   };
 
   return (
-    <Link
-      href={
-        index < questions.length - 1
-          ? `/question/${questions[index + 1].id}`
-          : "/"
-      }
-      passHref
-    >
-      <StyledGridItem data-option={children} onClick={(e) => getUserAnswer(e)}>
-        {children}
-      </StyledGridItem>
-    </Link>
+    <>
+      {route.asPath === `/question/10` ? (
+        <Link href={"/result"} passHref>
+          <StyledGridItem
+            data-option={children}
+            onClick={(e) => getUserAnswer(e)}
+          >
+            {children}
+          </StyledGridItem>
+        </Link>
+      ) : (
+        <Link
+          href={
+            index < questions.length - 1
+              ? `/question/${questions[index + 1].id}`
+              : "/"
+          }
+          passHref
+        >
+          <StyledGridItem
+            data-option={children}
+            onClick={(e) => getUserAnswer(e)}
+          >
+            {children}
+          </StyledGridItem>
+        </Link>
+      )}
+    </>
   );
 };
 
