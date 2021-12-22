@@ -1,3 +1,6 @@
+import { createGlobalStyle } from "styled-components";
+
+const Normalize = createGlobalStyle`
 a,
 abbr,
 acronym,
@@ -317,3 +320,5 @@ textarea {
     -webkit-box-sizing: border-box;
     box-sizing: border-box
 }
+`
+export default Normalize;
