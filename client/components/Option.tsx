@@ -1,7 +1,9 @@
 import Link from "next/link";
 import questions from '../data/questions';
+import { IUserChoices } from "../../pages/_app";
+import { useContext } from "react";
 import { useRouter } from "next/router";
-import { IUserChoices } from './Question';
+import { UserChoicesContext } from "../../pages/_app";
 import styled from "styled-components";
 
 const StyledGridItem = styled.a`
@@ -26,11 +28,10 @@ const StyledGridItem = styled.a`
 const Option: React.FC<{
   children: string;
   index: number;
-  userChoices: IUserChoices[];
-  setUserChoices: (arr: IUserChoices[]) => void;
   question: string;
-}> = ({ children, index, userChoices, setUserChoices, question }) => {
+}> = ({ children, index, question }) => {
   // console.log("userChoices", userChoices);
+  const { userChoices, setUserChoices } = useContext(UserChoicesContext);
   const route = useRouter();
 
   const getUserAnswer: React.MouseEventHandler<
@@ -42,7 +43,7 @@ const Option: React.FC<{
       answer: e.currentTarget.dataset.option,
     };
 
-    const userChoicesCopy = userChoices;
+    const userChoicesCopy: IUserChoices[] = userChoices;
 
     userChoicesCopy.push({
       id: "" + (index + 1),
