@@ -1,7 +1,6 @@
-import type { NextPage } from 'next'
-import { useRouter } from "next/router";
+import type { NextPage } from "next";
 import styled from "styled-components";
-import Link from "next/link"
+import Link from "next/link";
 
 const StyledHome = styled.div`
   width: 50%;
@@ -30,7 +29,6 @@ const StyledContent = styled.div`
 `;
 
 const Home: NextPage = () => {
-  const router = useRouter();
   return (
     <StyledHome>
       <StyledContent>
@@ -53,6 +51,6 @@ const Home: NextPage = () => {
       </StyledContent>
     </StyledHome>
   );
-}
+};
 
-export default Home
+export default Home;
