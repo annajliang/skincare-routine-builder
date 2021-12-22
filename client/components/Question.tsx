@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import questions from "../data/questions";
 import { useRouter } from "next/router";
 import { Animated } from "react-animated-css";
+// import { UserChoicesContext } from "../../pages/_app";
 import Option from "./Option";
 import ProgressBar from "./ProgressBar";
 import styled from "styled-components";
@@ -23,67 +24,11 @@ const StyledGrid = styled.div`
   height: 28rem;
 `;
 
-export interface IUserChoices {
-  id: string,
-  question: string,
-  answer: string | undefined
-}
-
-interface IProducts {
-  name: string;
-  description: string;
-  img_url: string;
-  ingredients: string;
-  texture: string;
-  price_range: string;
-  skin_type: string[];
-  has_fragrance: boolean;
-  has_alcohol?: boolean;
-  is_waterproof?: boolean; 
-  is_tinted?: boolean;
-  removes_makeup?: boolean; 
-  spf?: number; 
-  sunscreen_type?: string[]; 
-  category: string
-}
-
-
 const Question: React.FC = () => {
-  const [userChoices, setUserChoices] = useState<Array<IUserChoices>>([]);
-  const [products, setProducts] = useState<Array<IProducts>>([]);
+  // const { userChoices, setUserChoices } = React.useContext(UserChoicesContext);
+
   const route = useRouter();
 
-  console.log("userChoices", userChoices);
-
-  useEffect(() => {
-    console.log("rendered");
-
-    const getProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/products");
-        console.log("response", response);
-
-        if (response.ok) {
-          const data = await response.json();
-          // console.log("data", data.data);
-          setProducts([...data.data]);
-          
-        } else {
-          throw new Error(response.statusText);
-        }
-
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    getProducts()
-    
-  }, []);
-
-    if (products.length !== 0) {
-      console.log('products',products);
-    }
   return (
     <StyledQuestion>
       {questions.map((question, i) => {
@@ -110,8 +55,6 @@ const Question: React.FC = () => {
                       <Option
                         key={i + j}
                         index={i}
-                        userChoices={userChoices}
-                        setUserChoices={setUserChoices}
                         question={`${questions[i].questionSpanOne} ${questions[i].questionSpanTwo}`}
                       >
                         {option}
