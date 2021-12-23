@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
+import { morningTheme, nightTheme } from "../client/styles/Theme";
 import styled from "styled-components";
 import Global from "../client/styles/Global";
 import Normalize from "../client/styles/Normalize";
@@ -49,8 +50,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
               console.log("app - showMorning", showMorning);
   return (
-    <>
-      <Theme showMorning={showMorning}>
+    <ThemeProvider
+      theme={routineTheme === "morning" ? morningTheme : nightTheme}
+    >
         <Normalize />
         <Global />
         <RoutineContext.Provider value={{ showMorning, setShowMorning }}>
@@ -65,8 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </Layout>
           </UserChoicesContext.Provider>
         </RoutineContext.Provider>
-      </Theme>
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-const Global = createGlobalStyle`
+const Global = createGlobalStyle<{theme: DefaultTheme}>`
   html {
     font-size: 62.5%;
   }
@@ -10,7 +11,7 @@ const Global = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: 'Sen', sans-serif;
-    /* background: #FFC5C3; */
+    background: ${({ theme }) => theme.body};
   }
 
   h1 {
