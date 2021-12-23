@@ -1,19 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ThemeToggle from "./ThemeToggle";
+import { RoutineContext } from "../../pages/_app";
 import Link from "next/link";
 import styled from "styled-components";
 import { Animated } from "react-animated-css";
 import Image from "next/image";
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div<{ showMorning: boolean }>`
   padding: 0 7rem;
   width: 100%;
   position: relative;
+  /* top: ${({ showMorning }) => showMorning ? '-4rem' : '-6.5rem'}; */
   top: -4rem;
 `;
  
-const StyledH1 = styled.h1`
-    display: block;
-`
+const StyledH1 = styled.h1<{ showMorning: boolean }>`
+  display: block;
+
+  span:first-child {
+    text-shadow: 5px 4px 0px ${({ showMorning }) => showMorning ? "#da7153" : "#A7BBE4"};
+    -webkit-text-stroke-color: ${({ showMorning }) => showMorning ? "#da7153" : "#A7BBE4"};
+  }
+
+  span:last-child {
+    color: ${({ showMorning }) => showMorning ? "#da7153" : "#A7BBE4"};
+  }
+`;
 
 const StyledH1Container = styled.div`
   position: relative;
@@ -24,6 +36,12 @@ const StyledSun = styled.img`
   position: relative;
   left: 10rem;
   bottom: -4rem;
+`;
+
+const StyledMoon = styled.img`
+  position: relative;
+  left: 0;
+  bottom: -6.5rem;
 `;
 
 const StyledGrid = styled.div`
@@ -66,8 +84,8 @@ const StyledInnerGridItem = styled.div`
   height: 60%;
 `;
 
-const StyledBottomGridBar = styled.a`
-  background-color: #ff9797;
+const StyledBottomGridBar = styled.a<{ showMorning: boolean }>`
+  background-color: ${({ showMorning }) => showMorning ? "#FF9797" : "#526A99"};
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -79,53 +97,75 @@ const StyledBottomGridBar = styled.a`
   letter-spacing: 1px;
 `;
   
+const Test = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+`
+  
 
 
 const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
-  // const [showMorning, setShowMorning] = useState(true);
+  const { showMorning } = useContext(RoutineContext);
 
   return (
-    <StyledContainer>
-      <Animated
-        animationIn="fadeInRight"
-        animationOut="fadeOutLeft"
-        animationInDuration={1000}
-        animationOutDuration={1000}
-        isVisible={true}
-      >
-        <StyledH1Container>
-          <StyledSun src="/sun.svg" alt="" />
-          <StyledH1>
-            <span>{routineType}</span> <span>Routine</span>
-          </StyledH1>
-        </StyledH1Container>
+    <Test>
+      <ThemeToggle />
+      <StyledContainer showMorning={showMorning}>
+        <Animated
+          animationIn="fadeInRight"
+          animationOut="fadeOutLeft"
+          animationInDuration={1000}
+          animationOutDuration={1000}
+          isVisible={true}
+        >
+          <StyledH1Container>
+            {showMorning ? (
+              <StyledSun src="/sun.svg" alt="" />
+            ) : (
+              <StyledMoon src="/moon.svg" alt="" />
+            )}
+            <StyledH1 showMorning={showMorning}>
+              <span>{routineType}</span> <span>Routine</span>
+            </StyledH1>
+          </StyledH1Container>
 
-        <StyledGrid>
-          <StyledGridItem>
-            <StyledInnerGridItem>test</StyledInnerGridItem>
-            <p>CeraVe Foaming Facial Cleanser</p>
-            <Link href="http://google.com" passHref>
-              <StyledBottomGridBar target="_blank">BUY NOW</StyledBottomGridBar>
-            </Link>
-          </StyledGridItem>
+          <StyledGrid>
+            <StyledGridItem>
+              <StyledInnerGridItem>test</StyledInnerGridItem>
+              <p>CeraVe Foaming Facial Cleanser</p>
+              <Link href="http://google.com" passHref>
+                <StyledBottomGridBar showMorning={showMorning} target="_blank">
+                  BUY NOW
+                </StyledBottomGridBar>
+              </Link>
+            </StyledGridItem>
 
-          <StyledGridItem>
-            <StyledInnerGridItem>test</StyledInnerGridItem>
-            <StyledBottomGridBar>BUY NOW</StyledBottomGridBar>
-          </StyledGridItem>
+            <StyledGridItem>
+              <StyledInnerGridItem>test</StyledInnerGridItem>
+              <StyledBottomGridBar showMorning={showMorning}>
+                BUY NOW
+              </StyledBottomGridBar>
+            </StyledGridItem>
 
-          <StyledGridItem>
-            <StyledInnerGridItem>test</StyledInnerGridItem>
-            <StyledBottomGridBar>BUY NOW</StyledBottomGridBar>
-          </StyledGridItem>
+            <StyledGridItem>
+              <StyledInnerGridItem>test</StyledInnerGridItem>
+              <StyledBottomGridBar showMorning={showMorning}>
+                BUY NOW
+              </StyledBottomGridBar>
+            </StyledGridItem>
 
-          <StyledGridItem>
-            <StyledInnerGridItem>test</StyledInnerGridItem>
-            <StyledBottomGridBar>BUY NOW</StyledBottomGridBar>
-          </StyledGridItem>
-        </StyledGrid>
-      </Animated>
-    </StyledContainer>
+            <StyledGridItem>
+              <StyledInnerGridItem>test</StyledInnerGridItem>
+              <StyledBottomGridBar showMorning={showMorning}>
+                BUY NOW
+              </StyledBottomGridBar>
+            </StyledGridItem>
+          </StyledGrid>
+        </Animated>
+      </StyledContainer>
+    </Test>
   );
 };
 

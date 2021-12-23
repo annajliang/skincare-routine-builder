@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { RoutineContext } from "./Layout";
+import { RoutineContext } from "../../pages/_app";
 import Morning from "./Morning";
 import Night from "./Night";
 import { UserChoicesContext } from "../../pages/_app";

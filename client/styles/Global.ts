@@ -10,7 +10,7 @@ const Global = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: 'Sen', sans-serif;
-    background: #FFC5C3;
+    /* background: #FFC5C3; */
   }
 
   h1 {

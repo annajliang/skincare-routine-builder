@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
-import React, { useState } from "react";
+import { RoutineContext } from "../../pages/_app";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
@@ -23,18 +24,19 @@ const StyledOuterContainer = styled.div`
   position: relative;
 `
 
-interface IRoutineContext {
-  showMorning: boolean;
-  setShowMorning: (bool: boolean) => void;
-}
+// interface IRoutineContext {
+//   showMorning: boolean;
+//   setShowMorning: (bool: boolean) => void;
+// }
 
-export const RoutineContext = React.createContext<IRoutineContext>({
-  showMorning: true,
-  setShowMorning: function (bool: boolean) {},
-});
+// export const RoutineContext = React.createContext<IRoutineContext>({
+//   showMorning: true,
+//   setShowMorning: function (bool: boolean) {},
+// });
 
 const Layout: React.FC = ({ children }) => {
-    const [showMorning, setShowMorning] = useState(true);
+    // const [showMorning, setShowMorning] = useState(true);
+    const { showMorning } = useContext(RoutineContext);
     const router = useRouter();
 
 
@@ -74,31 +76,14 @@ const Layout: React.FC = ({ children }) => {
     };
 
     return (
-      <StyledOuterContainer>
-        {/* {router.asPath === "/" ? (
-          <Image
-            src="/homeBg.svg"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            objectPosition="bottom"
-            priority
-          />
-        ) : (
-          <Image
-            src="/quizBg.svg"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            objectPosition="bottom"
-            priority
-          />
-        )} */}
-        {bgToShow()}
-        <StyledContainer>
-          <StyledMain>{children}</StyledMain>
-        </StyledContainer>
-      </StyledOuterContainer>
+      // <RoutineContext.Provider value={{ showMorning, setShowMorning }}>
+        <StyledOuterContainer>
+          {bgToShow()}
+          <StyledContainer>
+            <StyledMain>{children}</StyledMain>
+          </StyledContainer>
+        </StyledOuterContainer>
+      // </RoutineContext.Provider>
     );
 }
 
