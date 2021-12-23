@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { morningTheme, nightTheme } from "../client/styles/Theme";
-import styled from "styled-components";
 import Global from "../client/styles/Global";
 import Normalize from "../client/styles/Normalize";
 import Layout from "../client/components/Layout";
@@ -28,34 +27,28 @@ export const UserChoicesContext = React.createContext<IUserChoicesContext>({
 });
 
 interface IRoutineContext {
-  showMorning: boolean;
-  setShowMorning: (bool: boolean) => void;
+  routineTheme: string;
+  setRoutineTheme: (str: string) => void;
 }
 
 export const RoutineContext = React.createContext<IRoutineContext>({
-  showMorning: true,
-  setShowMorning: function (bool: boolean) {},
+  routineTheme: "morniing",
+  setRoutineTheme: function (str: string) {},
 });
 
-
-const Theme = styled.body<{ showMorning: boolean }>`
-  /* background: #ffc5c3; */
-  background: ${({ showMorning }) => (showMorning ? "#ffc5c3" : "#302D52")};
-`;
-
-
 function MyApp({ Component, pageProps }: AppProps) {
-  const [showMorning, setShowMorning] = useState<boolean>(true);
+  const [routineTheme, setRoutineTheme] = useState<string>('morning');
   const [userChoices, setUserChoices] = useState<Array<IUserChoices>>([]);
 
-              console.log("app - showMorning", showMorning);
+  console.log("app - theme", routineTheme);
+
   return (
     <ThemeProvider
       theme={routineTheme === "morning" ? morningTheme : nightTheme}
     >
         <Normalize />
         <Global />
-        <RoutineContext.Provider value={{ showMorning, setShowMorning }}>
+        <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
           <UserChoicesContext.Provider
             value={{
               userChoices,

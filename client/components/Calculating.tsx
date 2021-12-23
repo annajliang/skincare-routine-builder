@@ -37,15 +37,15 @@ const Calculating = () => {
   const [showPreResults, setShowPreResults] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
-  const { showMorning, setShowMorning } = useContext(RoutineContext);
+  const { routineTheme, setRoutineTheme } = useContext(RoutineContext);
 
   useEffect(() => {
-    console.log("showMorning", showMorning);
+    // console.log("routineTheme", routineTheme);
 
     const getProducts = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/products");
-        console.log("response", response);
+        // console.log("response", response);
 
         if (response.ok) {
           const data = await response.json();
@@ -75,11 +75,11 @@ const Calculating = () => {
 
   }, []);
 
-  if (products.length !== 0) {
-    console.log('products',products);
-  }
+  // if (products.length !== 0) {
+  //   console.log('products',products);
+  // }
 
-  console.log("CALC", userChoices);
+  // console.log("CALC", userChoices);
   
   return (
     <>
@@ -123,8 +123,8 @@ const Calculating = () => {
         </StyledCentered>
       )}
 
-      {showResults && !showPreResults && showMorning && <Morning />}
-      {showResults && !showPreResults && !showMorning && <Night />}
+      {showResults && !showPreResults && routineTheme === 'morning' && <Morning />}
+      {showResults && !showPreResults && routineTheme === 'night' && <Night />}
     </>
   );
 };

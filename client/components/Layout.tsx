@@ -25,18 +25,18 @@ const StyledOuterContainer = styled.div`
 `
 
 // interface IRoutineContext {
-//   showMorning: boolean;
-//   setShowMorning: (bool: boolean) => void;
+//   routineTheme: boolean;
+//   setRoutineTheme: (bool: boolean) => void;
 // }
 
 // export const RoutineContext = React.createContext<IRoutineContext>({
-//   showMorning: true,
-//   setShowMorning: function (bool: boolean) {},
+//   routineTheme: true,
+//   setRoutineTheme: function (bool: boolean) {},
 // });
 
 const Layout: React.FC = ({ children }) => {
-    // const [showMorning, setShowMorning] = useState(true);
-    const { showMorning } = useContext(RoutineContext);
+    // const [routineTheme, setRoutineTheme] = useState(true);
+    const { routineTheme } = useContext(RoutineContext);
     const router = useRouter();
 
 
@@ -52,7 +52,7 @@ const Layout: React.FC = ({ children }) => {
             priority
           />
         );
-      } else if (router.asPath !== "/" && showMorning) {
+      } else if (router.asPath !== "/" && routineTheme === 'morning') {
         return (
           <Image
             src="/quizBg.svg"
@@ -63,7 +63,7 @@ const Layout: React.FC = ({ children }) => {
             priority
           />
         );
-      } else if (router.asPath !== "/" && !showMorning) {
+      } else if (router.asPath !== "/" && routineTheme === 'night') {
           return <Image
             src="/nightBg.svg"
             alt=""
@@ -76,7 +76,7 @@ const Layout: React.FC = ({ children }) => {
     };
 
     return (
-      // <RoutineContext.Provider value={{ showMorning, setShowMorning }}>
+      // <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
         <StyledOuterContainer>
           {bgToShow()}
           <StyledContainer>

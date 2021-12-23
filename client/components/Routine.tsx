@@ -6,24 +6,24 @@ import styled from "styled-components";
 import { Animated } from "react-animated-css";
 import Image from "next/image";
 
-const StyledContainer = styled.div<{ showMorning: boolean }>`
+const StyledContainer = styled.div<{ routineTheme: string }>`
   padding: 0 7rem;
   width: 100%;
   position: relative;
-  /* top: ${({ showMorning }) => showMorning ? '-4rem' : '-6.5rem'}; */
+  /* top: ${({ routineTheme }) => routineTheme ? '-4rem' : '-6.5rem'}; */
   top: -4rem;
 `;
  
-const StyledH1 = styled.h1<{ showMorning: boolean }>`
+const StyledH1 = styled.h1<{ routineTheme: string }>`
   display: block;
 
   span:first-child {
-    text-shadow: 5px 4px 0px ${({ showMorning }) => showMorning ? "#da7153" : "#A7BBE4"};
-    -webkit-text-stroke-color: ${({ showMorning }) => showMorning ? "#da7153" : "#A7BBE4"};
+    text-shadow: 5px 4px 0px ${({ routineTheme }) => routineTheme === 'morning' ? "#da7153" : "#A7BBE4"};
+    -webkit-text-stroke-color: ${({ routineTheme }) => routineTheme === 'morning' ? "#da7153" : "#A7BBE4"};
   }
 
   span:last-child {
-    color: ${({ showMorning }) => showMorning ? "#da7153" : "#A7BBE4"};
+    color: ${({ routineTheme }) => routineTheme === 'morning' ? "#da7153" : "#A7BBE4"};
   }
 `;
 
@@ -84,8 +84,8 @@ const StyledInnerGridItem = styled.div`
   height: 60%;
 `;
 
-const StyledBottomGridBar = styled.a<{ showMorning: boolean }>`
-  background-color: ${({ showMorning }) => showMorning ? "#FF9797" : "#526A99"};
+const StyledBottomGridBar = styled.a<{ routineTheme: string }>`
+  background-color: ${({ routineTheme }) => routineTheme === 'morning' ? "#FF9797" : "#526A99"};
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -107,12 +107,12 @@ const Test = styled.div`
 
 
 const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
-  const { showMorning } = useContext(RoutineContext);
+  const { routineTheme } = useContext(RoutineContext);
 
   return (
     <Test>
       <ThemeToggle />
-      <StyledContainer showMorning={showMorning}>
+      <StyledContainer routineTheme={routineTheme}>
         <Animated
           animationIn="fadeInRight"
           animationOut="fadeOutLeft"
@@ -121,12 +121,12 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
           isVisible={true}
         >
           <StyledH1Container>
-            {showMorning ? (
+            {routineTheme === 'morning' ? (
               <StyledSun src="/sun.svg" alt="" />
             ) : (
               <StyledMoon src="/moon.svg" alt="" />
             )}
-            <StyledH1 showMorning={showMorning}>
+            <StyledH1 routineTheme={routineTheme}>
               <span>{routineType}</span> <span>Routine</span>
             </StyledH1>
           </StyledH1Container>
@@ -136,7 +136,7 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
               <StyledInnerGridItem>test</StyledInnerGridItem>
               <p>CeraVe Foaming Facial Cleanser</p>
               <Link href="http://google.com" passHref>
-                <StyledBottomGridBar showMorning={showMorning} target="_blank">
+                <StyledBottomGridBar routineTheme={routineTheme} target="_blank">
                   BUY NOW
                 </StyledBottomGridBar>
               </Link>
@@ -144,21 +144,21 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
 
             <StyledGridItem>
               <StyledInnerGridItem>test</StyledInnerGridItem>
-              <StyledBottomGridBar showMorning={showMorning}>
+              <StyledBottomGridBar routineTheme={routineTheme}>
                 BUY NOW
               </StyledBottomGridBar>
             </StyledGridItem>
 
             <StyledGridItem>
               <StyledInnerGridItem>test</StyledInnerGridItem>
-              <StyledBottomGridBar showMorning={showMorning}>
+              <StyledBottomGridBar routineTheme={routineTheme}>
                 BUY NOW
               </StyledBottomGridBar>
             </StyledGridItem>
 
             <StyledGridItem>
               <StyledInnerGridItem>test</StyledInnerGridItem>
-              <StyledBottomGridBar showMorning={showMorning}>
+              <StyledBottomGridBar routineTheme={routineTheme}>
                 BUY NOW
               </StyledBottomGridBar>
             </StyledGridItem>

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { morningTheme, nightTheme } from "../../client/styles/Theme";
 import { RoutineContext } from "../../pages/_app";
 import styled, { css } from "styled-components";
 
@@ -8,15 +9,15 @@ const StyledContainer = styled.div`
   z-index: 3;
 `;
 
-const StyledCheckbox = styled.input<{ showMorning: boolean }>`
+const StyledCheckbox = styled.input<{ routineTheme: string }>`
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 
-  /* ${({ showMorning }) =>
-    !showMorning &&
+  /* ${({ routineTheme }) =>
+    !routineTheme &&
     css`
       &:checked ~ .toggle-slot {
         background-color: #374151;
@@ -120,55 +121,64 @@ const StyledMoonIcon = styled.img`
 
 
 const ThemeToggle: React.FC = () => {
-    const { showMorning, setShowMorning } = useContext(RoutineContext);
+  const { routineTheme, setRoutineTheme } = useContext(RoutineContext);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.checked);
-        if (e.target.checked) {
-            setShowMorning(false);
-            console.log("if - showMorning", showMorning);
-        } else {
-            setShowMorning(true);
-            console.log("else - showMorning", showMorning);
-        }
-    }
+  // The function that toggles between themes
+  // const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   // if the routineTheme is not light, then set it to dark
+  //   if (routineTheme === "morning") {
+  //     setRoutineTheme("night");
+  //     // otherwise, it should be light
+  //   } else {
+  //     setRoutineTheme("morning");
+  //   }
+  // };
 
+    const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
+      // if the routineTheme is not light, then set it to dark
+      if (e.target.checked) {
+        setRoutineTheme("night");
+        // otherwise, it should be light
+      } else {
+        setRoutineTheme("morning");
+      }
+    };
 
-    return (
-      <StyledContainer>
-        <label htmlFor="toggleTheme">
-          <StyledCheckbox
-            onChange={handleChange}
-            className="toggle-checkbox"
-            type="checkbox"
-            id="toggleTheme"
-            name="toggleTheme"
-            showMorning={showMorning}
-          />
-          <StyledSlot className="toggle-slot">
-            <StyledSunWrapper className="sun-icon-wrapper">
-              <StyledSunIcon
-                className="iconify sun-icon"
-                data-icon="feather-sun"
-                data-inline="false"
-                src="/light.svg"
-                alt=""
-              />
-            </StyledSunWrapper>
-            <StyledButton className="toggle-button"></StyledButton>
-            <StyledMoonWrapper className="moon-icon-wrapper">
-              <StyledMoonIcon
-                className="iconify moon-icon"
-                data-icon="feather-moon"
-                data-inline="false"
-                src="/dark.svg"
-                alt=""
-              />
-            </StyledMoonWrapper>
-          </StyledSlot>
-        </label>
-      </StyledContainer>
-    );
+  return (
+    <StyledContainer>
+      <label htmlFor="toggleTheme">
+        <StyledCheckbox
+          onChange={toggleTheme}
+          className="toggle-checkbox"
+          type="checkbox"
+          id="toggleTheme"
+          name="toggleTheme"
+          routineTheme={routineTheme}
+        />
+        <StyledSlot className="toggle-slot">
+          <StyledSunWrapper className="sun-icon-wrapper">
+            <StyledSunIcon
+              className="iconify sun-icon"
+              data-icon="feather-sun"
+              data-inline="false"
+              src="/light.svg"
+              alt=""
+            />
+          </StyledSunWrapper>
+          <StyledButton className="toggle-button"></StyledButton>
+          <StyledMoonWrapper className="moon-icon-wrapper">
+            <StyledMoonIcon
+              className="iconify moon-icon"
+              data-icon="feather-moon"
+              data-inline="false"
+              src="/dark.svg"
+              alt=""
+            />
+          </StyledMoonWrapper>
+        </StyledSlot>
+      </label>
+    </StyledContainer>
+  );
 }
 
 export default ThemeToggle;
