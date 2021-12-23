@@ -14,17 +14,8 @@ const StyledContainer = styled.div<{ routineTheme: string }>`
   top: -4rem;
 `;
  
-const StyledH1 = styled.h1<{ routineTheme: string }>`
+const StyledH1 = styled.h1`
   display: block;
-
-  span:first-child {
-    text-shadow: 5px 4px 0px ${({ routineTheme }) => routineTheme === 'morning' ? "#da7153" : "#A7BBE4"};
-    -webkit-text-stroke-color: ${({ routineTheme }) => routineTheme === 'morning' ? "#da7153" : "#A7BBE4"};
-  }
-
-  span:last-child {
-    color: ${({ routineTheme }) => routineTheme === 'morning' ? "#da7153" : "#A7BBE4"};
-  }
 `;
 
 const StyledH1Container = styled.div`
@@ -84,8 +75,8 @@ const StyledInnerGridItem = styled.div`
   height: 60%;
 `;
 
-const StyledBottomGridBar = styled.a<{ routineTheme: string }>`
-  background-color: ${({ routineTheme }) => routineTheme === 'morning' ? "#FF9797" : "#526A99"};
+const StyledBottomGridBar = styled.a`
+  background-color: ${({ theme }) => theme.buyNowLinkBgColor};
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -126,7 +117,7 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
             ) : (
               <StyledMoon src="/moon.svg" alt="" />
             )}
-            <StyledH1 routineTheme={routineTheme}>
+            <StyledH1>
               <span>{routineType}</span> <span>Routine</span>
             </StyledH1>
           </StyledH1Container>
@@ -136,7 +127,7 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
               <StyledInnerGridItem>test</StyledInnerGridItem>
               <p>CeraVe Foaming Facial Cleanser</p>
               <Link href="http://google.com" passHref>
-                <StyledBottomGridBar routineTheme={routineTheme} target="_blank">
+                <StyledBottomGridBar target="_blank">
                   BUY NOW
                 </StyledBottomGridBar>
               </Link>
@@ -144,21 +135,21 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
 
             <StyledGridItem>
               <StyledInnerGridItem>test</StyledInnerGridItem>
-              <StyledBottomGridBar routineTheme={routineTheme}>
+              <StyledBottomGridBar>
                 BUY NOW
               </StyledBottomGridBar>
             </StyledGridItem>
 
             <StyledGridItem>
               <StyledInnerGridItem>test</StyledInnerGridItem>
-              <StyledBottomGridBar routineTheme={routineTheme}>
+              <StyledBottomGridBar>
                 BUY NOW
               </StyledBottomGridBar>
             </StyledGridItem>
 
             <StyledGridItem>
               <StyledInnerGridItem>test</StyledInnerGridItem>
-              <StyledBottomGridBar routineTheme={routineTheme}>
+              <StyledBottomGridBar>
                 BUY NOW
               </StyledBottomGridBar>
             </StyledGridItem>

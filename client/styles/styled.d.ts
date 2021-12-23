@@ -5,5 +5,8 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     body: string,
+    color: string,
+    buyNowLinkBgColor: string,
+    textColor: string
   }
 }
