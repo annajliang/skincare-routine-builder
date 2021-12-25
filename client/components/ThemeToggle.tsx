@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { morningTheme, nightTheme } from "../../client/styles/Theme";
-import { RoutineContext } from "../../pages/_app";
+import { RoutineContext, Theme } from "../../pages/_app";
 import styled, { css } from "styled-components";
 
 const StyledContainer = styled.div`
@@ -9,37 +9,13 @@ const StyledContainer = styled.div`
   z-index: 3;
 `;
 
-const StyledCheckbox = styled.input<{ routineTheme: string }>`
+const StyledCheckbox = styled.input`
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 
-  /* ${({ routineTheme }) =>
-    !routineTheme &&
-    css`
-      &:checked ~ .toggle-slot {
-        background-color: #374151;
-      }
-
-      &:checked ~ .toggle-slot .sun-icon-wrapper {
-        opacity: 0;
-        transform: translate(2em, 0);
-      }
-
-      &:checked ~ .toggle-slot .moon-icon-wrapper {
-        opacity: 1;
-        transform: translate(2em, 0);
-      }
-
-      &:checked ~ .toggle-slot .toggle-button {
-        background-color: #485367;
-        box-shadow: inset 0px 0px 0px 4px white;
-        transform: translate(1em, 0);
-      }
-    `} */
-    
   :checked ~ .toggle-slot {
     background-color: #374151;
   }
@@ -83,9 +59,9 @@ const StyledButton = styled.div`
   background-color: #ffeccf;
   box-shadow: inset 0px 0px 0px 4px #ffbb52;
   transition: background-color 250ms, border-color 250ms,
-  transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
+    transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
 `;
-    
+
 const StyledSunWrapper = styled.div`
   /* position: absolute; */
   height: 5rem;
@@ -96,7 +72,7 @@ const StyledSunWrapper = styled.div`
   /* transform-origin: 50% 50%; */
   transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
 `;
-    
+
 const StyledMoonWrapper = styled.div`
   height: 5rem;
   opacity: 0;
@@ -109,16 +85,11 @@ const StyledSunIcon = styled.img`
   height: 30px;
   width: 30px;
 `;
-    
+
 const StyledMoonIcon = styled.img`
   height: 27px;
   width: 27px;
 `;
-    
-
-
-
-
 
 const ThemeToggle: React.FC = () => {
   const { routineTheme, setRoutineTheme } = useContext(RoutineContext);
@@ -134,15 +105,14 @@ const ThemeToggle: React.FC = () => {
   //   }
   // };
 
-    const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
-      // if the routineTheme is not light, then set it to dark
-      if (e.target.checked) {
-        setRoutineTheme("night");
-        // otherwise, it should be light
-      } else {
-        setRoutineTheme("morning");
-      }
-    };
+  const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // if the routineTheme is not light, then set it to dark
+    if (routineTheme === "morning") {
+      setRoutineTheme("night");
+    } else {
+      setRoutineTheme("morning");
+    }
+  };
 
   return (
     <StyledContainer>
@@ -153,7 +123,7 @@ const ThemeToggle: React.FC = () => {
           type="checkbox"
           id="toggleTheme"
           name="toggleTheme"
-          routineTheme={routineTheme}
+          checked={routineTheme === "night"}
         />
         <StyledSlot className="toggle-slot">
           <StyledSunWrapper className="sun-icon-wrapper">
@@ -179,6 +149,6 @@ const ThemeToggle: React.FC = () => {
       </label>
     </StyledContainer>
   );
-}
+};
 
 export default ThemeToggle;
