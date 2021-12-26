@@ -26,40 +26,88 @@ export const UserChoicesContext = React.createContext<IUserChoicesContext>({
   setUserChoices: function (arr: IUserChoices[]) {},
 });
 
+export interface IProducts {
+  name: string;
+  description: string;
+  img_url: string;
+  ingredients: string;
+  texture: string;
+  price_range: string;
+  skin_type: string[];
+  has_fragrance: boolean;
+  has_alcohol?: boolean;
+  is_waterproof?: boolean;
+  is_tinted?: boolean;
+  removes_makeup?: boolean;
+  spf?: number;
+  sunscreen_type?: string[];
+  category: string;
+  is_clean: boolean;
+  buy_link: string
+}
+
+interface IProductsContext {
+  recommendedProducts: IProducts;
+  setRecommendedProducts: (arr: IProducts[]) => void;
+}
+
+export const RecommendedContext = React.createContext<IProductsContext>({
+  recommendedProducts: {
+    name: "",
+    description: "",
+    img_url: "",
+    ingredients: "",
+    texture: "",
+    price_range: "",
+    skin_type: [],
+    has_fragrance: false,
+    has_alcohol: false,
+    is_waterproof: false,
+    is_tinted: false,
+    removes_makeup: false,
+    spf: 0,
+    sunscreen_type: [],
+    category: "",
+    is_clean: false,
+    buy_link: ""
+  },
+  setRecommendedProducts: function (arr: IProducts[]) {},
+});
+
+export type Theme = "morning" | "night"
+
 interface IRoutineContext {
-  routineTheme: string;
-  setRoutineTheme: (str: string) => void;
+  routineTheme: Theme;
+  setRoutineTheme: (theme: Theme) => void;
 }
 
 export const RoutineContext = React.createContext<IRoutineContext>({
-  routineTheme: "morniing",
+  routineTheme: "morning",
   setRoutineTheme: function (str: string) {},
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [routineTheme, setRoutineTheme] = useState<string>('morning');
+  const [routineTheme, setRoutineTheme] = useState<Theme>('morning');
   const [userChoices, setUserChoices] = useState<Array<IUserChoices>>([]);
+  const [recommendedProducts, setRecommendedProducts] = useState<Array<IProducts>>([]);
 
-  console.log("app - theme", routineTheme);
+  // console.log("app - theme", routineTheme);
 
   return (
     <ThemeProvider
       theme={routineTheme === "morning" ? morningTheme : nightTheme}
     >
-        <Normalize />
-        <Global />
-        <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
-          <UserChoicesContext.Provider
-            value={{
-              userChoices,
-              setUserChoices,
-            }}
-          >
+      <Normalize />
+      <Global />
+      <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
+        <RecommendedContext.Provider value={{ recommendedProducts, setRecommendedProducts }}>
+          <UserChoicesContext.Provider value={{ userChoices, setUserChoices }}>
             <Layout>
               <Component {...pageProps} />
             </Layout>
           </UserChoicesContext.Provider>
-        </RoutineContext.Provider>
+        </RecommendedContext.Provider>
+      </RoutineContext.Provider>
     </ThemeProvider>
   );
 }
