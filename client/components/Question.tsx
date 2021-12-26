@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import questions from "../data/questions";
 import { useRouter } from "next/router";
 import { Animated } from "react-animated-css";
+import { IProducts } from "../../pages/_app";
 // import { UserChoicesContext } from "../../pages/_app";
 import Option from "./Option";
 import ProgressBar from "./ProgressBar";
@@ -26,8 +27,36 @@ const StyledGrid = styled.div`
 
 const Question: React.FC = () => {
   // const { userChoices, setUserChoices } = React.useContext(UserChoicesContext);
-
+  const [products, setProducts] = useState<Array<IProducts>>([]);
+  // const [recommendedProducts, setRecommendedProducts] = useState<Array<IProducts>>([]);
   const route = useRouter();
+
+  useEffect(() => {
+    // console.log("routineTheme", routineTheme);
+
+    const getProducts = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/products");
+        // console.log("response", response);
+
+        if (response.ok) {
+          const data = await response.json();
+          // console.log("data", data.data);
+          setProducts([...data.data]);
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getProducts();
+  }, []);
+
+  // if (products.length !== 0) {
+  //   console.log('products',products);
+  // }
 
   return (
     <StyledQuestion>
@@ -56,6 +85,7 @@ const Question: React.FC = () => {
                         key={i + j}
                         index={i}
                         question={`${questions[i].questionSpanOne} ${questions[i].questionSpanTwo}`}
+                        products={products}
                       >
                         {option}
                       </Option>
@@ -69,6 +99,6 @@ const Question: React.FC = () => {
       })}
     </StyledQuestion>
   );
-};
+};;
 
 export default Question;
