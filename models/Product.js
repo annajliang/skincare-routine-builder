@@ -26,6 +26,11 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  is_clean: Boolean,
+  buy_link: {
+    type: String,
+    required: true,
+  },
 });
 
 // create a collection called 'sunscreens' whose documents will look like productSchema
