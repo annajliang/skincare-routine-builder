@@ -82,14 +82,14 @@ const Option: React.FC<{
                 product.skin_type.includes("all") ||
                 product.skin_type.includes("oily")
             );
-            setRecommendedProducts([...filteredProducts]);
+            setRecommendedProducts(filteredProducts);
           } else if (answer === "Normal. Aren't I lucky?") {
             const filteredProducts = products.filter(
               (product) =>
                 product.skin_type.includes("all") ||
                 product.skin_type.includes("normal")
             );
-            setRecommendedProducts([...filteredProducts]);
+            setRecommendedProducts(filteredProducts);
           } else if (
             answer ===
             "Combination -- dry here, oily there, just right in other spots"
@@ -99,21 +99,21 @@ const Option: React.FC<{
                 product.skin_type.includes("all") ||
                 product.skin_type.includes("combination")
             );
-            setRecommendedProducts([...filteredProducts]);
+            setRecommendedProducts(filteredProducts);
           } else if (answer === "Drier than the Sahara") {
             const filteredProducts = products.filter(
               (product) =>
                 product.skin_type.includes("all") ||
                 product.skin_type.includes("dry")
             );
-            setRecommendedProducts([...filteredProducts]);
+            setRecommendedProducts(filteredProducts);
           } else if (answer === "Always red, itchy & and irritated") {
             const filteredProducts = products.filter(
               (product) =>
                 product.skin_type.includes("all") ||
                 product.skin_type.includes("sensitive")
             );
-            setRecommendedProducts([...filteredProducts]);
+            setRecommendedProducts(filteredProducts);
           }
         }
       );
@@ -137,7 +137,7 @@ const Option: React.FC<{
               recommendedProducts,
               filteredProducts
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
           } else if (
             answer ===
               "As long as possible, my skincare routine is my self-care ritual" ||
@@ -153,7 +153,7 @@ const Option: React.FC<{
               recommendedProducts,
               filteredProducts
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
           }
         }
       );
@@ -175,7 +175,7 @@ const Option: React.FC<{
               filteredProducts
             );
             // console.log("newRecommendedProducts", newRecommendedProducts);
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
           } else if (
             answer === "I go for a very minimal and natural makeup look"
           ) {
@@ -284,7 +284,7 @@ const Option: React.FC<{
               recommendedProducts,
               productsToRemove
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
 
             const filterRecommended = recommendedProducts.filter(
               (recommendedProduct) => recommendedProduct.sunscreen_type?.includes("chemical")
@@ -323,7 +323,7 @@ const Option: React.FC<{
               recommendedProducts,
               productsToRemove
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
 
             const filterRecommended = recommendedProducts.filter(
               (recommendedProduct) =>
@@ -353,7 +353,7 @@ const Option: React.FC<{
               recommendedProducts,
               productsToRemove
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
 
             const filterRecommended = recommendedProducts.filter(
               (recommendedProduct) =>
@@ -389,7 +389,7 @@ const Option: React.FC<{
               recommendedProducts,
               filteredProducts
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
           } else if (answer === "No") {
             const filteredProducts = recommendedProducts.filter(
               (recommendedProduct) => recommendedProduct.has_fragrance
@@ -398,7 +398,7 @@ const Option: React.FC<{
               recommendedProducts,
               filteredProducts
             );
-            setRecommendedProducts([...newRecommendedProducts]);
+            setRecommendedProducts(newRecommendedProducts);
           } else if (answer === "No preference") {
             return;
           }
