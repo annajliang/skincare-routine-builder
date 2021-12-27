@@ -18,11 +18,7 @@ interface IUserChoiceContext {
 }
 
 export const UserChoicesContext = React.createContext<IUserChoiceContext>({
-  userChoices: {
-    id: "",
-    question: "",
-    answer: "",
-  },
+  userChoices: [],
   setUserChoices: function (arr: IUserChoice[]) {},
 });
 
@@ -52,25 +48,7 @@ interface IProductContext {
 }
 
 export const RecommendedContext = React.createContext<IProductContext>({
-  recommendedProducts: {
-    name: "",
-    description: "",
-    img_url: "",
-    ingredients: "",
-    texture: "",
-    price_range: "",
-    skin_type: [],
-    has_fragrance: false,
-    has_alcohol: false,
-    is_waterproof: false,
-    is_tinted: false,
-    removes_makeup: false,
-    spf: 0,
-    sunscreen_type: [],
-    category: "",
-    is_clean: false,
-    buy_link: ""
-  },
+  recommendedProducts: [],
   setRecommendedProducts: function (arr: IProduct[]) {},
 });
 

@@ -72,9 +72,7 @@ const ProductCard = () => {
 
     const findProduct = (productType: string, arr: IProduct[]) => {
       const filteredProducts = recommendedProducts.filter(
-        (recommendedProduct: {
-          [key: string]: string | string[] | boolean | number;
-        }) => recommendedProduct.category === productType
+        (recommendedProduct) => recommendedProduct.category === productType
       );
 
       console.log(`FILTERED PRODUCTS - ${productType}`, filteredProducts);
