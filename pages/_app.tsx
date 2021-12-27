@@ -6,27 +6,27 @@ import Normalize from "../client/styles/Normalize";
 import Layout from "../client/components/Layout";
 import type { AppProps } from "next/app";
 
-export interface IUserChoices {
+export interface IUserChoice {
   id: string;
   question: string;
   answer: string | undefined;
 }
 
-interface IUserChoicesContext {
-  userChoices: IUserChoices;
-  setUserChoices: (arr: IUserChoices[]) => void;
+interface IUserChoiceContext {
+  userChoices: IUserChoice[];
+  setUserChoices: (arr: IUserChoice[]) => void;
 }
 
-export const UserChoicesContext = React.createContext<IUserChoicesContext>({
+export const UserChoicesContext = React.createContext<IUserChoiceContext>({
   userChoices: {
     id: "",
     question: "",
     answer: "",
   },
-  setUserChoices: function (arr: IUserChoices[]) {},
+  setUserChoices: function (arr: IUserChoice[]) {},
 });
 
-export interface IProducts {
+export interface IProduct {
   name: string;
   description: string;
   img_url: string;
@@ -46,12 +46,12 @@ export interface IProducts {
   buy_link: string
 }
 
-interface IProductsContext {
-  recommendedProducts: IProducts;
-  setRecommendedProducts: (arr: IProducts[]) => void;
+interface IProductContext {
+  recommendedProducts: IProduct[];
+  setRecommendedProducts: (arr: IProduct[]) => void;
 }
 
-export const RecommendedContext = React.createContext<IProductsContext>({
+export const RecommendedContext = React.createContext<IProductContext>({
   recommendedProducts: {
     name: "",
     description: "",
@@ -71,7 +71,7 @@ export const RecommendedContext = React.createContext<IProductsContext>({
     is_clean: false,
     buy_link: ""
   },
-  setRecommendedProducts: function (arr: IProducts[]) {},
+  setRecommendedProducts: function (arr: IProduct[]) {},
 });
 
 export type Theme = "morning" | "night"
@@ -88,8 +88,8 @@ export const RoutineContext = React.createContext<IRoutineContext>({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [routineTheme, setRoutineTheme] = useState<Theme>('morning');
-  const [userChoices, setUserChoices] = useState<Array<IUserChoices>>([]);
-  const [recommendedProducts, setRecommendedProducts] = useState<Array<IProducts>>([]);
+  const [userChoices, setUserChoices] = useState<Array<IUserChoice>>([]);
+  const [recommendedProducts, setRecommendedProducts] = useState<Array<IProduct>>([]);
 
   // console.log("app - theme", routineTheme);
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import questions from "../data/questions";
 import { useRouter } from "next/router";
 import { Animated } from "react-animated-css";
-import { IProducts } from "../../pages/_app";
+import { IProduct } from "../../pages/_app";
 // import { UserChoicesContext } from "../../pages/_app";
 import Option from "./Option";
 import ProgressBar from "./ProgressBar";
@@ -27,8 +27,8 @@ const StyledGrid = styled.div`
 
 const Question: React.FC = () => {
   // const { userChoices, setUserChoices } = React.useContext(UserChoicesContext);
-  const [products, setProducts] = useState<Array<IProducts>>([]);
-  // const [recommendedProducts, setRecommendedProducts] = useState<Array<IProducts>>([]);
+  const [products, setProducts] = useState<Array<IProduct>>([]);
+  // const [recommendedProducts, setRecommendedProducts] = useState<Array<IProduct>>([]);
   const route = useRouter();
 
   useEffect(() => {
