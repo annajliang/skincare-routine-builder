@@ -79,9 +79,6 @@ const Routine: React.FC<{ routineType: string }> = ({ routineType }) => {
 
           <StyledGrid>
             <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
           </StyledGrid>
         </Animated>
       </StyledContainer>
