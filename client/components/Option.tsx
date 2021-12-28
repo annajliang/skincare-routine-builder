@@ -44,23 +44,17 @@ const Option: React.FC<{
   const getUserAnswer: React.MouseEventHandler<
     HTMLButtonElement | HTMLAnchorElement
   > = (e) => {
-    const selection = {
-      id: "" + (index + 1),
-      question,
-      answer: e.currentTarget.dataset.option,
-    };
+    const userChoicesCopy: IUserChoice[] = [
+      ...userChoices,
+      {
+        id: (index + 1).toString(), 
+        question,
+        answer: optionId,
+      },
+    ];
 
-    // THIS DOES NOT MAKE A COPY - TO DO: SLICE or something that makes a REAL COPY
-    const userChoicesCopy: IUserChoice[] = userChoices;
-
-    userChoicesCopy.push({
-      id: "" + (index + 1),
-      question,
-      answer: e.currentTarget.dataset.option,
-    });
-
-    setUserChoices([...userChoicesCopy]);
-    evaluateAnswer();
+    setUserChoices(userChoicesCopy);
+    // evaluateAnswer(e);
   };
 
   const removeProducts = (arr1: IProduct[], arr2: IProduct[]) => {
