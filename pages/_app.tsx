@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { morningTheme, nightTheme } from "../client/styles/Theme";
 import Global from "../client/styles/Global";
@@ -9,7 +9,7 @@ import type { AppProps } from "next/app";
 export interface IUserChoice {
   id: string;
   question: string;
-  answer: string | undefined;
+  answer: number;
 }
 
 interface IUserChoiceContext {
@@ -64,12 +64,46 @@ export const RoutineContext = React.createContext<IRoutineContext>({
   setRoutineTheme: function (str: string) {},
 });
 
+
+interface IRecommendedContext {
+  products: IProduct[];
+  setProducts: (arr: IProduct[]) => void;
+}
+
+export const ProductContext = React.createContext<IRecommendedContext>({
+  products: [],
+  setProducts: function (arr: IProduct[]) {},
+});
+
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [routineTheme, setRoutineTheme] = useState<Theme>('morning');
   const [userChoices, setUserChoices] = useState<Array<IUserChoice>>([]);
+  const [products, setProducts] = useState<Array<IProduct>>([]);
   const [recommendedProducts, setRecommendedProducts] = useState<Array<IProduct>>([]);
 
-  // console.log("app - theme", routineTheme);
+    useEffect(() => {
+      // console.log("routineTheme", routineTheme);
+
+      const getProducts = async () => {
+        try {
+          const response = await fetch("http://localhost:3000/api/products");
+          // console.log("response", response);
+
+          if (response.ok) {
+            const data = await response.json();
+            // console.log("data", data.data);
+            setProducts([...data.data]);
+          } else {
+            throw new Error(response.statusText);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      getProducts();
+    }, []);
 
   return (
     <ThemeProvider
@@ -78,6 +112,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Normalize />
       <Global />
       <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
+        <ProductContext.Provider value={{ products, setProducts }}>
         <RecommendedContext.Provider value={{ recommendedProducts, setRecommendedProducts }}>
           <UserChoicesContext.Provider value={{ userChoices, setUserChoices }}>
             <Layout>
@@ -85,6 +120,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </Layout>
           </UserChoicesContext.Provider>
         </RecommendedContext.Provider>
+        </ProductContext.Provider>
       </RoutineContext.Provider>
     </ThemeProvider>
   );
