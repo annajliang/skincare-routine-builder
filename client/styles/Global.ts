@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
-const Global = createGlobalStyle`
+const Global = createGlobalStyle<{theme: DefaultTheme}>`
   html {
     font-size: 62.5%;
   }
@@ -10,7 +11,7 @@ const Global = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: 'Sen', sans-serif;
-    background: #FFC5C3;
+    background: ${({ theme }) => theme.body};
   }
 
   h1 {
@@ -25,22 +26,22 @@ const Global = createGlobalStyle`
 
   h1 span:first-child{
     color: #fff;
-    text-shadow: 5px 4px 0px #DA7153;
+    text-shadow: 5px 4px 0px ${({ theme }) => theme.color};
     -webkit-text-fill-color: #fff;
     /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #DA7153;
+    -webkit-text-stroke-color: ${({ theme }) => theme.color};
   }
 
   h1 span:last-child {
-    color: #DA7153;
+    color: ${({ theme }) => theme.color};
     position: relative;
     bottom: 0;
   }
 
   p {
     font-size: 1.5rem;
-    color: #6F4938;
+    color: ${({ theme }) => theme.textColor};
     line-height: 1.8;
   }
 
