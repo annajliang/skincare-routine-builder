@@ -34,7 +34,8 @@ const Option: React.FC<{
   index: number;
   question: string;
   products: IProduct[];
-}> = ({ children, index, question, products }) => {
+  optionId: number
+}> = ({ children, index, question, products, optionId }) => {
   // console.log("userChoices", userChoices);
   const { userChoices, setUserChoices } = useContext(UserChoicesContext);
   const { recommendedProducts, setRecommendedProducts } =
@@ -66,7 +67,7 @@ const Option: React.FC<{
   const evaluateAnswer: React.MouseEventHandler<
     HTMLButtonElement | HTMLAnchorElement
   > = (e) => {
-    const { option } =  e.currentTarget.dataset;
+    const { option } = e.currentTarget.dataset;
     if (route.asPath === `/question/2`) {
       // console.log("2ND QUESTION");
       // todo remove loops, dont need to loop just target the right index of userChoices
@@ -369,6 +370,7 @@ const Option: React.FC<{
         >
           <StyledGridItem
             data-option={children}
+            data-option-id={optionId}
             onClick={(e) => getUserAnswer(e)}
           >
             {children}
