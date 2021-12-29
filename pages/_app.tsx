@@ -29,7 +29,7 @@ export interface IProduct {
   ingredients: string;
   texture: string;
   price_range: string;
-  skin_type: string[];
+  skin_type?: string[];
   has_fragrance: boolean;
   has_alcohol?: boolean;
   is_waterproof?: boolean;
@@ -39,7 +39,8 @@ export interface IProduct {
   sunscreen_type?: string[];
   category: string;
   is_clean: boolean;
-  buy_link: string
+  skin_concerns?: string[];
+  buy_link: string;
 }
 
 interface IProductContext {

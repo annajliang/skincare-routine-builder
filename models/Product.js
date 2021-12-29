@@ -27,6 +27,7 @@ const productSchema = new Schema({
     required: true,
   },
   is_clean: Boolean,
+  skin_concerns: [String],
   buy_link: {
     type: String,
     required: true,

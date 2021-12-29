@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
 import questions from "../data/questions";
 import { useRouter } from "next/router";
 import { Animated } from "react-animated-css";
-import { IProduct } from "../../pages/_app";
 import Option from "./Option";
 import ProgressBar from "./ProgressBar";
 import styled from "styled-components";
@@ -25,7 +23,6 @@ const StyledGrid = styled.div`
 `;
 
 const Question: React.FC = () => {
-  const [products, setProducts] = useState<Array<IProduct>>([]);
   const route = useRouter();
 
   return (
@@ -55,9 +52,9 @@ const Question: React.FC = () => {
                         key={i + j}
                         index={i}
                         question={`${questions[i].questionSpanOne} ${questions[i].questionSpanTwo}`}
-                        products={products}
+                        optionId={option.id}
                       >
-                        {option}
+                        {option.text}
                       </Option>
                     );
                   })}
