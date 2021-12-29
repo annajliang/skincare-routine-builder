@@ -1,8 +1,8 @@
-import Routine from "./Routine";
+import RoutineContainer from "./RoutineContainer";
 
 const Morning: React.FC = () => {
     return (
-        <Routine routineType="Morning" />
+        <RoutineContainer routineType="Morning" />
     )
 }
 
