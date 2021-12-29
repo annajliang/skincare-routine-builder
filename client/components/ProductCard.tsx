@@ -65,8 +65,9 @@ const ProductCard = () => {
   const [nightRoutine, setNightRoutine] = useState<Array<IProduct>>([]);
 
   useEffect(() => {
-    console.log("product card", recommendedProducts);
-    console.log("userChoices", userChoices);
+    // console.log("product card", recommendedProducts);
+    // console.log("userChoices", userChoices);
+    // console.log("AHH", userChoices[2].answer);
 
     const morningRoutineCopy: IProduct[] = [];
 
@@ -75,31 +76,33 @@ const ProductCard = () => {
         (recommendedProduct) => recommendedProduct.category === productType
       );
 
-      console.log(`FILTERED PRODUCTS - ${productType}`, filteredProducts);
+      // console.log(`FILTERED PRODUCTS - ${productType}`, filteredProducts);
 
       // if there are more than 1 found product, pick a random one
       if (filteredProducts.length > 1) {
         const index = Math.floor(Math.random() * filteredProducts.length);
-        console.log("PRODUCT - IF", filteredProducts[index]);
+        // console.log("PRODUCT - IF", filteredProducts[index]);
         arr.push(filteredProducts[index]);
-        console.log("morningRoutineCopy - IF", arr);
-        console.log("---------");
+        // console.log("morningRoutineCopy - IF", arr);
+        // console.log("---------");
         // add the single product to state
       } else {
-        console.log("PRODUCT - ELSE", filteredProducts);
+        // console.log("PRODUCT - ELSE", filteredProducts);
         arr.push(...filteredProducts);
-        console.log("morningRoutineCopy - IF", arr);
+        // console.log("morningRoutineCopy - IF", arr);
       }
     };
 
-    if ( morningRoutine.length === 0) {
+    if (morningRoutine.length === 0) {
+      findProduct("moisturizer", morningRoutineCopy);
+      findProduct("cleanser", morningRoutineCopy);
+      findProduct("sunscreen", morningRoutineCopy);
+      findProduct("treatment", morningRoutineCopy);
+      // optional
+      userChoices[2].answer !== 0 && findProduct("toner", morningRoutineCopy);
+      // console.log("morningRoutine", morningRoutine);
 
-        findProduct("moisturizer", morningRoutineCopy);
-        findProduct("cleanser", morningRoutineCopy);
-        findProduct("sunscreen", morningRoutineCopy);
-        console.log("morningRoutine", morningRoutine);
-        
-            setMorningRoutine(morningRoutineCopy);
+      setMorningRoutine(morningRoutineCopy);
     }
   }, [morningRoutine, recommendedProducts, userChoices]);
 
