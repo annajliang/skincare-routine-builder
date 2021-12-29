@@ -186,8 +186,7 @@ const questions = [
           return arr
             .filter(
               (product) =>
-                (product.skin_concerns?.includes("blackheads") ||
-                  product.skin_concerns?.includes("large pores")) &&
+                product.skin_concerns?.includes("blackheads & large pores") &&
                 product.category === "treatment"
             )
             .map((product) => {
@@ -207,8 +206,7 @@ const questions = [
           return arr
             .filter(
               (product) =>
-                (product.skin_concerns?.includes("dark spots") ||
-                  product.skin_concerns?.includes("hyperpigmentation")) &&
+                product.skin_concerns?.includes("dark spots & hyperpigmentation") &&
                 product.category === "treatment"
             )
             .map((product) => {
@@ -585,6 +583,90 @@ const questions = [
             });
         },
       },
+    ],
+  },
+  {
+    id: "8",
+    questionSpanOne: "How much money do you",
+    questionSpanTwo: "prefer to spend on products?",
+    // todo { text: "As little as possible", filterFn: (product) => ...}
+    options: [
+      {
+        id: 0,
+        text: "As little as possible",
+        filterFn: (arr: IProduct[]) => {
+          return arr
+            .filter(
+              (product) =>
+                product.price_range === "$$" || product.price_range === "$$$"
+            )
+            .map((product) => {
+              return [
+                {
+                  action: "remove",
+                  product,
+                },
+              ];
+            });
+        },
+      },
+      {
+        id: 1,
+        text: "I'm ok with spending a little more than average",
+        filterFn: (arr: IProduct[]) => {
+          return arr
+            .filter((product) => product.price_range === "$$$")
+            .map((product) => {
+              return [
+                {
+                  action: "remove",
+                  product,
+                },
+              ];
+            });
+        },
+      },
+      {
+        id: 2,
+        text: "I'm willing to spend any amount if the products work",
+        filterFn: (arr: IProduct[]) => {
+          return arr
+            .filter(
+              (product) =>
+                product.price_range === "$" ||
+                product.price_range === "$$" ||
+                product.price_range === "$$$"
+            )
+            .map((product) => {
+              return [
+                {
+                  action: "nothing",
+                  product,
+                },
+              ];
+            });
+        },
+      },
+    //   {
+    //     id: 3,
+    //     text: "I only ever purchase the most bougie & luxurious skincare!",
+    //     filterFn: (arr: IProduct[]) => {
+    //       return arr
+    //         .filter(
+    //           (product) =>
+    //             product.price_range === "$" ||
+    //             product.price_range === "$$"
+    //         )
+    //         .map((product) => {
+    //           return [
+    //             {
+    //               action: "remove",
+    //               product,
+    //             },
+    //           ];
+    //         });
+    //     },
+    //   },
     ],
   },
   //   {
