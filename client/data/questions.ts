@@ -1,10 +1,13 @@
 import { IProduct } from "../../pages/_app";
-import { removeProducts } from "../utils/helpers";
-
-interface ICommand {
-  action: "add" | "remove" | "nothing";
-  product: IProduct;
-}
+import {
+  filterQuestion1,
+  filterQuestion2,
+  filterQuestion3,
+  filterQuestion4,
+  filterQuestion5A,
+  filterQuestion5B,
+  filterQuestion6,
+} from "../utils/helpers";
 
 const questions = [
   {
@@ -16,100 +19,35 @@ const questions = [
         id: 0,
         text: `I'll just say "oil slick" and leave it at that`,
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_type?.includes("all") ||
-                product.skin_type?.includes("oily")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion1(arr, "oily");
         },
       },
       {
         id: 1,
         text: "Normal. Aren't I lucky?",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_type?.includes("all") ||
-                product.skin_type?.includes("normal")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion1(arr, "normal");
         },
       },
       {
         id: 2,
         text: "Combination -- dry here, oily there, just right in other spots",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_type?.includes("all") ||
-                product.skin_type?.includes("combination")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion1(arr, "combination");
         },
       },
       {
         id: 3,
         text: "Drier than the Sahara",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_type?.includes("all") ||
-                product.skin_type?.includes("dry")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion1(arr, "dry");
         },
       },
       {
         id: 4,
         text: "Always red, itchy & and irritated",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_type?.includes("all") ||
-                product.skin_type?.includes("sensitive")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion1(arr, "sensitive");
         },
       },
     ],
@@ -123,100 +61,35 @@ const questions = [
         id: 0,
         text: "Acne & blemishes",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_concerns?.includes("acne") &&
-                product.category === "treatment"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion2(arr, "acne");
         },
       },
       {
         id: 1,
         text: "Aging",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_concerns?.includes("aging") &&
-                product.category === "treatment"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion2(arr, "aging");
         },
       },
       {
         id: 2,
         text: "Dryness",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_concerns?.includes("dryness") &&
-                product.category === "treatment"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion2(arr, "dryness");
         },
       },
       {
         id: 3,
         text: "Blackheads & visible pores",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_concerns?.includes("blackheads & large pores") &&
-                product.category === "treatment"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion2(arr, "blackheads & large pores");
         },
       },
       {
         id: 4,
         text: "Dark spots & hyperpigmentation",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.skin_concerns?.includes("dark spots & hyperpigmentation") &&
-                product.category === "treatment"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "add",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion2(arr, "dark spots & hyperpigmentation");
         },
       },
     ],
@@ -233,7 +106,9 @@ const questions = [
           return arr
             .filter(
               (product) =>
-                product.category === "sunscreen" || product.category === "toner"
+                (product.category === "moisturizer" && !product.spf) ||
+                product.category === "sunscreen" ||
+                product.category === "toner"
             )
             .map((product) => {
               return [
@@ -249,36 +124,14 @@ const questions = [
         id: 1,
         text: "I don't mind dedicating a little extra time to it, but let's not go crazy here",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) => product.category === "moisturizer" && product.spf
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion3(arr);
         },
       },
       {
         id: 2,
         text: "As long as possible, my skincare routine is my self-care ritual",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) => product.category === "moisturizer" && product.spf
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion3(arr);
         },
       },
     ],
@@ -308,60 +161,21 @@ const questions = [
         id: 1,
         text: "I go for a very minimal and natural makeup look",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.category === "makeup_remover" &&
-                product.texture === "balm"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion4(arr, "balm");
         },
       },
       {
         id: 2,
         text: "A decent amount, but not full coverage",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.category === "makeup_remover" &&
-                product.texture === "wipes"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion4(arr, "wipes");
         },
       },
       {
         id: 3,
         text: "I always go full out glam",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.category === "makeup_remover" &&
-                product.texture === "wipes"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion4(arr, "wipes");
         },
       },
     ],
@@ -375,100 +189,35 @@ const questions = [
         id: 0,
         text: "Fair",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.sunscreen_type?.includes("physical") ||
-                product.sunscreen_type?.includes("chemical")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "nothing",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion5A(arr);
         },
       },
       {
         id: 1,
         text: "Light",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.sunscreen_type?.includes("physical") ||
-                product.sunscreen_type?.includes("chemical")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "nothing",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion5A(arr);
         },
       },
       {
         id: 2,
         text: "Medium",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.sunscreen_type?.length === 1 &&
-                product.sunscreen_type?.includes("physical")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion5B(arr);
         },
       },
       {
         id: 3,
         text: "Olive",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.sunscreen_type?.length === 1 &&
-                product.sunscreen_type?.includes("physical")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion5B(arr);
         },
       },
       {
         id: 4,
         text: "Dark",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.sunscreen_type?.length === 1 &&
-                product.sunscreen_type?.includes("physical")
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion5B(arr);
         },
       },
     ],
@@ -498,32 +247,14 @@ const questions = [
         id: 1,
         text: "20-60 minutes. I'm all about moderation",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter((product) => product.spf !== undefined && product.spf < 40)
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion6(arr);
         },
       },
       {
         id: 2,
         text: "More than an hour. Call me a sun goddess",
         filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter((product) => product.spf !== undefined && product.spf < 40)
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
+          return filterQuestion6(arr);
         },
       },
     ],
@@ -589,7 +320,6 @@ const questions = [
     id: "8",
     questionSpanOne: "How much money do you",
     questionSpanTwo: "prefer to spend on products?",
-    // todo { text: "As little as possible", filterFn: (product) => ...}
     options: [
       {
         id: 0,
@@ -647,26 +377,26 @@ const questions = [
             });
         },
       },
-    //   {
-    //     id: 3,
-    //     text: "I only ever purchase the most bougie & luxurious skincare!",
-    //     filterFn: (arr: IProduct[]) => {
-    //       return arr
-    //         .filter(
-    //           (product) =>
-    //             product.price_range === "$" ||
-    //             product.price_range === "$$"
-    //         )
-    //         .map((product) => {
-    //           return [
-    //             {
-    //               action: "remove",
-    //               product,
-    //             },
-    //           ];
-    //         });
-    //     },
-    //   },
+      //   {
+      //     id: 3,
+      //     text: "I only ever purchase the most bougie & luxurious skincare!",
+      //     filterFn: (arr: IProduct[]) => {
+      //       return arr
+      //         .filter(
+      //           (product) =>
+      //             product.price_range === "$" ||
+      //             product.price_range === "$$"
+      //         )
+      //         .map((product) => {
+      //           return [
+      //             {
+      //               action: "remove",
+      //               product,
+      //             },
+      //           ];
+      //         });
+      //     },
+      //   },
     ],
   },
   //   {
