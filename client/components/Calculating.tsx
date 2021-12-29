@@ -1,8 +1,15 @@
 import { useContext, useState, useEffect } from "react";
-import { RoutineContext } from "../../pages/_app";
+import questions from "../data/questions";
+import {
+  RoutineContext,
+  UserChoicesContext,
+  IProduct,
+  ProductContext,
+  RecommendedContext,
+} from "../../pages/_app";
 import Morning from "./Morning";
 import Night from "./Night";
-import { UserChoicesContext } from "../../pages/_app";
+import { removeProducts } from "../utils/helpers";
 import Image from "next/image";
 import { Animated } from "react-animated-css";
 import styled from "styled-components";
@@ -12,28 +19,65 @@ const StyledCentered = styled.div`
   text-align: center;
 `;
 
+export interface ICommand {
+  action: "add" | "remove" | "nothing";
+  product: IProduct;
+}
+
 const Calculating = () => {
-  const { userChoices } = useContext(UserChoicesContext);
   const [isCalculating, setIsCalculating] = useState(true);
   const [showPreResults, setShowPreResults] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
-  const { routineTheme, setRoutineTheme } = useContext(RoutineContext);
+
+  const { userChoices } = useContext(UserChoicesContext);
+  const { setRecommendedProducts} = useContext(RecommendedContext);
+  const { routineTheme } = useContext(RoutineContext);
+  const { products } = useContext(ProductContext);
 
   useEffect(() => {
+    const evaluateAnswers = () => {
+      console.log("userChoices", userChoices);
+      let productCommands: ICommand[] = [];
+
+        userChoices.forEach((userChoice, i) => {
+          const index = userChoice.answer
+          const filteredProducts = questions[i].options[index].filterFn(products);
+          const flattenedFilteredProducts = filteredProducts.flat();
+
+          productCommands.push(...flattenedFilteredProducts);
+        })
+
+        const productsToAdd = productCommands.filter((product) => {
+          return product.action === "add";
+        });
+
+        const productsToRemove = productCommands.filter((product) => {
+          return product.action === "remove";
+        });
+
+        // console.log("productsToAdd", productsToAdd);
+        // console.log("productsToRemove", productsToRemove);
+        const results = removeProducts(productsToAdd, productsToRemove);
+
+        const finalProducts: IProduct[] = results.map((product) => {
+          return product.product;
+        });
+        console.log("RESULTS", finalProducts);
+        setRecommendedProducts(finalProducts);
+    };
+
     setTimeout(() => {
-      setIsCalculating(false)
+      setIsCalculating(false);
       setShowPreResults(true);
-        setTimeout(() => {
-          setShowPreResults(false);
-          setShowResults(true); 
-        }, 100);
-    }, 100)
+      setTimeout(() => {
+        setShowPreResults(false);
+        setShowResults(true);
+      }, 100);
 
-
+      evaluateAnswers();
+    }, 100);
   }, []);
-
-  // console.log("CALC", userChoices);
   
   return (
     <>
