@@ -6,11 +6,11 @@ import styled from "styled-components";
 import { Animated } from "react-animated-css";
 import Image from "next/image";
 
-const StyledContainer = styled.div<{ routineTheme: string }>`
+const StyledRountineContainer = styled.div<{ routineTheme: string }>`
   padding: 0 7rem;
   width: 100%;
   position: relative;
-  /* top: ${({ routineTheme }) => routineTheme ? '-4rem' : '-6.5rem'}; */
+  /* top: ${({ routineTheme }) => (routineTheme ? "-4rem" : "-6.5rem")}; */
   top: -4rem;
 `;
  
@@ -44,7 +44,7 @@ const StyledGrid = styled.div`
   height: 32rem;
 `;
   
-const Test = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -59,9 +59,9 @@ const RoutineContainer: React.FC<{ routineType: string }> = ({
   const { routineTheme } = useContext(RoutineContext);
 
   return (
-    <Test>
+    <StyledContainer>
       <ThemeToggle />
-      <StyledContainer routineTheme={routineTheme}>
+      <StyledRountineContainer routineTheme={routineTheme}>
         <Animated
           animationIn="fadeInRight"
           animationOut="fadeOutLeft"
@@ -84,8 +84,8 @@ const RoutineContainer: React.FC<{ routineType: string }> = ({
             <Routine />
           </StyledGrid>
         </Animated>
-      </StyledContainer>
-    </Test>
+      </StyledRountineContainer>
+    </StyledContainer>
   );
 };
 
