@@ -37,11 +37,8 @@ const StyledMoon = styled.img`
 `;
 
 const StyledGrid = styled.div`
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  height: 32rem;
 `;
   
 const StyledContainer = styled.div`

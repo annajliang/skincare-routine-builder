@@ -17,7 +17,12 @@ const Routine = () => {
         morningRoutine.length !== 0 &&
         morningRoutine.map((recommendedProduct: IProduct, i: number) => {
           return (
-            <ProductCard recommendedProduct={recommendedProduct} key={i} />
+            <ProductCard
+              recommendedProduct={recommendedProduct}
+              key={i}
+              numOfProducts={morningRoutine.length}
+              index={i}
+            />
           );
         })}
 
@@ -25,7 +30,12 @@ const Routine = () => {
         nightRoutine.length !== 0 &&
         nightRoutine.map((recommendedProduct: IProduct, i: number) => {
           return (
-            <ProductCard recommendedProduct={recommendedProduct} key={i} />
+            <ProductCard
+              recommendedProduct={recommendedProduct}
+              key={i}
+              numOfProducts={nightRoutine.length}
+              index={i}
+            />
           );
         })}
     </>
