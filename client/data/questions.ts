@@ -106,7 +106,7 @@ const questions = [
           return arr
             .filter(
               (product) =>
-                (product.category === "moisturizer" && !product.spf) ||
+                // (product.category === "moisturizer" && !product.spf) ||
                 product.category === "sunscreen" ||
                 product.category === "toner"
             )
@@ -224,43 +224,6 @@ const questions = [
   },
   {
     id: "6",
-    questionSpanOne: "Your average daily",
-    questionSpanTwo: "sun exposure is:",
-    options: [
-      {
-        id: 0,
-        text: "Less than 20 minutes. I avoid the sun like the plague",
-        filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter((product) => product.spf !== undefined && product.spf > 40)
-            .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
-            });
-        },
-      },
-      {
-        id: 1,
-        text: "20-60 minutes. I'm all about moderation",
-        filterFn: (arr: IProduct[]) => {
-          return filterQuestion6(arr);
-        },
-      },
-      {
-        id: 2,
-        text: "More than an hour. Call me a sun goddess",
-        filterFn: (arr: IProduct[]) => {
-          return filterQuestion6(arr);
-        },
-      },
-    ],
-  },
-  {
-    id: "7",
     questionSpanOne: "Do you enjoy when your",
     questionSpanTwo: "products are scented?",
     options: [
@@ -317,7 +280,7 @@ const questions = [
     ],
   },
   {
-    id: "8",
+    id: "7",
     questionSpanOne: "How much money do you",
     questionSpanTwo: "prefer to spend on products?",
     options: [
