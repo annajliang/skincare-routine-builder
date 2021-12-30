@@ -33,12 +33,12 @@ export interface IProduct {
   has_fragrance: boolean;
   has_alcohol?: boolean;
   is_waterproof?: boolean;
-  is_tinted?: boolean;
   removes_makeup?: boolean;
   spf?: number;
   sunscreen_type?: string[];
   category: string;
   is_clean: boolean;
+  routine_step: string;
   skin_concerns?: string[];
   buy_link: string;
 }

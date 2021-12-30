@@ -23,6 +23,7 @@ const data = [
     model: "Product",
     documents: [
       {
+        routine_step: "Hydrate",
         name: "Belif The True Cream Aqua Bomb",
         description: `An ultra-lightweight, gel-cream that instantly cools and refreshes skin while providing intensive hydration. This water-based moisturizer 'floods' the skin with a rush of refreshing hydration and minimizes the appearance of pores for soft, smooth, supple skin. Ideal for normal, combination, and oily skin types.`,
         img_url:
@@ -93,6 +94,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/the-true-cream-aqua-bomb-P394639?skuId=1686427&icid2=skugrid:p394639:product",
       },
       {
+        routine_step: "Protect",
         name: "Paula's Choice RESIST Super-Light Wrinkle Defense SPF 30",
         description:
           "A lightly tinted mineral-based formula that protects skin from sun damage and fortifies it with state-of-the-art antioxidants.",
@@ -141,11 +143,11 @@ const data = [
         sunscreen_type: ["physical"],
         category: "sunscreen",
         has_alcohol: false,
-        is_tinted: true,
         buy_link:
           "https://www.paulaschoice.com/resist-super-light-wrinkle-defense-spf-30/776.html",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "Paula's Choice RESIST Skin Restoring Moisturizer with SPF 50",
         description: `This antioxidant-rich moisturizer hydrates and protects with superstar ingredients like niacinamide, shea butter and licorice for flawless, younger-looking skin.`,
         img_url:
@@ -210,6 +212,7 @@ const data = [
           "https://www.paulaschoice.com/resist-skin-restoring-moisturizer-with-spf-50/797.html",
       },
       {
+        routine_step: "Hydrate",
         name: "Olay Regenerist Micro-Sculpting Cream Fragrance Free",
         description: `“The Red Jar” – known to many as their go-to, nonnegotiable face moisturizer with over 1 billion jars sold, Olay Micro-Sculpting Fragrance-Free Face Cream is designed to start visibly reducing wrinkles & fine lines starting day 1. Infused with Vitamin B3, Amino-Peptides, Hyaluronic Acid and Antioxidants for ultimate penetration, this moisture-binding moisturizing formula instantly hydrates to visibly firm skin for a lifted look."`,
         img_url:
@@ -265,6 +268,7 @@ const data = [
           "https://www.walmart.ca/en/ip/olay-regenerist-advanced-anti-aging-micro-sculpting-cream/6000045963143?cmpid=AF_CA_1680615_1&utm_source=rakuten&utm_medium=affiliate&utm_campaign=always_on&utm_content=10&utm_id=AF_CA_1680615_1&siteID=jo_pTdthTuc-JO9Qay2OG_aoM7KKsTQBnQ&wmlspartner=jo%2FpTdthTuc",
       },
       {
+        routine_step: "Hydrate",
         name: "Tatcha The Water Cream Oil-Free Pore Minimizing Moisturizer",
         description:
           "This lightweight, clarifying water cream releases a burst of hydrating nutrients and pore-refining botanicals for healthy aging and smooth, balanced skin.",
@@ -313,6 +317,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/the-water-cream-P418218?skuId=1932920&icid2=skugrid:p418218:product",
       },
       {
+        routine_step: "Hydrate",
         name: "Neutrogena Hydro Boost Facial Gel Cream Extra Dry Skin",
         description:
           "Neutrogena Hydro Boost Gel Cream Extra-Dry instantly quenches dry skin and keeps it looking smooth, supple and hydrated all day. Our unique light-weight formula absorbs quickly, like a gel, but has the long-lasting, intense moisturizing power of a cream, for even extra dry skin. It boosts skin's hydration level and locks it in all day. Formulated with hydrating hyaluronic acid, naturally found in skin, it acts as a sponge for dry skin cells, resulting in more supple and smooth skin.",
@@ -348,6 +353,7 @@ const data = [
           "https://www.walmart.ca/en/ip/neutrogena-hydro-boost-facial-gel-cream-for-extra-dry-skin-hyaluronic-acid-to-hydrate-skin-gel-moisturizer-47ml/6000192034941",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "EltaMD UV Daily Broad-Spectrum SPF 40",
         description: `Serious UV protection and superior hydration join forces in this sheer facial sunscreen. EltaMD UV Daily has hyaluronic acid to boost moisture retention and diminish fine lines. This lightweight moisturizer with UV protection can be worn alone or under makeup. Choose from tinted and untinted formulas for use every day.`,
         img_url:
@@ -387,6 +393,7 @@ const data = [
           "https://www.amazon.ca/Eltamd-Daily-SPF-48-Gram-1-7-Ounce/dp/B00464EC1E/ref=sr_1_2?crid=1LAOSWJEITPF6&keywords=EltaMD+UV+Daily+Broad-Spectrum+SPF+40&qid=1640468256&s=beauty&sprefix=eltamd+uv+daily+broad-spectrum+spf+40%2Cbeauty%2C103&sr=1-2",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "Peter Thomas Roth Water Drench Broad Spectrum SPF 45 Hyaluronic Cloud Moisturizer",
         description:
           "Drench your skin with a liquid cloud of fluffy-light moisture that feels soft and weightless like clouds in the atmosphere, shielding against UVA/UVB rays while helping to keep skin hydrated during sun exposure with a 30% Hyaluronic Acid Complex. Non-greasy, cream-to-water invisible broad-spectrum SPF 45 sunscreen has a 30% complex of Hyaluronic Acid, a potent hydrator that draws in water. Helps plump the look of skin with moisture.",
@@ -460,6 +467,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/peter-thomas-roth-water-drench-reg-broad-spectrum-spf-45-hyaluronic-cloud-moisturizer-P472822?skuId=2450468&keyword=Peter%20Thomas%20Roth%20Water%20Drench%20Broad%20Spectrum%20SPF%2045%20Hyaluronic%20Cloud",
       },
       {
+        routine_step: "Protect",
         name: "EltaMD UV Clear Broad-Spectrum SPF 46",
         description:
           "Oil-free EltaMD UV Clear helps calm and protect sensitive skin types prone to discoloration and breakouts associated to acne and rosacea. It contains niacinamide (vitamin B3), hyaluronic acid and lactic acid, ingredients that promote the appearance of healthy-looking skin. Very lightweight and silky, it may be worn with makeup or alone. Choose from tinted and untinted formulas for use every day.",
@@ -497,6 +505,7 @@ const data = [
           "https://www.amazon.ca/Eltamd-Clear-SPF-48-Gram-1-7/dp/B002MSN3QQ",
       },
       {
+        routine_step: "Protect",
         name: "Supergoop! Unseen Sunscreen SPF 40 PA+++",
         description:
           "The original, totally invisible, weightless, scentless sunscreen with SPF 40 that leaves a velvety finish. This innovative, antioxidant-rich multitasker has a unique oil-free formula that glides onto skin while providing broad spectrum SPF 40 protection. Use it as a makeup-gripping primer under foundation when you want a little more coverage, or on its own if you want a more natural look. It’s a totally game-changing way to wear sunscreen every day, and it will have you SPF-Obsessed™.",
@@ -544,6 +553,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/supergoop-unseen-sunscreen-P458907?skuId=2354207&icid2=skugrid:p458907:product",
       },
       {
+        routine_step: "Protect",
         name: "Biore UV Aqua Rich Watery Essence SPF 50 PA++++",
         description: `Biore UV Aqua Rich Watery Essence has a light-weight feeling yet it effectively protects from strong UV rays, preventing aging skin and sunburn. This Japanese sunscreen features UV blocking ingredients such as water capsules which when applied to the skin create a pleasant, watery veil. The new formula is enhanced with the so called "Micro Defense" technology which prevents the formation of micro gaps and potential uneven coating. It also contains moisturizing ingredients such as hyaluronic acid, royal jelly and citrus essence to retain moisture.`,
         img_url:
@@ -599,6 +609,7 @@ const data = [
           "https://www.stylevana.com/en_CA/kao-biore-uv-aqua-rich-watery-essence-spf-50-pa-2019-edition.html",
       },
       {
+        routine_step: "Cleanse",
         name: "Neutrogena Ultra Gentle Hydrating Cleanser",
         description:
           "Thoroughly cleanse and leave your skin feeling moisturized for naturally soft skin with NEUTROGENA® Ultra Gentle Daily Cleanser, Creamy Formula. This creamy cleanser works in an advanced, skin-friendly way. Uniquely formulated with minimal ingredients, this effective cleanser gently removes excess oil, dirt and makeup. NEUTROGENA® Ultra Gentle Daily Cleanser, Creamy Formula is hypoallergenic, non-comedogenic, fragrance-free, paraben-free, soap-free and dye-free.",
@@ -626,6 +637,7 @@ const data = [
           "https://www.walmart.ca/en/ip/neutrogena-ultra-gentle-daily-creamy-facial-cleanser-fragrance-free/676118",
       },
       {
+        routine_step: "Cleanse",
         name: "CeraVe Foaming Facial Cleanser",
         description:
           "Developed with dermatologists, CeraVe Foaming Cleanser's gently foams to deeply cleanse without disrupting the natural skin protective barrier. This refreshing gel, with 3 essential ceramides and hyaluronic acid, effectively removes excess oil, dirt, and makeup.",
@@ -667,6 +679,7 @@ const data = [
           "https://www.walmart.ca/en/ip/cerave-foaming-facial-cleanser-with-hyaluronic-acid-and-3-ceramides-daily-face-wash-for-normal-to-oily-skin-fragrance-free/6000200706456",
       },
       {
+        routine_step: "Cleanse",
         name: "CeraVe Hydrating Cleanser",
         description:
           "Developed with dermatologists, CeraVe Hydrating Cleanser, effectively cleanses and hydrates without disrupting the natural skin protective barrier. This non-foaming lotion, with 3 essential ceramides and hyaluronic acid, gently removes dirt and oil while increasing skin hydration after just one use.",
@@ -707,6 +720,7 @@ const data = [
           "https://www.walmart.ca/en/ip/cerave-hydrating-facial-cleanser-with-hyaluronic-acid-and-3-ceramides-daily-face-wash-for-normal-to-dry-skin-fragrance-free/6000200706742",
       },
       {
+        routine_step: "Cleanse",
         name: "COSRX Low pH Good Morning Gel Cleanser",
         description: `A super gentle cleanser that's great for your morning wash this low pH formula gel cleanser doesn't strip your skin of its natural oils and contains purifying botanical ingredients and mild acids to gently cleanse your skin to its most supple and clear texture`,
         img_url:
@@ -747,6 +761,7 @@ const data = [
           "https://www.stylevana.com/en_US/cosrx-low-ph-good-morning-gel-cleanser-150ml-8.html",
       },
       {
+        routine_step: "Remove",
         name: "Bioderma Sensibio H2O Micellar Water",
         description:
           "This micelle solution is a soothing non-rinse cleanser and make-up remover. The perfectly cleanses and removes make-up from the face and eyes. Soothes irritated skin and minimises redness.",
@@ -775,7 +790,8 @@ const data = [
           "https://shop.shoppersdrugmart.ca/Luxury/Brands/Bioderma/Sensibio-H2O-Micelle-Solution/p/BI92",
       },
       {
-        name: "CLINIQUE Take The Day Off Cleansing Balm Makeup Remover",
+        routine_step: "Remove",
+        name: "Clinique Take The Day Off Cleansing Balm Makeup Remover",
         description:
           "A gentle, effective makeup remover that transforms from a balm to a silky oil, melting away face and eye makeup and sunscreen.",
         img_url:
@@ -803,6 +819,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/take-the-day-off-cleansing-balm-P126301?skuId=886267&icid2=skugrid:p126301:product",
       },
       {
+        routine_step: "Remove",
         name: "Neutrogena All-in-One Makeup Removing Cleansing Wipes",
         description:
           "NEUTROGENA® All-in-One Make-Up Removing Cleansing Wipes are soft, pre-moistened wipes, infused with a mild cleansing lotion. They not only gently and effectively cleanse and remove all types of make-up but also tone skin, leaving it refreshed in just one convenient step. Skin conditioning ingredients help prevent over-drying and leave your skin feeling soft and looking healthy. Gentle enough to use around sensitive eye area, even for contact lens wearers.",
@@ -838,6 +855,7 @@ const data = [
           "https://www.walmart.ca/en/ip/neutrogena-makeup-removing-wipes-all-in-one/6000075838885",
       },
       {
+        routine_step: "Remove",
         name: "Garnier SkinActive Micellar Cleansing Water All-in-1 Sensitive Skin",
         description:
           "Cleanse with care with Garnier SkinActive Micellar Cleansing Water. Micellar cleansing water is a facial cleanser and makeup remover that is surprisingly powerful, yet gentle on skin. Garnier micellar water all-in-1 effectively cleanses, removes makeup and refreshes skin in one easy step. Like a magnet, micelles capture and lift away dirt, oil and makeup without harsh rubbing. It can be used to remove all traces of makeup, including waterproof eyeliners and longwear lipstick, dissolving all traces of makeup, dirt and oil. The mild formula is safe for all skin types, dermatologist-tested and free from parabens, sulfates, silicone and fragrance.",
@@ -864,6 +882,7 @@ const data = [
           "https://www.walmart.ca/en/ip/garnier-skinactive-all-in-1-micellar-cleansing-water-for-all-skin-types-even-sensitive-700-ml/6000203946698",
       },
       {
+        routine_step: "Remove",
         name: "Farmacy Green Clean Makeup Removing Cleansing Balm",
         description:
           "An award-winning makeup-removing face cleanser that melts away stubborn makeup, SPF, dirt, and oil and leaves skin hydrated with zero residue",
@@ -915,6 +934,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/green-clean-makeup-meltaway-cleansing-balm-P417238?skuId=1899103&icid2=skugrid:p417238:product",
       },
       {
+        routine_step: "Remove",
         name: "Farmacy Clearly Clean Makeup Removing Cleansing Balm",
         description:
           "A fragrance-free, PEG-free makeup removing cleansing balm that melts away stubborn eye and long-wear makeup, SPF, and dirt—made for sensitive and reactive skin.",
@@ -960,6 +980,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/farmacy-clearly-clean-cleansing-balm-P477157?skuId=2501229&keyword=Farmacy%20Clearly%20Clean%20Makeup%20Removing%20Cleansing%20Balm",
       },
       {
+        routine_step: "Cleanse",
         name: "Sukin Sensitive Cleansing Gel",
         description:
           "Our soap free Sensitive Cleansing Gel provides a gentle, non-drying cleanse to help remove impurities and excess oils. A blend of Green Tea, Cucumber and Avocado Oil work to gently clean, refresh and purify, leaving skin feeling soft, clear and balanced. This is the perfect cleansing option for combination/oily skin types who have sensitive skin.",
@@ -993,6 +1014,7 @@ const data = [
           "https://shop.shoppersdrugmart.ca/Luxury/Sukin/Sensitive-Cleansing-Gel/p/LD1778",
       },
       {
+        routine_step: "Hydrate",
         name: "Sukin Sensitive Facial Moisturizer",
         description:
           "Our fast-absorbing Sensitive Facial Moisturiser helps deliver essential hydration to delicate skin. Rosehip, Sesame and Jojoba Oils help promote increased moisture levels, leaving skin feeling soothed and nourished.",
@@ -1031,6 +1053,7 @@ const data = [
           "https://shop.shoppersdrugmart.ca/Shop/Categories/Beauty/Skin-Care/Face-Moisturizers/Moisturizers/Sensitive-Facial-Moisturizer/p/U572?variantCode=9327693002175",
       },
       {
+        routine_step: "Remove",
         name: "Sukin Micellar Cleansing Water",
         description:
           "Our Micellar Cleansing Water is infused with gentle Aloe Vera to thoroughly remove makeup and dirt build up, whilst soothing and purifying the complexion. A refreshing blend of Chamomile and Cucumber calms, leaving skin lightly hydrated and clean.",
@@ -1060,6 +1083,7 @@ const data = [
           "https://shop.shoppersdrugmart.ca/Shop/Sukin/Categories/Beauty/Makeup/Face/Makeup-Remover/Micellar-Cleansing-Water/p/U567?variantCode=9327693004391#",
       },
       {
+        routine_step: "Cleanse",
         name: "Youth To The People Superfood Antioxidant Cleanser",
         description:
           "An award-winning face wash with cold-pressed antioxidants to remove makeup, prevent buildup in pores, and support skin’s pH balance.",
@@ -1107,6 +1131,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/kale-spinach-green-tea-age-prevention-cleanser-P411387?skuId=1863588&icid2=skugrid:p411387:product",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "Olay Complete Lotion Moisturizer with SPF 30 Sensitive",
         description:
           "Gentle with zinc oxide provides sun protection & long-lasting hydration for sensitive skin. Daily SPF moisturizer helps prevent premature skin damage with Broad Spectrum SPF 30 UVA/UVB Sunscreen. Conditions skin surface with Vitamin E & aloe to maintain healthy-looking skin. Oil-free, fragrance-free, non-greasy, dermatologically tested & non-comedogenic (won’t clog pores) formula for sensitive skin types. Nourishes 7 layers deep into skin’s surface to help protect beautiful, younger-looking skin.",
@@ -1149,7 +1174,6 @@ const data = [
         has_fragrance: false,
         has_alcohol: false,
         is_waterproof: false,
-        is_tinted: false,
         spf: 30,
         sunscreen_type: ["chemical", "physical"],
         category: "moisturizer",
@@ -1157,6 +1181,7 @@ const data = [
           "https://www.walmart.ca/en/ip/olay-complete-lotion-moisturizer-with-spf-30-sensitive/6000033098996?skuId=10066484&offerId=10066484&utm_medium=paid_search&utm_source=google&utm_campaign=always_on&cmpid=SEM_CA_77_Y55KYL6JHR_71700000053641833_58700006637388428&utm_id=SEM_CA_77_Y55KYL6JHR_71700000053641833_58700006637388428&gclsrc=aw.ds&&gclid=CjwKCAiAn5uOBhADEiwA_pZwcKtxZ7O7YBmyS1zC3FZuuUraP_8a06Ng9jpPDFETyzdL1oCF0lOP2xoCZy4QAvD_BwE&gclsrc=aw.ds",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "CeraVe AM Facial Moisturizing Lotion SPF 30",
         description:
           "Developed with dermatologists, CeraVe Facial Moisturizing Lotion SPF 30 provides UV protection while helping to restore the natural skin protective barrier. This lightweight, non-greasy lotion, with 3 essential ceramides and hyaluronic acid, provides all day hydration after just one use.",
@@ -1196,7 +1221,6 @@ const data = [
         has_fragrance: false,
         has_alcohol: false,
         is_waterproof: false,
-        is_tinted: false,
         spf: 30,
         sunscreen_type: ["chemical", "physical"],
         category: "moisturizer",
@@ -1204,6 +1228,7 @@ const data = [
           "https://www.walmart.ca/en/ip/cerave-daily-facial-moisturizing-lotion-spf-30-with-hyaluronic-acid-and-niacinamide-fragrance-free-face-moisturizer/6000200706121",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "Neutrogena Moisture Oil-Free Moisturizer SPF 30",
         description:
           "NEUTROGENA MOISTURE® Oil Free SPF 30 is a lightweight, non-greasy formula that is clinically proven to provide long-lasting moisturization for softer, smoother, younger-looking skin.",
@@ -1244,7 +1269,6 @@ const data = [
         has_fragrance: false,
         has_alcohol: false,
         is_waterproof: false,
-        is_tinted: false,
         spf: 30,
         sunscreen_type: ["chemical"],
         category: "moisturizer",
@@ -1252,6 +1276,7 @@ const data = [
           "https://www.walmart.ca/en/ip/neutrogena-moisture-oil-free-moisturizer-spf-30/48122",
       },
       {
+        routine_step: "Treat",
         name: "Paula's Choice CLEAR Regular Strength Daily Skin Clearing Treatment with 2.5% Benzoyl Peroxide",
         description:
           "An effective acne treatment that works immediately to fight acne, prevent future breakouts, and reduce redness.",
@@ -1282,6 +1307,7 @@ const data = [
           "https://www.paulaschoice.com/clear-regular-strength-daily-skin-clearing-treatment-with-2.5pct-benzoyl-peroxide/610-6100.html",
       },
       {
+        routine_step: "Treat",
         name: "Paula's Choice SKIN PERFECTING 2% BHA Liquid Exfoliant",
         description:
           "Our #1 product worldwide + cult favorite, this gentle leave-on exfoliant with salicylic acid quickly unclogs pores, smooths wrinkles, brightens and evens out skin tone.",
@@ -1306,6 +1332,7 @@ const data = [
           "https://www.paulaschoice.com/skin-perfecting-2pct-bha-liquid-exfoliant/201-2010.html",
       },
       {
+        routine_step: "Treat",
         name: "The Ordinary Alpha Arbutin 2% + HA Hyperpigmentation Serum",
         description:
           "A concentrated serum with pure alpha arbutin and hyaluronic acid for more visibly even-toned skin..",
@@ -1334,6 +1361,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/the-ordinary-deciem-alpha-arbutin-2-ha-P427412?skuId=2031441",
       },
       {
+        routine_step: "Treat",
         name: "The Ordinary Retinol 1% in Squalane",
         description:
           "A highly stable, water-free solution of one percent pure retinol.",
@@ -1356,6 +1384,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/retinol-1-in-squalane-P444617?skuId=2238624",
       },
       {
+        routine_step: "Treat",
         name: "The Ordinary Buffet Anti-Aging Serum",
         description:
           "A multi-peptide, lightweight, water-based serum that targets multiple signs of visible aging at once and is great for those looking for solutions for signs of aging and supporting visibly healthy skin.",
@@ -1423,6 +1452,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/the-ordinary-deciem-buffet-P427420",
       },
       {
+        routine_step: "Treat",
         name: "The Ordinary Salicylic Acid 2% Anhydrous Solution Pore Clearing Serum",
         description:
           "A water-free serum formulated with salicylic acid to effectively decongest the skin and provide surface exfoliation.",
@@ -1448,6 +1478,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/the-ordinary-salicylic-acid-2-anhydrous-solution-pore-clearing-serum-P479732?skuId=2495687",
       },
       {
+        routine_step: "Treat",
         name: "The Ordinary Hyaluronic Acid 2% + B5 Hydrating Serum",
         description:
           "A hydrating formula with ultra-pure, vegan hyaluronic acid.",
@@ -1481,6 +1512,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/the-ordinary-deciem-hyaluronic-acid-2-b5-P427419?skuId=2031375",
       },
       {
+        routine_step: "Treat",
         name: "Stridex Medicated Acne Pads, Maximum Strength",
         description:
           "Stridex Maximum Pads have the highest level of acne-fighting medicine allowed in a non-prescription formula (2% salicylic acid) and are recommended for cases of moderate acne. Max Pads have effective skin cleansers that work to remove dirt, oil, and sweat from the surface of the skin. The medication penetrates to unclog pores and dissolve deep-down oil. They even remove what soaps and face washes leave behind! Completely alcohol-free for acne-fighting effectiveness without the burn. Continues working between uses.",
@@ -1509,6 +1541,7 @@ const data = [
           "https://ca.iherb.com/pr/stridex-single-step-acne-control-maximum-alcohol-free-90-soft-touch-pads/44105",
       },
       {
+        routine_step: "Treat",
         name: "SkinCeuticals C E Ferulic",
         description: `CE Ferulic is a revolutionary antioxidant combination that delivers advanced environmental protection against photoaging by neutralizing free radicals that cause accelerated signs of aging. Provides advanced environmental protection against damaging free radicals induced by UVA, UVB, and infrared radiation. Increases firmness and replenishes lipids to visibly reduce wrinkles. Once absorbed, this serum can‚'t be washed or rubbed off- It remains effective for a minimum of 72 hours, making it an excellent addition to sunscreen.`,
         img_url:
@@ -1536,6 +1569,7 @@ const data = [
           "https://www.skinceuticals.ca/en/skin-care/ce-ferulic-635494363708.html?gclid=CjwKCAiAiKuOBhBQEiwAId_sK8mc3xUnsJYOKuKGOxOE9CrFv-bUxd2rCfxhtYP7u-rDbavvGzp4eRoC1sYQAvD_BwE&gclsrc=aw.ds",
       },
       {
+        routine_step: "Tone",
         name: "I'm From Rice Toner",
         description:
           "I'm From Rice Toner contains the best rice grown in Yeoju where is the origin of the rice. The immaculate rice called 'GOA RICE' delivers clean and clear skin and makes skin smooth so that skin is glowing from the inside of the skin. Experience the balanced skin with rice that is the most familiar and extraordinary ingredient from the nature in Korea.",
@@ -1570,6 +1604,7 @@ const data = [
           "https://ca.iherb.com/pr/i-m-from-rice-toner-5-07-fl-oz-150-ml/90196",
       },
       {
+        routine_step: "Tone",
         name: "Pyunkang Yul Acne Toner",
         description:
           "Acne Toner is a toner that has a refreshing feeling that helps sebum control and convergence.",
@@ -1607,6 +1642,7 @@ const data = [
           "https://ca.iherb.com/pr/pyunkang-yul-acne-toner-5-07-fl-oz-150-ml/85114",
       },
       {
+        routine_step: "Tone",
         name: "Yes To Calming Toner Cucumbers",
         description:
           "Refreshing, alcohol-free toner gently cleanses, removing residual oils, dirt and makeup without stripping the skin. Enriched with cucumber extract, witch hazel and aloe vera to help balance, tone, hydrate, nourish and calm sensitive skin.",
@@ -1635,6 +1671,7 @@ const data = [
           "https://ca.iherb.com/pr/yes-to-calming-toner-cucumbers-12-fl-oz-355-ml/109767",
       },
       {
+        routine_step: "Tone",
         name: "Thayers Alcohol-Free Rose Petal Witch Hazel Facial Toner",
         description:
           "Flower Power. Make your skin bloom with THAYERS Rose Petal Facial Mist. This pH balanced, gentle toner is derived from a time-honored formula, developed by Thayers to cleanse, tone, and moisturize skin. Formulated with Rose Water and Thayers unique, proprietary blend of Aloe Vera and non-distilled Witch Hazel that is grown exclusively for Thayers on a family farm. By avoiding distillation of their Witch Hazel, we’re able to preserve the naturally-occurring, beneficial tannins which are known to their antioxidant benefits. The Thayers toner formula imparts a natural glow to your skin. Thayers elixirs have been a fixture in medicine cabinets for generations – once you use them you’ll know why.",
@@ -1663,6 +1700,7 @@ const data = [
           "https://well.ca/products/thayers-alcohol-free-rose-petal_11170.html",
       },
       {
+        routine_step: "Tone",
         name: "Thayers Facial Toner with Witch Hazel Unscented",
         description:
           "Thayers Alcohol-Free Unscented Witch Hazel with Organic Aloe Vera Formula Facial Toner has all the replenishing, revitalizing magic of our scented varieties, but is undetectable by the nose.",
@@ -1686,6 +1724,7 @@ const data = [
           "https://well.ca/products/thayers-facial-toner-with-witch-hazel-unscented_11172.html",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "Fenty Skin Hydra Vizor Invisible Moisturizer Broad Spectrum SPF 30",
         description:
           "A refillable two-in-one sunscreen moisturizer that’s lightweight, oil free, noncomedogenic, and invisible—it targets dark spots, and is makeup-friendly.",
@@ -1745,11 +1784,11 @@ const data = [
         sunscreen_type: ["chemical"],
         category: "moisturizer",
         has_alcohol: false,
-        is_tinted: false,
         buy_link:
           "https://www.sephora.com/ca/en/product/fenty-skin-hydra-vizor-invisible-moisturizer-broad-spectrum-spf-30-P467023?skuId=2418960",
       },
       {
+        routine_step: "Hydrate & Protect",
         name: "Neutrogena Hydro Boost Gel Cream SPF 25",
         description:
           "A lightweight water gel formula is oil free and non-comedogenic and moisturizes to help revitalize the look of dull, tired skin. This moisturizer also provides broad spectrum UVA/UVB protection. Boost moisture with a complex of purified hyaluronic acid.",
@@ -1787,11 +1826,11 @@ const data = [
         sunscreen_type: ["chemical"],
         category: "moisturizer",
         has_alcohol: false,
-        is_tinted: false,
         buy_link:
           "https://www.walmart.ca/en/ip/neutrogena-hydro-boost-gel-face-cream-spf-25-with-broad-spectrum-uvauvb-hydrating-hyaluronic-acid-antioxidants-oil-free-moisturizer-non-comedogenic-47/6000200713157",
       },
       {
+        routine_step: "Treat",
         name: "Pixi Beauty Retinol Tonic",
         description:
           "A youth-preserving toner for hydrated, fresh looking skin. Turn back time with this rejuvenating skin toner. The miracle formula is packed with powerful antioxidants and botanicals (such as jasmine flower) to recondition the skin and permeate each and every pore. Rebuilding damaged moisture barriers and locking-in moisture, the silky soft toner works even in minimal doses. Smoother, softer skin in no time!",
@@ -1836,6 +1875,7 @@ const data = [
           "https://ca.iherb.com/pr/pixi-beauty-retinol-tonic-3-4-fl-oz-100-ml/85643",
       },
       {
+        routine_step: "Treat",
         name: "Elizavecca Witch Piggy Hell Pore Control Hyaluronic Acid 97",
         description:
           "A powerful moisturizer for a vibrant skin! Elizavecca Witch Piggy Hell Pore Control Hyaluronic Acid 97% provides moisture to your skin. It features 97% of hyaluronic acid, the substance that exists in human body and it retains moisture from skin's uppermost layers down to its dermis layer. By regulating proper hydration level of pores, it helps solving pore problems and makes your skin glow. With non-sticky formula, it does not leave a greasy feeling.",
@@ -1863,6 +1903,7 @@ const data = [
           "https://ca.iherb.com/pr/elizavecca-witch-piggy-hell-pore-control-hyaluronic-acid-97-1-69-fl-oz-50-ml/70016",
       },
       {
+        routine_step: "Treat",
         name: "Glow Recipe Plum Plump™ Hyaluronic Acid Serum",
         description:
           "A hydrating serum with juicy plum and five weights of hyaluronic acid that fills skin with hydration for a visibly plump effect.",
@@ -1911,6 +1952,7 @@ const data = [
           "https://www.sephora.com/ca/en/product/glow-recipe-plum-plump-hyaluronic-acid-serum-P462699?skuId=2371524",
       },
       {
+        routine_step: "Hydrate",
         name: "e.l.f. cosmetics Holy Hydration! Face Cream",
         description:
           "For a powerful boost of hydration to the face and luminous skin, this award-winning facial moisturizer is great for dry skin and does it all. It’s packed with skin-loving ingredients that even out skin tone and replenish lost moisture for a firmed up, bouncy complexion. Great for daytime and nighttime use, the non-greasy face cream quickly sinks into the skin for a smooth, super-soft feel.",
@@ -1962,6 +2004,7 @@ const data = [
           "https://well.ca/products/elf-cosmetics-holy-hydration-face-cream_203803.html",
       },
       {
+        routine_step: "Hydrate",
         name: "e.l.f. cosmetics Holy Hydration! Face Cream Fragrance Free",
         description:
           "For a powerful boost of hydration to the face and luminous skin, indulge in the fragrance-free version of our award-winning moisturizing face cream. It’s packed with skin-loving ingredients that even out skin tone and replenish lost moisture for a firmed up, bouncy complexion. Great for daytime and nighttime use even on sensitive skin, the non-greasy formula quickly sinks into the skin for a smooth, super-soft feel.",
