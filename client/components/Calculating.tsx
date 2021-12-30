@@ -104,8 +104,8 @@ const Calculating = () => {
   }, []);
 
   useEffect(() => {
-    const morningRoutineCopy: IProduct[] = [];
-    const nightRoutineCopy: IProduct[] = [];
+    const unsortedMorningRoutine: IProduct[] = [];
+    const unsortedNightRoutine: IProduct[] = [];
 
     const addProduct = (
       _filteredProducts: IProduct[],
@@ -145,8 +145,6 @@ const Calculating = () => {
           !recommendedProduct.spf
       );
 
-      console.log("findMoisturizerWithoutSpf", filteredProducts);
-
       // if there are more than 1 found product, pick a random one
       addProduct(filteredProducts, arr, undefined);
     };
@@ -166,22 +164,57 @@ const Calculating = () => {
 
     if (morningRoutine.length === 0) {
       if (userChoices[2].answer === 0) {
-        findMoisturizerWithSpf(morningRoutineCopy);
-        findMoisturizerWithoutSpf(nightRoutineCopy);
+        findMoisturizerWithSpf(unsortedMorningRoutine);
+        findMoisturizerWithoutSpf(unsortedNightRoutine);
       } else {
-        findProduct("moisturizer", morningRoutineCopy, nightRoutineCopy);
+        findProduct("moisturizer", unsortedMorningRoutine, unsortedNightRoutine);
       }
 
-      findProduct("cleanser", morningRoutineCopy, nightRoutineCopy);
-      findProduct("sunscreen", morningRoutineCopy, undefined);
-      findProduct("makeup_remover", nightRoutineCopy, undefined);
-      findProduct("treatment", morningRoutineCopy, nightRoutineCopy);
+      findProduct("cleanser", unsortedMorningRoutine, unsortedNightRoutine);
+      findProduct("sunscreen", unsortedMorningRoutine, undefined);
+      findProduct("makeup_remover", unsortedNightRoutine, undefined);
+      findProduct("treatment", unsortedMorningRoutine, unsortedNightRoutine);
       // optional
       userChoices[2].answer !== 0 &&
-        findProduct("toner", morningRoutineCopy, nightRoutineCopy);
+        findProduct("toner", unsortedMorningRoutine, unsortedNightRoutine);
 
-      setMorningRoutine(morningRoutineCopy);
-      setNightRoutine(nightRoutineCopy);
+      const sortedMorningRoutine = [];
+      const sortedNightRoutine = [];
+
+      for (const product of unsortedMorningRoutine) {
+        if (product.category === "cleanser") {
+          sortedMorningRoutine[0] = product;
+        } else if (product.category === "toner") {
+          sortedMorningRoutine[1] = product;
+        } else if (product.category === "treatment") {
+          sortedMorningRoutine[2] = product;
+        } else if (product.category === "moisturizer" && !product.spf) {
+          sortedMorningRoutine[3] = product;
+        } else if (
+          product.category === "sunscreen" ||
+          (product.category === "moisturizer" && product.spf)
+        ) {
+          sortedMorningRoutine[4] = product;
+        }
+      }
+
+      for (const product of unsortedNightRoutine) {
+        if (product.category === "makeup_remover") {
+          sortedNightRoutine[0] = product;
+        } else if (product.category === "cleanser") {
+          sortedNightRoutine[1] = product;
+        } else if (product.category === "toner") {
+          sortedNightRoutine[2] = product;
+        } else if (product.category === "treatment") {
+          sortedNightRoutine[3] = product;
+        } else if (product.category === "moisturizer" && !product.spf) {
+          sortedNightRoutine[4] = product;
+        }
+      }
+
+      // remove empty array slots with filter 
+      setMorningRoutine(sortedMorningRoutine.filter((n) => n));
+      setNightRoutine(sortedNightRoutine.filter((n) => n));
     }
   }, [morningRoutine, nightRoutine, recommendedProducts, userChoices]);
 
