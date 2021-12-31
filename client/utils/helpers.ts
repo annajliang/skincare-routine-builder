@@ -7,8 +7,8 @@ export const removeProducts = (arr1: ICommand[], arr2: ICommand[]) => {
   });
 };
 
-export const filterQuestion1 = (arr: IProduct[], skinType: string): ICommand[] => {
-  return arr
+export const filterQuestion1 = (products: IProduct[], skinType: string): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.skin_type?.includes("all") ||
@@ -22,8 +22,8 @@ export const filterQuestion1 = (arr: IProduct[], skinType: string): ICommand[] =
     });
 };
 
-export const filterQuestion2 = (arr: IProduct[], skinConcern: string): ICommand[] => {
-  return arr
+export const filterQuestion2 = (products: IProduct[], skinConcern: string): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.skin_concerns?.includes(skinConcern) &&
@@ -37,8 +37,8 @@ export const filterQuestion2 = (arr: IProduct[], skinConcern: string): ICommand[
     });
 };
 
-export const filterQuestion3 = (arr: IProduct[]): ICommand[] => {
-  return arr
+export const filterQuestion3 = (products: IProduct[]): ICommand[] => {
+  return products
     .filter((product) => product.category === "moisturizer" && product.spf)
     .map((product) => {
       return {
@@ -48,8 +48,8 @@ export const filterQuestion3 = (arr: IProduct[]): ICommand[] => {
     });
 };
 
-export const filterQuestion4 = (arr: IProduct[], productTexture: string): ICommand[] => {
-  return arr
+export const filterQuestion4 = (products: IProduct[], productTexture: string): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.category === "makeup_remover" &&
@@ -63,8 +63,8 @@ export const filterQuestion4 = (arr: IProduct[], productTexture: string): IComma
     });
 };
 
-export const filterQuestion5B = (arr: IProduct[]): ICommand[] => {
-  return arr
+export const filterQuestion5B = (products: IProduct[]): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.sunscreen_type?.length === 1 &&
@@ -78,8 +78,8 @@ export const filterQuestion5B = (arr: IProduct[]): ICommand[] => {
     });
 };
 
-export const filterQuestion6 = (arr: IProduct[]): ICommand[] => {
-  return arr
+export const filterQuestion6 = (products: IProduct[]): ICommand[] => {
+  return products
     .filter((product) => product.spf !== undefined && product.spf < 40)
     .map((product) => {
       return {

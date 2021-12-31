@@ -61,8 +61,10 @@ const Calculating = () => {
   useEffect(() => {
     const evaluateAnswers = () => {
       console.log("userChoices", userChoices);
+      // todo use map rather than foreachs
       let productCommands: ICommand[] = [];
 
+      // get products for each question
       userChoices.forEach((userChoice, i) => {
         const index = userChoice.answer;
         const filterFn = questions[i].options[index].filterFn;
@@ -71,21 +73,21 @@ const Calculating = () => {
         productCommands.push(...filteredProducts);
       });
 
-      const productsToAdd = productCommands.filter((product) => {
-        return product.action === "add";
+      const addCommands = productCommands.filter((productCommand) => {
+        return productCommand.action === "add";
       });
 
-      const productsToRemove = productCommands.filter((product) => {
-        return product.action === "remove";
+      const removeCommands = productCommands.filter((productCommand) => {
+        return productCommand.action === "remove";
       });
 
       // console.log("products", productCommands);
-      console.log("productsToAdd", productsToAdd);
-      console.log("productsToRemove", productsToRemove);
-      const results = removeProducts(productsToAdd, productsToRemove);
+      console.log("productsToAdd", addCommands);
+      console.log("productsToRemove", removeCommands);
+      const results = removeProducts(addCommands, removeCommands);
 
-      const finalProducts: IProduct[] = results.map((product) => {
-        return product.product;
+      const finalProducts = results.map((productCommand) => {
+        return productCommand.product;
       });
       console.log("RESULTS", finalProducts);
       setRecommendedProducts(finalProducts);
@@ -109,25 +111,25 @@ const Calculating = () => {
 
     const addProduct = (
       _filteredProducts: IProduct[],
-      arr1: IProduct[],
-      arr2: IProduct[] | undefined
+      morningRoutine: IProduct[],
+      nightRoutine: IProduct[] | undefined
     ) => {
       if (_filteredProducts.length > 1) {
         const index = Math.floor(Math.random() * _filteredProducts.length);
-        arr1.push(_filteredProducts[index]);
+        morningRoutine.push(_filteredProducts[index]);
 
-        if (arr2 !== undefined) {
-          arr2.push(_filteredProducts[index]);
+        if (nightRoutine !== undefined) {
+          nightRoutine.push(_filteredProducts[index]);
         }
       } else {
-        arr1.push(..._filteredProducts);
-        if (arr2 !== undefined) {
-          arr2.push(..._filteredProducts);
+        morningRoutine.push(..._filteredProducts);
+        if (nightRoutine !== undefined) {
+          nightRoutine.push(..._filteredProducts);
         }
       }
     };
 
-    const findMoisturizerWithSpf = (arr: IProduct[]) => {
+    const findMoisturizerWithSpf = (products: IProduct[]) => {
       const filteredProducts = recommendedProducts.filter(
         (recommendedProduct) =>
           recommendedProduct.category === "moisturizer" &&
@@ -135,10 +137,10 @@ const Calculating = () => {
       );
 
       // if there are more than 1 found product, pick a random one
-      addProduct(filteredProducts, arr, undefined);
+      addProduct(filteredProducts, products, undefined);
     };
 
-    const findMoisturizerWithoutSpf = (arr: IProduct[]) => {
+    const findMoisturizerWithoutSpf = (products: IProduct[]) => {
       const filteredProducts = recommendedProducts.filter(
         (recommendedProduct) =>
           recommendedProduct.category === "moisturizer" &&
@@ -146,20 +148,20 @@ const Calculating = () => {
       );
 
       // if there are more than 1 found product, pick a random one
-      addProduct(filteredProducts, arr, undefined);
+      addProduct(filteredProducts, products, undefined);
     };
 
     const findProduct = (
       productType: string,
-      arr1: IProduct[],
-      arr2: IProduct[] | undefined
+      morningRoutine: IProduct[],
+      nightRoutine: IProduct[] | undefined
     ) => {
       const filteredProducts = recommendedProducts.filter(
         (recommendedProduct) => recommendedProduct.category === productType
       );
 
       // if there are more than 1 found product, pick a random one
-      addProduct(filteredProducts, arr1, arr2);
+      addProduct(filteredProducts, morningRoutine, nightRoutine);
     };
 
     if (morningRoutine.length === 0) {
