@@ -20,7 +20,7 @@ const StyledCentered = styled.div`
 `;
 
 export interface ICommand {
-  action: "add" | "remove" | "nothing";
+  action: "add" | "remove";
   product: IProduct;
 }
 
@@ -65,10 +65,10 @@ const Calculating = () => {
 
       userChoices.forEach((userChoice, i) => {
         const index = userChoice.answer;
-        const filteredProducts = questions[i].options[index].filterFn(products);
-        const flattenedFilteredProducts = filteredProducts.flat();
+        const filterFn = questions[i].options[index].filterFn;
+        const filteredProducts = filterFn ? filterFn(products) : [];
 
-        productCommands.push(...flattenedFilteredProducts);
+        productCommands.push(...filteredProducts);
       });
 
       const productsToAdd = productCommands.filter((product) => {

@@ -4,12 +4,25 @@ import {
   filterQuestion2,
   filterQuestion3,
   filterQuestion4,
-  filterQuestion5A,
   filterQuestion5B,
   filterQuestion6,
 } from "../utils/helpers";
+import { ICommand } from "../components/Calculating";
 
-const questions = [
+interface IOption {
+  id: number;
+  text: string;
+  filterFn: ((arr: IProduct[]) => ICommand[]) | null;
+}
+
+interface IQuestion {
+  id: string;
+  questionSpanOne: string;
+  questionSpanTwo: string;
+  options: IOption[]
+}
+
+const questions: IQuestion[] = [
   {
     id: "1",
     questionSpanOne: "How would you describe",
@@ -18,35 +31,35 @@ const questions = [
       {
         id: 0,
         text: `I'll just say "oil slick" and leave it at that`,
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion1(arr, "oily");
         },
       },
       {
         id: 1,
         text: "Normal. Aren't I lucky?",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion1(arr, "normal");
         },
       },
       {
         id: 2,
         text: "Combination -- dry here, oily there, just right in other spots",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion1(arr, "combination");
         },
       },
       {
         id: 3,
         text: "Drier than the Sahara",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion1(arr, "dry");
         },
       },
       {
         id: 4,
         text: "Always red, itchy & and irritated",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion1(arr, "sensitive");
         },
       },
@@ -60,35 +73,35 @@ const questions = [
       {
         id: 0,
         text: "Acne & blemishes",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion2(arr, "acne");
         },
       },
       {
         id: 1,
         text: "Aging",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion2(arr, "aging");
         },
       },
       {
         id: 2,
         text: "Dryness",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion2(arr, "dryness");
         },
       },
       {
         id: 3,
         text: "Blackheads & visible pores",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion2(arr, "blackheads & large pores");
         },
       },
       {
         id: 4,
         text: "Dark spots & hyperpigmentation",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion2(arr, "dark spots & hyperpigmentation");
         },
       },
@@ -102,35 +115,32 @@ const questions = [
       {
         id: 0,
         text: "Time is precious so the shorter the better",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return arr
             .filter(
               (product) =>
                 // (product.category === "moisturizer" && !product.spf) ||
-                product.category === "sunscreen" ||
-                product.category === "toner"
+                product.category === "sunscreen" || product.category === "toner"
             )
             .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
+              return {
+                action: "remove",
+                product,
+              };
             });
         },
       },
       {
         id: 1,
         text: "I don't mind dedicating a little extra time to it, but let's not go crazy here",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion3(arr);
         },
       },
       {
         id: 2,
         text: "As long as possible, my skincare routine is my self-care ritual",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion3(arr);
         },
       },
@@ -144,37 +154,35 @@ const questions = [
       {
         id: 0,
         text: "I don't wear any",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return arr
             .filter((product) => product.category === "makeup_remover")
             .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
+              return {
+                action: "remove",
+                product,
+              };
             });
         },
       },
       {
         id: 1,
         text: "I go for a very minimal and natural makeup look",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion4(arr, "balm");
         },
       },
       {
         id: 2,
         text: "A decent amount, but not full coverage",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion4(arr, "wipes");
         },
       },
       {
         id: 3,
         text: "I always go full out glam",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion4(arr, "wipes");
         },
       },
@@ -188,35 +196,31 @@ const questions = [
       {
         id: 0,
         text: "Fair",
-        filterFn: (arr: IProduct[]) => {
-          return filterQuestion5A(arr);
-        },
+        filterFn: null,
       },
       {
         id: 1,
         text: "Light",
-        filterFn: (arr: IProduct[]) => {
-          return filterQuestion5A(arr);
-        },
+        filterFn: null,
       },
       {
         id: 2,
         text: "Medium",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion5B(arr);
         },
       },
       {
         id: 3,
         text: "Olive",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion5B(arr);
         },
       },
       {
         id: 4,
         text: "Dark",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return filterQuestion5B(arr);
         },
       },
@@ -230,52 +234,35 @@ const questions = [
       {
         id: 0,
         text: "Yes",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return arr
             .filter((product) => !product.has_fragrance)
             .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
+              return {
+                action: "remove",
+                product,
+              };
             });
         },
       },
       {
         id: 1,
         text: "No",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr) => {
           return arr
             .filter((product) => product.has_fragrance)
             .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
+              return {
+                action: "remove",
+                product,
+              };
             });
         },
       },
       {
         id: 2,
         text: "No preference",
-        filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) => product.has_fragrance || !product.has_fragrance
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "nothing",
-                  product,
-                },
-              ];
-            });
-        },
+        filterFn: null,
       },
     ],
   },
@@ -287,58 +274,38 @@ const questions = [
       {
         id: 0,
         text: "As little as possible",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr: IProduct[]): ICommand[] => {
           return arr
             .filter(
               (product) =>
                 product.price_range === "$$" || product.price_range === "$$$"
             )
             .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
+              return {
+                action: "remove",
+                product,
+              };
             });
         },
       },
       {
         id: 1,
         text: "I'm ok with spending a little more than average",
-        filterFn: (arr: IProduct[]) => {
+        filterFn: (arr: IProduct[]): ICommand[] => {
           return arr
             .filter((product) => product.price_range === "$$$")
             .map((product) => {
-              return [
-                {
-                  action: "remove",
-                  product,
-                },
-              ];
+              return {
+                action: "remove",
+                product,
+              };
             });
         },
       },
       {
         id: 2,
         text: "I'm willing to spend any amount if the products work",
-        filterFn: (arr: IProduct[]) => {
-          return arr
-            .filter(
-              (product) =>
-                product.price_range === "$" ||
-                product.price_range === "$$" ||
-                product.price_range === "$$$"
-            )
-            .map((product) => {
-              return [
-                {
-                  action: "nothing",
-                  product,
-                },
-              ];
-            });
-        },
+        filterFn: null,
       },
       //   {
       //     id: 3,
