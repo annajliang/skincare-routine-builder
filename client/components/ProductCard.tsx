@@ -84,8 +84,8 @@ const ProductCard: React.FC<{
           <img src={recommendedProduct.img_url} />
         </StyledInnerGridItem>
         <StyledProductName>
-          {recommendedProduct.name.length >= 40
-            ? `${recommendedProduct.name.substring(0, 44)}...`
+          {recommendedProduct.name.length >= 43
+            ? `${recommendedProduct.name.substring(0, 43)}...`
             : recommendedProduct.name}
         </StyledProductName>
       </StyledGridItem>
