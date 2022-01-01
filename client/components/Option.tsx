@@ -39,14 +39,15 @@ const Option: React.FC<{
   const getUserAnswer: React.MouseEventHandler<
     HTMLButtonElement | HTMLAnchorElement
   > = (e) => {
-    const userChoicesCopy: IUserChoice[] = [
-      ...userChoices,
-      {
+    const userChoicesCopy: IUserChoice[] = [...userChoices];
+
+    userChoicesCopy[index] = {
+      id: (index + 1).toString(),
         id: (index + 1).toString(), 
-        question,
-        answer: optionId,
-      },
-    ];
+      id: (index + 1).toString(),
+      question,
+      answer: optionId,
+    };
 
     setUserChoices(userChoicesCopy);
   };
