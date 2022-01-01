@@ -7,6 +7,12 @@ const StyledContainer = styled.div`
   position: absolute;
   top: 3rem;
   z-index: 3;
+  display: flex;
+  align-items: center;
+
+  label {
+    padding: 0 1rem;
+  }
 `;
 
 const StyledCheckbox = styled.input`
@@ -91,6 +97,28 @@ const StyledMoonIcon = styled.img`
   width: 27px;
 `;
 
+const StyledMorningText = styled.p<{ routineTheme: string }>`
+  ${({ routineTheme }) =>
+    routineTheme === "morning"
+      ? `
+      font-weight: bold;`
+      : `
+      opacity: 0.6;
+      color: #fff;
+  `};
+`;
+
+const StyledNightText = styled.p<{ routineTheme: string }>`
+  ${({ routineTheme }) =>
+    routineTheme === "night"
+      ? `
+      font-weight: bold;
+      color: #fff;`
+      : `
+     opacity: 0.6;
+  `};
+`;
+
 const ThemeToggle: React.FC = () => {
   const { routineTheme, setRoutineTheme } = useContext(RoutineContext);
 
@@ -116,6 +144,7 @@ const ThemeToggle: React.FC = () => {
 
   return (
     <StyledContainer>
+      <StyledMorningText routineTheme={routineTheme}>Morning</StyledMorningText>
       <label htmlFor="toggleTheme">
         <StyledCheckbox
           onChange={toggleTheme}
@@ -147,6 +176,7 @@ const ThemeToggle: React.FC = () => {
           </StyledMoonWrapper>
         </StyledSlot>
       </label>
+      <StyledNightText routineTheme={routineTheme}>Night</StyledNightText>
     </StyledContainer>
   );
 };
