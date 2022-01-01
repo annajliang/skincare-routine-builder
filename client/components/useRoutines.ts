@@ -72,16 +72,7 @@ export const useRoutines = () => {
       };
 
       if (recommendedProducts.length > 0 && morningRoutine.length === 0 && nightRoutine.length === 0) {
-        console.log(
-          "morningRoutine:",
-          morningRoutine.length,
-          "nightRoutine:",
-          nightRoutine.length,
-          "recommendedProducts:",
-          recommendedProducts.length,
-          "userChoices:",
-          userChoices.length
-        );
+        
         if (userChoices[2].answer === 0) {
           findAndAddMoisturizerWithSpf(unsortedMorningRoutine);
           findAndAddMoisturizerWithoutSpf(unsortedNightRoutine);
