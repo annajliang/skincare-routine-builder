@@ -36,7 +36,7 @@ export const useRoutines = () => {
         }
       };
 
-      const findMoisturizerWithSpf = (products: IProduct[]) => {
+      const findAndAddMoisturizerWithSpf = (products: IProduct[]) => {
         const filteredProducts = recommendedProducts.filter(
           (recommendedProduct) =>
             recommendedProduct.category === "moisturizer" &&
@@ -47,7 +47,7 @@ export const useRoutines = () => {
         addProduct(filteredProducts, products, undefined);
       };
 
-      const findMoisturizerWithoutSpf = (products: IProduct[]) => {
+      const findAndAddMoisturizerWithoutSpf = (products: IProduct[]) => {
         const filteredProducts = recommendedProducts.filter(
           (recommendedProduct) =>
             recommendedProduct.category === "moisturizer" &&
@@ -73,8 +73,8 @@ export const useRoutines = () => {
 
       if (morningRoutine.length === 0) {
         if (userChoices[2].answer === 0) {
-          findMoisturizerWithSpf(unsortedMorningRoutine);
-          findMoisturizerWithoutSpf(unsortedNightRoutine);
+          findAndAddMoisturizerWithSpf(unsortedMorningRoutine);
+          findAndAddMoisturizerWithoutSpf(unsortedNightRoutine);
         } else {
           findAndAddProduct(
             "moisturizer",
