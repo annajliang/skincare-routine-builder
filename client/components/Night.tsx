@@ -1,7 +1,7 @@
-import Routine from "./Routine";
+import RoutineContainer from "./RoutineContainer";
 
 const Night: React.FC = () => {
-  return <Routine routineType="Night" />;
+  return <RoutineContainer routineType="Night" />;
 };
 
 export default Night;

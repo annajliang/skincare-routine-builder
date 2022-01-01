@@ -33,12 +33,12 @@ export interface IProduct {
   has_fragrance: boolean;
   has_alcohol?: boolean;
   is_waterproof?: boolean;
-  is_tinted?: boolean;
   removes_makeup?: boolean;
   spf?: number;
   sunscreen_type?: string[];
   category: string;
   is_clean: boolean;
+  routine_step: string;
   skin_concerns?: string[];
   buy_link: string;
 }
@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
       // console.log("routineTheme", routineTheme);
 
-      const getProducts = async () => {
+      const fetchProducts = async () => {
         try {
           const response = await fetch("http://localhost:3000/api/products");
           // console.log("response", response);
@@ -103,7 +103,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       };
 
-      getProducts();
+      fetchProducts();
     }, []);
 
   return (

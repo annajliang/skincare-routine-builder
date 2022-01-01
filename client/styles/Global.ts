@@ -46,7 +46,7 @@ const Global = createGlobalStyle<{theme: DefaultTheme}>`
   }
 
   a {
-    color: inherit;
+    color: ${({ theme }) => theme.textColor};
     text-decoration: none;
   }
 

@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import {
-  IProduct,
-  RecommendedContext,
-  UserChoicesContext,
-} from "../../pages/_app";
+import { useContext } from "react";
+import { IProduct, RoutineContext } from "../../pages/_app";
 import Link from "next/link";
-import { useContext, useState, useEffect } from "react";
 
 const StyledGridItem = styled.div`
   background: #ffffff;
@@ -14,24 +10,18 @@ const StyledGridItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   padding: 1.5rem;
   text-align: center;
   flex: 1;
   height: 100%;
-  box-shadow: 4px 4px 8px rgba(49, 48, 44, 0.25);
   position: relative;
+`;
 
-  :not(:last-child) {
-    margin-right: 5rem;
-  }
-
-  p {
-    margin-top: 1rem;
-    font-weight: bold;
-    font-size: 1.6rem;
-    text-overflow: ellipsis;
-  }
+const StyledProductName = styled.p`
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-overflow: ellipsis;
 `;
 
 const StyledInnerGridItem = styled.div`
@@ -39,16 +29,17 @@ const StyledInnerGridItem = styled.div`
   width: 100%;
   height: 60%;
   padding: 1rem 0;
+  height: 18rem;
 
   img {
     height: 100%;
+    width: 100%;
+    object-fit: contain;
   }
 `;
 
 const StyledBottomGridBar = styled.a`
   background-color: ${({ theme }) => theme.buyNowLinkBgColor};
-  position: absolute;
-  bottom: 0;
   width: 100%;
   left: 0;
   padding: 1rem 0;
@@ -56,79 +47,52 @@ const StyledBottomGridBar = styled.a`
   font-weight: bold;
   font-size: 1.5rem;
   letter-spacing: 1px;
+  text-align: center;
 `;
 
-const ProductCard = () => {
-  const { recommendedProducts } = useContext(RecommendedContext);
-  const { userChoices } = useContext(UserChoicesContext);
-  const [morningRoutine, setMorningRoutine] = useState<Array<IProduct>>([]);
-  const [nightRoutine, setNightRoutine] = useState<Array<IProduct>>([]);
+const StyledStep = styled.p<{ routineTheme: string }>`
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: ${({ routineTheme }) =>
+    routineTheme === "morning" ? "#6F4938" : "#fff"};
+  letter-spacing: 0.5px;
+`;
 
-  useEffect(() => {
-    // console.log("product card", recommendedProducts);
-    // console.log("userChoices", userChoices);
-    // console.log("AHH", userChoices[2].answer);
+const StyledContainer = styled.div<{ numOfProducts: number }>`
+  display: flex;
+  flex-direction: column;
+  /* box-shadow: 4px 4px 8px rgba(49, 48, 44, 0.25); */
+  width: ${({ numOfProducts }) => `calc((100% / ${numOfProducts}) - 20px)`};
+  margin: 0 10px;
+`;
 
-    const morningRoutineCopy: IProduct[] = [];
-
-    const findProduct = (productType: string, arr: IProduct[]) => {
-      const filteredProducts = recommendedProducts.filter(
-        (recommendedProduct) => recommendedProduct.category === productType
-      );
-
-      // console.log(`FILTERED PRODUCTS - ${productType}`, filteredProducts);
-
-      // if there are more than 1 found product, pick a random one
-      if (filteredProducts.length > 1) {
-        const index = Math.floor(Math.random() * filteredProducts.length);
-        // console.log("PRODUCT - IF", filteredProducts[index]);
-        arr.push(filteredProducts[index]);
-        // console.log("morningRoutineCopy - IF", arr);
-        // console.log("---------");
-        // add the single product to state
-      } else {
-        // console.log("PRODUCT - ELSE", filteredProducts);
-        arr.push(...filteredProducts);
-        // console.log("morningRoutineCopy - IF", arr);
-      }
-    };
-
-    if (morningRoutine.length === 0) {
-      findProduct("moisturizer", morningRoutineCopy);
-      findProduct("cleanser", morningRoutineCopy);
-      findProduct("sunscreen", morningRoutineCopy);
-      findProduct("treatment", morningRoutineCopy);
-      // optional
-      userChoices[2].answer !== 0 && findProduct("toner", morningRoutineCopy);
-      // console.log("morningRoutine", morningRoutine);
-
-      setMorningRoutine(morningRoutineCopy);
-    }
-  }, [morningRoutine, recommendedProducts, userChoices]);
+const ProductCard: React.FC<{
+  recommendedProduct: IProduct;
+  numOfProducts: number;
+  index: number
+}> = ({ recommendedProduct, numOfProducts, index }) => {
+  const { routineTheme } = useContext(RoutineContext);
 
   return (
-    <>
-      {morningRoutine.length !== 0 ? (
-        morningRoutine.map((recommendedProduct: IProduct, i: number) => {
-          return (
-            <StyledGridItem key={i}>
-              <StyledInnerGridItem>
-                {/* test */}
-                <img src={recommendedProduct.img_url} />
-              </StyledInnerGridItem>
-              <p>{recommendedProduct.name}</p>
-              <Link href="http://google.com" passHref>
-                <StyledBottomGridBar target="_blank">
-                  BUY NOW
-                </StyledBottomGridBar>
-              </Link>
-            </StyledGridItem>
-          );
-        })
-      ) : (
-        <div>NOT WORKING</div>
-      )}
-    </>
+    <StyledContainer numOfProducts={numOfProducts}>
+      <StyledStep routineTheme={routineTheme}>
+        Step {index + 1}. {recommendedProduct.routine_step}
+      </StyledStep>
+      <StyledGridItem>
+        <StyledInnerGridItem>
+          <img src={recommendedProduct.img_url} />
+        </StyledInnerGridItem>
+        <StyledProductName>
+          {recommendedProduct.name.length >= 43
+            ? `${recommendedProduct.name.substring(0, 43)}...`
+            : recommendedProduct.name}
+        </StyledProductName>
+      </StyledGridItem>
+      <Link href={recommendedProduct.buy_link} passHref>
+        <StyledBottomGridBar target="_blank">BUY NOW</StyledBottomGridBar>
+      </Link>
+    </StyledContainer>
   );
 };
 

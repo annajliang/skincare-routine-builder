@@ -13,7 +13,7 @@ const StyledGridItem = styled.a`
   opacity: 0.9;
   border-radius: 10px;
   font-size: 2rem;
-  color: #6f4938;
+  /* color: #6f4938; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,17 +36,16 @@ const Option: React.FC<{
   const { userChoices, setUserChoices } = useContext(UserChoicesContext);
   const route = useRouter();
 
-  const getUserAnswer: React.MouseEventHandler<
+  const updateUserChoices: React.MouseEventHandler<
     HTMLButtonElement | HTMLAnchorElement
   > = (e) => {
-    const userChoicesCopy: IUserChoice[] = [
-      ...userChoices,
-      {
-        id: (index + 1).toString(), 
-        question,
-        answer: optionId,
-      },
-    ];
+    const userChoicesCopy: IUserChoice[] = [...userChoices];
+
+    userChoicesCopy[index] = {
+      id: (index + 1).toString(),
+      question,
+      answer: optionId,
+    };
 
     setUserChoices(userChoicesCopy);
   };
@@ -57,7 +56,7 @@ const Option: React.FC<{
         <Link href={"/result"} passHref>
           <StyledGridItem
             data-option={children}
-            onClick={(e) => getUserAnswer(e)}
+            onClick={(e) => updateUserChoices(e)}
           >
             {children}
           </StyledGridItem>
@@ -74,7 +73,7 @@ const Option: React.FC<{
           <StyledGridItem
             data-option={children}
             data-option-id={optionId}
-            onClick={(e) => getUserAnswer(e)}
+            onClick={(e) => updateUserChoices(e)}
           >
             {children}
           </StyledGridItem>

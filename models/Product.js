@@ -18,7 +18,6 @@ const productSchema = new Schema({
   has_fragrance: Boolean,
   has_alcohol: Boolean,
   is_waterproof: Boolean, // sunscreen or moisturizer w/ sunscreen
-  is_tinted: Boolean, // sunscreen or moisturizer w/ sunscreen
   removes_makeup: Boolean, // cleanser
   spf: Number, // sunscreen or moisturizer w/ sunscreen
   sunscreen_type: [String], // sunscreen or moisturizer w/ sunscreen
@@ -28,6 +27,7 @@ const productSchema = new Schema({
   },
   is_clean: Boolean,
   skin_concerns: [String],
+  routine_step: String,
   buy_link: {
     type: String,
     required: true,

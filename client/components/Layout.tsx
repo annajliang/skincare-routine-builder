@@ -41,7 +41,7 @@ const Layout: React.FC = ({ children }) => {
 
 
     const bgToShow = () => {
-      if (router.asPath === "/") {
+      if (router.asPath === "/" && routineTheme === "morning") {
         return (
           <Image
             src="/homeBg.svg"
@@ -52,7 +52,18 @@ const Layout: React.FC = ({ children }) => {
             priority
           />
         );
-      } else if (router.asPath !== "/" && routineTheme === 'morning') {
+      } else if (router.asPath === "/" && routineTheme === "night") {
+        return (
+          <Image
+            src="/nightHomeBg.svg"
+            alt=""
+            layout="fill"
+            objectFit="cover"
+            objectPosition="bottom"
+            priority
+          />
+        );        
+      } else if (router.asPath !== "/" && routineTheme === "morning") {
         return (
           <Image
             src="/quizBg.svg"
@@ -63,15 +74,17 @@ const Layout: React.FC = ({ children }) => {
             priority
           />
         );
-      } else if (router.asPath !== "/" && routineTheme === 'night') {
-          return <Image
+      } else if (router.asPath !== "/" && routineTheme === "night") {
+        return (
+          <Image
             src="/nightBg.svg"
             alt=""
             layout="fill"
             objectFit="cover"
             objectPosition="bottom"
             priority
-          />;   
+          />
+        );
       }
     };
 

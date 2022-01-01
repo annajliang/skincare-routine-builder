@@ -13,14 +13,15 @@ const StyledContent = styled.div`
   width: 70%;
 
   p {
+    color: ${({ theme }) => theme.introTextColor};
     margin-bottom: 4rem;
   }
 
   a {
     font-size: 1.6rem;
-    color: #6f4938;
+    color: ${({ theme }) => theme.textColor};
     text-transform: uppercase;
-    background: #ff9c1d;
+    background: ${({ theme }) => theme.startBtnColor};
     padding: 1.5rem 4rem;
     letter-spacing: 1px;
     border-radius: 5px;

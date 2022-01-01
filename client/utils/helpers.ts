@@ -7,113 +7,84 @@ export const removeProducts = (arr1: ICommand[], arr2: ICommand[]) => {
   });
 };
 
-export const filterQuestion1 = (arr: IProduct[], skinType: string) => {
-  return arr
+export const filterQuestion1 = (products: IProduct[], skinType: string): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.skin_type?.includes("all") ||
         product.skin_type?.includes(skinType)
     )
     .map((product) => {
-      return [
-        {
+      return {
           action: "add",
           product,
-        },
-      ];
+        }
     });
 };
 
-export const filterQuestion2 = (arr: IProduct[], skinConcern: string) => {
-  return arr
+export const filterQuestion2 = (products: IProduct[], skinConcern: string): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.skin_concerns?.includes(skinConcern) &&
         product.category === "treatment"
     )
     .map((product) => {
-      return [
-        {
-          action: "add",
-          product,
-        },
-      ];
+      return {
+        action: "add",
+        product,
+      };
     });
 };
 
-export const filterQuestion3 = (arr: IProduct[]) => {
-  return arr
+export const filterQuestion3 = (products: IProduct[]): ICommand[] => {
+  return products
     .filter((product) => product.category === "moisturizer" && product.spf)
     .map((product) => {
-      return [
-        {
-          action: "remove",
-          product,
-        },
-      ];
+      return {
+        action: "remove",
+        product,
+      };
     });
 };
 
-export const filterQuestion4 = (arr: IProduct[], productTexture: string) => {
-  return arr
+export const filterQuestion4 = (products: IProduct[], productTexture: string): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.category === "makeup_remover" &&
         product.texture === productTexture
     )
     .map((product) => {
-      return [
-        {
+      return {
           action: "remove",
           product,
-        },
-      ];
+        }
     });
 };
 
-export const filterQuestion5A = (arr: IProduct[]) => {
-  return arr
-    .filter(
-      (product) =>
-        product.sunscreen_type?.includes("physical") ||
-        product.sunscreen_type?.includes("chemical")
-    )
-    .map((product) => {
-      return [
-        {
-          action: "nothing",
-          product,
-        },
-      ];
-    });
-};
-
-export const filterQuestion5B = (arr: IProduct[]) => {
-  return arr
+export const filterQuestion5B = (products: IProduct[]): ICommand[] => {
+  return products
     .filter(
       (product) =>
         product.sunscreen_type?.length === 1 &&
         product.sunscreen_type?.includes("physical")
     )
     .map((product) => {
-      return [
-        {
-          action: "remove",
-          product,
-        },
-      ];
+      return {
+        action: "remove",
+        product,
+      };
     });
 };
 
-export const filterQuestion6 = (arr: IProduct[]) => {
-  return arr
+export const filterQuestion6 = (products: IProduct[]): ICommand[] => {
+  return products
     .filter((product) => product.spf !== undefined && product.spf < 40)
     .map((product) => {
-      return [
-        {
-          action: "remove",
-          product,
-        },
-      ];
+      return {
+        action: "remove",
+        product,
+      };
     });
 };
