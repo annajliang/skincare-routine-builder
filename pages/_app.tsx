@@ -86,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
       // console.log("routineTheme", routineTheme);
 
-      const getProducts = async () => {
+      const fetchProducts = async () => {
         try {
           const response = await fetch("http://localhost:3000/api/products");
           // console.log("response", response);
@@ -103,7 +103,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       };
 
-      getProducts();
+      fetchProducts();
     }, []);
 
   return (
