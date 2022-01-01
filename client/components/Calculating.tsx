@@ -292,7 +292,23 @@ const Calculating: React.FC = () => {
             <h1>
               <span>Your results</span> <span>are in!</span>
             </h1>
-            <Image src="/loaded.svg" alt="" width={300} height={300} priority />
+            {routineTheme === "morning" ? (
+              <Image
+                src="/loaded.svg"
+                alt=""
+                width={300}
+                height={300}
+                priority
+              />
+            ) : (
+              <Image
+                src="/nightLoaded.svg"
+                alt=""
+                width={300}
+                height={300}
+                priority
+              />
+            )}
           </Animated>
         </StyledCentered>
       )}
