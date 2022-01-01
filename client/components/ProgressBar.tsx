@@ -12,7 +12,7 @@ const StyledProgressBar = styled.div`
 
 const StyledProgress = styled.div<{ progressWidth: string }>`
   width: ${({ progressWidth }) => progressWidth};
-  background: #ff9797;
+  background: ${({ theme }) => theme.progressBar};
   height: 100%;
   position: absolute;
   transition: width 1s ease;
