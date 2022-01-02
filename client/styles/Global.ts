@@ -48,6 +48,11 @@ const Global = createGlobalStyle<{theme: DefaultTheme}>`
   a {
     color: ${({ theme }) => theme.textColor};
     text-decoration: none;
+      transition: 0.3s;
+
+    :hover {
+      color: #da7153;
+    }
   }
 
   * {

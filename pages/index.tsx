@@ -26,6 +26,11 @@ const StyledContent = styled.div`
     letter-spacing: 1px;
     border-radius: 5px;
     font-weight: 700;
+    transition: 0.3s;
+
+    :hover {
+      color: #fff;
+    }
   }
 `;
 

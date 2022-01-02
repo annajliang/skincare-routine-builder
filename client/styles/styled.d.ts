@@ -7,6 +7,7 @@ declare module 'styled-components' {
     body: string;
     color: string;
     buyNowLinkBgColor: string;
+    buyNowHoverColor: string;
     textColor: string;
     progressBar: string;
     introTextColor: string;

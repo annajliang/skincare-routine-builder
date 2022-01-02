@@ -22,17 +22,8 @@ const StyledContainer = styled.div`
 
 const StyledOuterContainer = styled.div`
   position: relative;
-`
-
-// interface IRoutineContext {
-//   routineTheme: boolean;
-//   setRoutineTheme: (bool: boolean) => void;
-// }
-
-// export const RoutineContext = React.createContext<IRoutineContext>({
-//   routineTheme: true,
-//   setRoutineTheme: function (bool: boolean) {},
-// });
+  transition: all 0.6s ease;
+`;
 
 const Layout: React.FC = ({ children }) => {
     // const [routineTheme, setRoutineTheme] = useState(true);

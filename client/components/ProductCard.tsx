@@ -38,7 +38,7 @@ const StyledInnerGridItem = styled.div`
   }
 `;
 
-const StyledBottomGridBar = styled.a`
+const StyledBuyNow = styled.a`
   background-color: ${({ theme }) => theme.buyNowLinkBgColor};
   width: 100%;
   left: 0;
@@ -48,6 +48,11 @@ const StyledBottomGridBar = styled.a`
   font-size: 1.5rem;
   letter-spacing: 1px;
   text-align: center;
+
+  :hover {
+    background-color: ${({ theme }) => theme.buyNowHoverColor};
+    color: #fff;
+  }
 `;
 
 const StyledStep = styled.p<{ routineTheme: string }>`
@@ -90,7 +95,7 @@ const ProductCard: React.FC<{
         </StyledProductName>
       </StyledGridItem>
       <Link href={recommendedProduct.buy_link} passHref>
-        <StyledBottomGridBar target="_blank">BUY NOW</StyledBottomGridBar>
+        <StyledBuyNow target="_blank">BUY NOW</StyledBuyNow>
       </Link>
     </StyledContainer>
   );
