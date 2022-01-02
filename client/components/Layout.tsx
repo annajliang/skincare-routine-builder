@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { RoutineContext } from "../../pages/_app";
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
@@ -26,7 +26,6 @@ const StyledOuterContainer = styled.div`
 `;
 
 const Layout: React.FC = ({ children }) => {
-    // const [routineTheme, setRoutineTheme] = useState(true);
     const { routineTheme } = useContext(RoutineContext);
     const router = useRouter();
 
@@ -80,14 +79,12 @@ const Layout: React.FC = ({ children }) => {
     };
 
     return (
-      // <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
         <StyledOuterContainer>
           {bgToShow()}
           <StyledContainer>
             <StyledMain>{children}</StyledMain>
           </StyledContainer>
         </StyledOuterContainer>
-      // </RoutineContext.Provider>
     );
 }
 

@@ -121,18 +121,7 @@ const StyledNightText = styled.p<{ routineTheme: string }>`
 
 const ThemeToggle: React.FC = () => {
   const { routineTheme, setRoutineTheme } = useContext(RoutineContext);
-
-  // The function that toggles between themes
-  // const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   // if the routineTheme is not light, then set it to dark
-  //   if (routineTheme === "morning") {
-  //     setRoutineTheme("night");
-  //     // otherwise, it should be light
-  //   } else {
-  //     setRoutineTheme("morning");
-  //   }
-  // };
-
+  
   const toggleTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
     // if the routineTheme is not light, then set it to dark
     if (routineTheme === "morning") {

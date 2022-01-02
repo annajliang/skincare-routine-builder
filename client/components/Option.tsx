@@ -13,7 +13,6 @@ const StyledGridItem = styled.a`
   opacity: 0.9;
   border-radius: 10px;
   font-size: 2rem;
-  /* color: #6f4938; */
   display: flex;
   align-items: center;
   justify-content: center;

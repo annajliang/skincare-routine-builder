@@ -1,16 +1,14 @@
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { RoutineContext } from "../../pages/_app";
 import Routine from "./Routine";
 import styled from "styled-components";
 import { Animated } from "react-animated-css";
-import Image from "next/image";
 
-const StyledRountineContainer = styled.div<{ routineTheme: string }>`
+const StyledRountineContainer = styled.div`
   padding: 0 7rem;
   width: 100%;
   position: relative;
-  /* top: ${({ routineTheme }) => (routineTheme ? "-4rem" : "-6.5rem")}; */
   top: -4rem;
 `;
  
@@ -58,7 +56,7 @@ const RoutineContainer: React.FC<{ routineType: string }> = ({
   return (
     <StyledContainer>
       <ThemeToggle />
-      <StyledRountineContainer routineTheme={routineTheme}>
+      <StyledRountineContainer>
         <Animated
           animationIn="fadeInRight"
           animationOut="fadeOutLeft"
