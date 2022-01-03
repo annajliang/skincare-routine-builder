@@ -5,12 +5,13 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     body: string;
-    color: string;
-    buyNowLinkBgColor: string;
+    headingColor: string;
+    buyNowBgColor: string;
     buyNowHoverColor: string;
     textColor: string;
-    progressBar: string;
+    filledProgressColor: string;
     introTextColor: string;
     startBtnColor: string;
+    errorTextColor: string;
   }
 }

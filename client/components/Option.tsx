@@ -6,10 +6,11 @@ import {
 } from "../../pages/_app";
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import { COLORS } from "../styles/colors";
 import styled from "styled-components";
 
 const StyledGridItem = styled.a`
-  background: #ffffff;
+  background: ${COLORS.white};
   opacity: 0.9;
   border-radius: 10px;
   font-size: 2rem;

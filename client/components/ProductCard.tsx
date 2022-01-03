@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { useContext } from "react";
+import { COLORS } from "../styles/colors";
 import { IProduct, RoutineContext } from "../../pages/_app";
 import Link from "next/link";
 
 const StyledGridItem = styled.div`
-  background: #ffffff;
+  background: ${COLORS.white};
   font-size: 2rem;
-  color: #6f4938;
+  color: ${COLORS.oldCopper};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +26,7 @@ const StyledProductName = styled.p`
 `;
 
 const StyledInnerGridItem = styled.div`
-  background: #f2f0ed;
+  background: ${COLORS.seashell};
   width: 100%;
   height: 60%;
   padding: 1rem 0;
@@ -39,11 +40,11 @@ const StyledInnerGridItem = styled.div`
 `;
 
 const StyledBuyNow = styled.a`
-  background-color: ${({ theme }) => theme.buyNowLinkBgColor};
+  background-color: ${({ theme }) => theme.buyNowBgColor};
   width: 100%;
   left: 0;
   padding: 1rem 0;
-  color: #fff;
+  color: ${COLORS.white};
   font-weight: bold;
   font-size: 1.5rem;
   letter-spacing: 1px;
@@ -51,7 +52,7 @@ const StyledBuyNow = styled.a`
 
   :hover {
     background-color: ${({ theme }) => theme.buyNowHoverColor};
-    color: #fff;
+    color: ${COLORS.white};
   }
 `;
 

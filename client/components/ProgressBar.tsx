@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { COLORS } from "../styles/colors";
 import styled from 'styled-components';
 
 const StyledProgressBar = styled.div`
   width: 100%;
   height: 2rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: ${COLORS.transparentWhite};
   position: absolute;
   top: 0;
   left: 0;
@@ -12,7 +13,7 @@ const StyledProgressBar = styled.div`
 
 const StyledProgress = styled.div<{ progressWidth: string }>`
   width: ${({ progressWidth }) => progressWidth};
-  background: ${({ theme }) => theme.progressBar};
+  background: ${({ theme }) => theme.filledProgressColor};
   height: 100%;
   position: absolute;
   transition: width 1s ease;

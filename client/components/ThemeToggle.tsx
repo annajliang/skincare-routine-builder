@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { morningTheme, nightTheme } from "../../client/styles/Theme";
+import { COLORS } from "../styles/colors";
 import { RoutineContext, Theme } from "../../pages/_app";
 import styled, { css } from "styled-components";
 
@@ -23,7 +24,7 @@ const StyledCheckbox = styled.input`
   width: 0;
 
   :checked ~ .toggle-slot {
-    background-color: #374151;
+    background-color: ${COLORS.brightGrey};
   }
 
   :checked ~ .toggle-slot .sun-icon-wrapper {
@@ -37,8 +38,8 @@ const StyledCheckbox = styled.input`
   }
 
   :checked ~ .toggle-slot .toggle-button {
-    background-color: #485367;
-    box-shadow: inset 0px 0px 0px 4px white;
+    background-color: ${COLORS.riverBed};
+    box-shadow: inset 0px 0px 0px 4px ${COLORS.white};
     transform: translate(1em, 0);
   }
 `;
@@ -47,9 +48,9 @@ const StyledSlot = styled.div`
   position: relative;
   height: 5rem;
   width: 10rem;
-  border: 1px solid #e4e7ec;
+  border: 1px solid ${COLORS.mercury};
   border-radius: 10em;
-  background-color: white;
+  background-color: ${COLORS.white};
   /* box-shadow: 0px 10px 25px #e4e7ec; */
   transition: background-color 250ms;
   display: flex;
@@ -63,19 +64,17 @@ const StyledButton = styled.div`
   width: 3rem;
   border-radius: 50%;
   background-color: #ffeccf;
-  box-shadow: inset 0px 0px 0px 4px #ffbb52;
+  box-shadow: inset 0px 0px 0px 4px ${COLORS.saffronMango};
   transition: background-color 250ms, border-color 250ms,
     transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
 `;
 
 const StyledSunWrapper = styled.div`
-  /* position: absolute; */
   height: 5rem;
   opacity: 1;
   display: flex;
   align-items: center;
   margin-left: 1rem;
-  /* transform-origin: 50% 50%; */
   transition: opacity 150ms, transform 500ms cubic-bezier(0.26, 2, 0.46, 0.71);
 `;
 
@@ -104,7 +103,7 @@ const StyledMorningText = styled.p<{ routineTheme: string }>`
       font-weight: bold;`
       : `
       opacity: 0.6;
-      color: #fff;
+      color: ${COLORS.white};
   `};
 `;
 
@@ -113,7 +112,7 @@ const StyledNightText = styled.p<{ routineTheme: string }>`
     routineTheme === "night"
       ? `
       font-weight: bold;
-      color: #fff;`
+      color: ${COLORS.white};`
       : `
      opacity: 0.6;
   `};

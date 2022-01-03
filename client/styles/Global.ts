@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 
-const Global = createGlobalStyle<{theme: DefaultTheme}>`
+const Global = createGlobalStyle<{ theme: DefaultTheme }>`
   html {
     font-size: 62.5%;
   }
@@ -26,15 +26,15 @@ const Global = createGlobalStyle<{theme: DefaultTheme}>`
 
   h1 span:first-child{
     color: #fff;
-    text-shadow: 5px 4px 0px ${({ theme }) => theme.color};
+    text-shadow: 5px 4px 0px ${({ theme }) => theme.headingColor};
     -webkit-text-fill-color: #fff;
     /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: ${({ theme }) => theme.color};
+    -webkit-text-stroke-color: ${({ theme }) => theme.headingColor};
   }
 
   h1 span:last-child {
-    color: ${({ theme }) => theme.color};
+    color: ${({ theme }) => theme.headingColor};
     position: relative;
     bottom: 0;
   }
@@ -51,7 +51,7 @@ const Global = createGlobalStyle<{theme: DefaultTheme}>`
       transition: 0.3s;
 
     :hover {
-      color: #da7153;
+      color: ${({ theme }) => theme.headingColor};
     }
   }
 
