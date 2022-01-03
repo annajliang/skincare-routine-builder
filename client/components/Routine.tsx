@@ -4,6 +4,7 @@ import {
 } from "../../pages/_app";
 import ProductCard from "./ProductCard";
 import { MorningRoutineContext, NightRoutineContext } from "./Calculating";
+import RoutineError from "./RoutineError";
 import { useContext } from "react";
 
 const Routine = () => {
@@ -38,6 +39,8 @@ const Routine = () => {
             />
           );
         })}
+        
+      <RoutineError />
     </>
   );
 };
