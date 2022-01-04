@@ -9,21 +9,52 @@ const StyledRountineContainer = styled.div`
   width: 100%;
   position: relative;
   top: -4rem;
+
+  @media (max-width: 863px) {
+    top: 0;
+  }
+
+  @media (max-width: 700px) {
+    padding: 0 3rem;
+  }
+
+  @media (max-width: 621px) {
+    padding: 0;
+  }
 `;
  
 const StyledH1 = styled.h1`
   display: block;
-`;
+  margin: 0;
+
+  @media (max-width: 700px) {
+    text-align: center;
+    font-size: 8rem;
+    display: flex;
+  }
+  @media (max-width: 863px) {
+    font-size: 6rem;
+  }
+
+  `;
 
 const StyledH1Container = styled.div`
   position: relative;
-  margin-bottom: 4rem;
+  /* margin-bottom: 4rem; */
+
+  @media (max-width: 700px) {
+    text-align: center;
+  }
 `;
 
 const StyledSun = styled.img`
   position: relative;
   left: 10rem;
   bottom: -4rem;
+
+  @media (max-width: 700px) {
+    left: 10px;
+  }
 `;
 
 const StyledMoon = styled.img`
@@ -31,11 +62,19 @@ const StyledMoon = styled.img`
   left: 0;
   bottom: -6.5rem;
   height: 14rem;
+
+  @media (max-width: 863px) {
+    bottom: -5.5rem;
+  }
 `;
 
 const StyledGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 1200px) {
+    justify-content: center;
+  }
 `;
   
 const StyledContainer = styled.div`

@@ -59,10 +59,11 @@ const StyledBuyNow = styled.a`
 const StyledStep = styled.p<{ routineTheme: string }>`
   text-align: center;
   font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   color: ${({ routineTheme }) =>
     routineTheme === "morning" ? "#6F4938" : "#fff"};
   letter-spacing: 0.5px;
+  margin-top: 2rem;
 `;
 
 const StyledContainer = styled.div<{ numOfProducts: number }>`
@@ -71,6 +72,24 @@ const StyledContainer = styled.div<{ numOfProducts: number }>`
   /* box-shadow: 4px 4px 8px rgba(49, 48, 44, 0.25); */
   width: ${({ numOfProducts }) => `calc((100% / ${numOfProducts}) - 20px)`};
   margin: 0 10px;
+
+  @media (max-width: 1200px) {
+    /* width: calc((100% / 3) - 20px); */
+    width: ${({ numOfProducts }) =>
+      numOfProducts % 2 === 0
+        ? "calc((100% / 2) - 20px)"
+        : "calc((100% / 3) - 20px)"};
+  }
+
+  @media (max-width: 863px) {
+    /* width: calc((100% / 3) - 20px); */
+    width: ${({ numOfProducts }) =>
+      numOfProducts % 2 !== 0 && "calc((100% / 2) - 20px)"};
+  }
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 const ProductCard: React.FC<{

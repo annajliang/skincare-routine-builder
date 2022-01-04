@@ -12,6 +12,18 @@ const StyledQuestion = styled.div`
   h1 {
     margin-bottom: 4rem;
   }
+
+  @media (max-width: 1000px) {
+    h1 {
+      font-size: 4.5rem;
+      /* display: block; */
+      line-height: 1.1;
+    }
+    
+    h1 span:first-child {
+      margin-right: 1rem;
+    }
+  }
 `;
 
 const StyledGrid = styled.div`
@@ -20,6 +32,11 @@ const StyledGrid = styled.div`
   flex-wrap: wrap;
   align-items: center;
   height: 28rem;
+
+  @media (max-width: 1000px) {
+    display: block;
+    height: 7rem;
+  }
 `;
 
 const Question: React.FC = () => {

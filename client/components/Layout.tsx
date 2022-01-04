@@ -4,14 +4,24 @@ import { useContext } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
-const StyledMain = styled.main`
+const StyledMain = styled.main<{ isQuizPage: boolean; isResultPage: boolean }>`
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: ${({ isResultPage }) =>
+    isResultPage ? "flex-end" : "flex-start"};
+
+  ${({ isQuizPage }) =>
+    isQuizPage &&
+    `
+    @media (max-width: 1000px) {
+    display: block;
+    padding: 5rem 0 0 0;
+  }
+  `}
 `;
 
 const StyledContainer = styled.div`
@@ -79,12 +89,12 @@ const Layout: React.FC = ({ children }) => {
     };
 
     return (
-        <StyledOuterContainer>
-          {bgToShow()}
-          <StyledContainer>
-            <StyledMain>{children}</StyledMain>
-          </StyledContainer>
-        </StyledOuterContainer>
+      <StyledOuterContainer>
+        {bgToShow()}
+        <StyledContainer>
+          <StyledMain isQuizPage={router.asPath.includes('/question')} isResultPage={router.asPath === '/result'}>{children}</StyledMain>
+        </StyledContainer>
+      </StyledOuterContainer>
     );
 }
 

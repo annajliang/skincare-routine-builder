@@ -32,6 +32,12 @@ const StyledContent = styled.div`
       color: #fff;
     }
   }
+
+  @media (max-width: 1000px) {
+    h1 {
+      font-size: 5.5rem;
+    }
+  }
 `;
 
 const Home: NextPage = () => {

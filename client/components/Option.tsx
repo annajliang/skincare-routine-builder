@@ -25,6 +25,14 @@ const StyledGridItem = styled.a`
   :not(:last-child) {
     margin-right: 2rem;
   }
+
+  @media (max-width: 1000px) {
+    font-size: 1.5rem;
+    :not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 const Option: React.FC<{
