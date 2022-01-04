@@ -6,6 +6,10 @@ const StyledHome = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 852px) {
+    width: 100%;
+  }
 `;
 
 const StyledContent = styled.div`
@@ -37,6 +41,31 @@ const StyledContent = styled.div`
     h1 {
       font-size: 5.5rem;
     }
+
+    a {
+      display: block;
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 852px) {
+    width: 90%;
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+
+    h1 {
+      font-size: 5rem;
+    }
+
+    p {
+      font-size: 1.3rem;
+    }
   }
 `;
 
@@ -53,9 +82,7 @@ const Home: NextPage = () => {
           accumsan lacinia dui, scelerisque aliquet odio placerat ut. Aenean
           augue eros, facilisis et purus vitae, lobortis fermentum odio. Nunc
           accumsan scelerisque turpis, eu luctus massa semper at. In venenatis
-          augue ultrices lacus placerat, non tempor eros lacinia. In orci lacus,
-          laoreet in fringilla at, ultricies vel lectus. Fusce dapibus urna
-          dolor, convallis malesuada mauris pretium in.
+          augue ultrices lacus placerat, non tempor eros lacinia. 
         </p>
         <Link href={`/question/1`} passHref>
           <a>Start</a>

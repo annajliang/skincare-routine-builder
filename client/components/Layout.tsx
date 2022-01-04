@@ -4,7 +4,11 @@ import { useContext } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
-const StyledMain = styled.main<{ isQuizPage: boolean; isResultPage: boolean }>`
+const StyledMain = styled.main<{
+  isQuizPage: boolean;
+  isResultPage: boolean;
+  isHomePage: boolean;
+}>`
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
@@ -22,6 +26,11 @@ const StyledMain = styled.main<{ isQuizPage: boolean; isResultPage: boolean }>`
     padding: 5rem 0 0 0;
   }
   `}
+
+  @media (max-width: 852px) {
+    padding: ${({ isHomePage }) => isHomePage && '2.5rem 0'};
+    justify-content: flex-start;
+  }
 `;
 
 const StyledContainer = styled.div`
@@ -33,6 +42,57 @@ const StyledContainer = styled.div`
 const StyledOuterContainer = styled.div`
   position: relative;
   transition: all 0.6s ease;
+
+  .morningTabBg,
+  .morningPatternBg,
+  .morningMobileBg,
+  .nightTabBg,
+  .nightPatternBg,
+  .nightMobileBg {
+    display: none !important;
+  }
+
+  @media (max-width: 1000px) {
+    .morningTabBg,
+    .nightTabBg {
+      display: block !important;
+    }
+
+    .morningDesktopBg,
+    .nightDesktopBg {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 852px) {
+    .morningTabBg,
+    .nightTabBg {
+      display: none !important;
+    }
+
+    .morningMobileBg,
+    .morningPatternBg,
+    .nightMobileBg,
+    .nightPatternBg {
+      display: block !important;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .morningMobileBg,
+    .morningPatternBg,
+    .nightMobileBg,
+    .nightPatternBg {
+      display: none !important;
+    }
+
+    .morningMobileBg,
+    .morningPatternBg,
+    .nightMobileBg,
+    .nightPatternBg {
+      display: block !important;
+    }
+  }
 `;
 
 const Layout: React.FC = ({ children }) => {
@@ -43,30 +103,90 @@ const Layout: React.FC = ({ children }) => {
     const bgToShow = () => {
       if (router.asPath === "/" && routineTheme === "morning") {
         return (
-          <Image
-            src="/homeBg.svg"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            objectPosition="bottom"
-            priority
-          />
+          <>
+            <Image
+              src="/morningDesktopBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="morningDesktopBg"
+              priority
+            />
+            <Image
+              src="/morningTabBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="morningTabBg"
+              priority
+            />
+            <Image
+              src="/morningPatternBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="morningPatternBg"
+              priority
+            />
+            <Image
+              src="/morningMobileBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="morningMobileBg"
+              priority
+            />
+          </>
         );
       } else if (router.asPath === "/" && routineTheme === "night") {
         return (
-          <Image
-            src="/nightHomeBg.svg"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            objectPosition="bottom"
-            priority
-          />
+          <>
+            <Image
+              src="/nightDesktopBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="nightDesktopBg"
+              priority
+            />
+            <Image
+              src="/nightTabBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="nightTabBg"
+              priority
+            />
+            <Image
+              src="/nightPatternBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="nightPatternBg"
+              priority
+            />
+            <Image
+              src="/nightMobileBg.svg"
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              objectPosition="bottom"
+              className="nightMobileBg"
+              priority
+            />
+          </>
         );        
       } else if (router.asPath !== "/" && routineTheme === "morning") {
         return (
           <Image
-            src="/quizBg.svg"
+            src="/morningPatternBg.svg"
             alt=""
             layout="fill"
             objectFit="cover"
@@ -77,7 +197,7 @@ const Layout: React.FC = ({ children }) => {
       } else if (router.asPath !== "/" && routineTheme === "night") {
         return (
           <Image
-            src="/nightBg.svg"
+            src="/nightPatternBg.svg"
             alt=""
             layout="fill"
             objectFit="cover"
@@ -92,7 +212,13 @@ const Layout: React.FC = ({ children }) => {
       <StyledOuterContainer>
         {bgToShow()}
         <StyledContainer>
-          <StyledMain isQuizPage={router.asPath.includes('/question')} isResultPage={router.asPath === '/result'}>{children}</StyledMain>
+          <StyledMain
+            isHomePage={router.asPath === "/"}
+            isQuizPage={router.asPath.includes("/question")}
+            isResultPage={router.asPath === "/result"}
+          >
+            {children}
+          </StyledMain>
         </StyledContainer>
       </StyledOuterContainer>
     );
