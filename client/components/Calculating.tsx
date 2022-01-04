@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useCalcProducts } from "./useCalcProducts";
+import ThemeToggle from "./ThemeToggle";
 import { useRoutines } from "./useRoutines";
 import { RoutineContext, IProduct } from "../../pages/_app";
 import Morning from "./Morning";
@@ -116,6 +117,8 @@ const Calculating: React.FC = () => {
       <MorningRoutineContext.Provider
         value={{ morningRoutine, setMorningRoutine }}
       >
+        {/* <ThemeToggle /> */}
+        {showResults && !showPreResults && <ThemeToggle />}
         <NightRoutineContext.Provider value={{ nightRoutine, setNightRoutine }}>
           {showResults && !showPreResults && routineTheme === "morning" && (
             <Morning />

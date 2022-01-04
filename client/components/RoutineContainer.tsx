@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import ThemeToggle from "./ThemeToggle";
 import { RoutineContext } from "../../pages/_app";
 import Routine from "./Routine";
 import styled from "styled-components";
@@ -55,7 +54,6 @@ const RoutineContainer: React.FC<{ routineType: string }> = ({
 
   return (
     <StyledContainer>
-      <ThemeToggle />
       <StyledRountineContainer>
         <Animated
           animationIn="fadeInRight"
