@@ -8,7 +8,7 @@ export const morningTheme: DefaultTheme = {
   buyNowHoverColor: `${COLORS.cornflowerLilac}`,
   textColor: `${COLORS.oldCopper}`,
   filledProgressColor: `${COLORS.lightSalmonPink}`,
-  introTextColor: `${COLORS.gunmetal}`,
+  introTextColor: `${COLORS.oldCopper}`,
   startBtnColor: `${COLORS.sunshade}`,
   errorTextColor: `${COLORS.oldCopper}`,
 };
