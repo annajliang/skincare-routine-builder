@@ -19,7 +19,6 @@ const StyledContainer = styled.div`
 const StyledCheckbox = styled.input`
   position: absolute;
   opacity: 0;
-  cursor: pointer;
   height: 0;
   width: 0;
 
@@ -55,6 +54,7 @@ const StyledSlot = styled.div`
   transition: background-color 250ms;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const StyledButton = styled.div`

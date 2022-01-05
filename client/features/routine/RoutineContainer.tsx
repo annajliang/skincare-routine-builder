@@ -27,16 +27,15 @@ const StyledH1 = styled.h1`
   display: block;
   margin: 0;
 
-  @media (max-width: 701px) {
-    text-align: center;
-    font-size: 8rem;
-    display: flex;
-  }
   @media (max-width: 863px) {
     font-size: 6rem;
   }
 
-  `;
+  @media (max-width: 701px) {
+    text-align: center;
+    display: flex;
+  }
+`;
 
 const StyledH1Container = styled.div`
   position: relative;
