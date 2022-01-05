@@ -1,6 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
-import Question from "../../client/components/Question";
+import Question from "../../client/features/question/Question";
 
 const Quiz: NextPage = () => {
   return <Question />;

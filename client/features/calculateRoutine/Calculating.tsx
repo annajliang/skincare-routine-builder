@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useCalcProducts } from "./useCalcProducts";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../routine/ThemeToggle";
 import { useRoutines } from "./useRoutines";
-import { RoutineContext, IProduct } from "../../pages/_app";
-import Morning from "./Morning";
-import Night from "./Night";
+import { RoutineContext, IProduct, UserChoicesContext } from "../../../pages/_app";
+import Morning from "../routine/Morning";
+import Night from "../routine/Night";
 import Image from "next/image";
 import { Animated } from "react-animated-css";
 import styled from "styled-components";
@@ -12,6 +12,24 @@ import styled from "styled-components";
 const StyledCentered = styled.div`
   margin: auto;
   text-align: center;
+
+  @media (max-width: 863px) {
+    h1 {
+      font-size: 6rem;
+    }
+  }
+
+  @media (max-width: 701px) {
+    h1 {
+      font-size: 5rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    h1 {
+      font-size: 4.4rem;
+    }
+  }
 `;
 
 export interface ICommand {
@@ -42,13 +60,14 @@ export const NightRoutineContext = React.createContext<INightRoutineContext>({
 
 const Calculating: React.FC = () => {
   const { routineTheme } = useContext(RoutineContext);
+  const { userChoices } = useContext(UserChoicesContext);
   const {isCalculating, showResults, showPreResults} = useCalcProducts();
   const {morningRoutine, nightRoutine, setMorningRoutine, setNightRoutine} =
     useRoutines();
 
   return (
     <>
-      {isCalculating && (
+      {isCalculating && userChoices.length !== 0 && (
         <StyledCentered>
           <Animated
             animationIn="fadeIn"
@@ -81,7 +100,7 @@ const Calculating: React.FC = () => {
         </StyledCentered>
       )}
 
-      {showPreResults && (
+      {showPreResults && userChoices.length !== 0 && (
         <StyledCentered>
           <Animated
             animationIn="fadeIn"

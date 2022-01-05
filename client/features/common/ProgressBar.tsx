@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { COLORS } from "../styles/colors";
+import { COLORS } from "../../constants/colors";
 import styled from 'styled-components';
 
 const StyledProgressBar = styled.div`

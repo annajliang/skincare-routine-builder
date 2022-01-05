@@ -1,12 +1,12 @@
 import Link from "next/link";
-import questions from "../data/questions";
+import questions from "../../data/questions";
 import {
   IUserChoice,
   UserChoicesContext,
-} from "../../pages/_app";
+} from "../../../pages/_app";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-import { COLORS } from "../styles/colors";
+import { COLORS } from "../../constants/colors";
 import styled from "styled-components";
 
 const StyledGridItem = styled.a`

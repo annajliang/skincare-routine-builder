@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { morningTheme, nightTheme } from "../client/styles/Theme";
 import Global from "../client/styles/Global";
 import Normalize from "../client/styles/Normalize";
-import Layout from "../client/components/Layout";
+import Layout from "../client/features/common/Layout";
 import type { AppProps } from "next/app";
 
 export interface IUserChoice {

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { RoutineContext } from "../../pages/_app";
+import { RoutineContext } from "../../../pages/_app";
 import Routine from "./Routine";
 import styled from "styled-components";
 import { Animated } from "react-animated-css";
@@ -14,7 +14,7 @@ const StyledRountineContainer = styled.div`
     top: 0;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 701px) {
     padding: 0 3rem;
   }
 
@@ -27,22 +27,21 @@ const StyledH1 = styled.h1`
   display: block;
   margin: 0;
 
-  @media (max-width: 700px) {
-    text-align: center;
-    font-size: 8rem;
-    display: flex;
-  }
   @media (max-width: 863px) {
     font-size: 6rem;
   }
 
-  `;
+  @media (max-width: 701px) {
+    text-align: center;
+    display: flex;
+  }
+`;
 
 const StyledH1Container = styled.div`
   position: relative;
   /* margin-bottom: 4rem; */
 
-  @media (max-width: 700px) {
+  @media (max-width: 701px) {
     text-align: center;
   }
 `;
@@ -52,7 +51,7 @@ const StyledSun = styled.img`
   left: 10rem;
   bottom: -4rem;
 
-  @media (max-width: 700px) {
+  @media (max-width: 701px) {
     left: 10px;
   }
 `;
@@ -72,9 +71,9 @@ const StyledGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  @media (max-width: 1200px) {
+  /* @media (max-width: 1200px) {
     justify-content: center;
-  }
+  } */
 `;
   
 const StyledContainer = styled.div`

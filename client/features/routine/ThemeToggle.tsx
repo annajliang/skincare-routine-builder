@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { morningTheme, nightTheme } from "../../client/styles/Theme";
-import { COLORS } from "../styles/colors";
-import { RoutineContext, Theme } from "../../pages/_app";
+import { morningTheme, nightTheme } from "../../styles/Theme";
+import { COLORS } from "../../constants/colors";
+import { RoutineContext, Theme } from "../../../pages/_app";
 import styled, { css } from "styled-components";
 
 const StyledContainer = styled.div`
@@ -19,7 +19,6 @@ const StyledContainer = styled.div`
 const StyledCheckbox = styled.input`
   position: absolute;
   opacity: 0;
-  cursor: pointer;
   height: 0;
   width: 0;
 
@@ -55,6 +54,7 @@ const StyledSlot = styled.div`
   transition: background-color 250ms;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const StyledButton = styled.div`

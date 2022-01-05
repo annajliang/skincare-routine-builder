@@ -7,7 +7,7 @@ import {
   filterQuestion5B,
   filterQuestion6,
 } from "../utils/helpers";
-import { ICommand } from "../components/Calculating";
+import { ICommand } from "../features/calculateRoutine/Calculating";
 
 interface IOption {
   id: number;

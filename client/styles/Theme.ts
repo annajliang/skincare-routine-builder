@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components';
-import { COLORS } from './colors';
+import { COLORS } from '../constants/colors';
 
 export const morningTheme: DefaultTheme = {
   body: `${COLORS.lightRose}`,
