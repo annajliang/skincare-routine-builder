@@ -1,8 +1,8 @@
-import questions from "../data/questions";
+import questions from "../../data/questions";
 import { useRouter } from "next/router";
 import { Animated } from "react-animated-css";
 import Option from "./Option";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../common/ProgressBar";
 import styled from "styled-components";
 
 const StyledQuestion = styled.div`

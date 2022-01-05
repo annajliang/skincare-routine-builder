@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { useContext } from "react";
-import { COLORS } from "../styles/colors";
-import { IProduct, RoutineContext } from "../../pages/_app";
+import { COLORS } from "../../constants/colors";
+import { IProduct, RoutineContext } from "../../../pages/_app";
 import Link from "next/link";
 
 const StyledGridItem = styled.div`
@@ -87,7 +88,7 @@ const StyledContainer = styled.div<{ numOfProducts: number }>`
       numOfProducts % 2 !== 0 && "calc((100% / 2) - 20px)"};
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 701px) {
     width: 100%;
   }
 `;
@@ -106,7 +107,7 @@ const ProductCard: React.FC<{
       </StyledStep>
       <StyledGridItem>
         <StyledInnerGridItem>
-          <img src={recommendedProduct.img_url} />
+          <img src={recommendedProduct.img_url} alt="" />
         </StyledInnerGridItem>
         <StyledProductName>
           {recommendedProduct.name.length >= 43

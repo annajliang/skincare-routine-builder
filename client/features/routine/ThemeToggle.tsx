@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { morningTheme, nightTheme } from "../../client/styles/Theme";
-import { COLORS } from "../styles/colors";
-import { RoutineContext, Theme } from "../../pages/_app";
+import { morningTheme, nightTheme } from "../../styles/Theme";
+import { COLORS } from "../../constants/colors";
+import { RoutineContext, Theme } from "../../../pages/_app";
 import styled, { css } from "styled-components";
 
 const StyledContainer = styled.div`

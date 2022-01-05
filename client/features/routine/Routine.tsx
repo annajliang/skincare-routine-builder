@@ -1,9 +1,9 @@
 import {
   IProduct,
   RoutineContext,
-} from "../../pages/_app";
+} from "../../../pages/_app";
 import ProductCard from "./ProductCard";
-import { MorningRoutineContext, NightRoutineContext } from "./Calculating";
+import { MorningRoutineContext, NightRoutineContext } from "../calculateRoutine/Calculating";
 import RoutineError from "./RoutineError";
 import { useContext } from "react";
 

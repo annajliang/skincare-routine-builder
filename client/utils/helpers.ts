@@ -1,5 +1,5 @@
 import { IProduct } from "../../pages/_app";
-import { ICommand } from "../components/Calculating";
+import { ICommand } from "../features/calculateRoutine/Calculating";
 
 export const removeProducts = (arr1: ICommand[], arr2: ICommand[]) => {
   return arr1.filter((x) => {

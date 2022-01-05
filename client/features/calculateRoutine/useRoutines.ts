@@ -3,7 +3,7 @@ import {
   UserChoicesContext,
   IProduct,
   RecommendedContext,
-} from "../../pages/_app";
+} from "../../../pages/_app";
 
 export const useRoutines = () => {
     const [morningRoutine, setMorningRoutine] = useState<Array<IProduct>>([]);

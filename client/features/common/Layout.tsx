@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { RoutineContext } from "../../pages/_app";
+import { RoutineContext } from "../../../pages/_app";
 import { useContext } from "react";
 import styled from "styled-components";
 import Image from "next/image";
@@ -10,7 +10,7 @@ const StyledMain = styled.main<{
   isHomePage: boolean;
 }>`
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: ${({ isResultPage }) => (isResultPage ? "6rem 0" : "4rem 0")};
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ const StyledMain = styled.main<{
   `}
 
   @media (max-width: 852px) {
-    padding: ${({ isHomePage }) => isHomePage && '2.5rem 0'};
+    padding: ${({ isHomePage }) => isHomePage && "2.5rem 0"};
     justify-content: flex-start;
   }
 `;

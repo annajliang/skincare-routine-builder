@@ -1,5 +1,5 @@
-import { RoutineContext } from "../../pages/_app";
-import { MorningRoutineContext, NightRoutineContext } from "./Calculating";
+import { RoutineContext } from "../../../pages/_app";
+import { MorningRoutineContext, NightRoutineContext } from "../calculateRoutine/Calculating";
 import Link from "next/link";
 import { useContext } from "react";
 import styled from "styled-components";
@@ -7,6 +7,11 @@ import styled from "styled-components";
 const StyledError = styled.p`
   font-size: 2rem;
   color: ${({ theme }) => theme.errorTextColor};
+  margin-top: 2rem;
+
+  @media (max-width: 701px) {
+    text-align: center;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -16,6 +21,10 @@ const StyledLink = styled.a`
   :hover {
     border-bottom: 2px solid ${({ theme }) => theme.headingColor};
   }
+`;
+
+const StyledNoWrap = styled.span`
+  white-space: nowrap;
 `;
 
 const RoutineError: React.FC = () => {
@@ -31,7 +40,8 @@ const RoutineError: React.FC = () => {
           <Link href="/" passHref>
             <StyledLink>take the quiz</StyledLink>
           </Link>{" "}
-          first in order to see your {routineTheme} routine results. 😊
+          first in order to see your {routineTheme}{" "}
+          <StyledNoWrap>routine results. 😊</StyledNoWrap>
         </StyledError>
       )}
     </>

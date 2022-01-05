@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useCalcProducts } from "./useCalcProducts";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../routine/ThemeToggle";
 import { useRoutines } from "./useRoutines";
-import { RoutineContext, IProduct } from "../../pages/_app";
-import Morning from "./Morning";
-import Night from "./Night";
+import { RoutineContext, IProduct } from "../../../pages/_app";
+import Morning from "../routine/Morning";
+import Night from "../routine/Night";
 import Image from "next/image";
 import { Animated } from "react-animated-css";
 import styled from "styled-components";

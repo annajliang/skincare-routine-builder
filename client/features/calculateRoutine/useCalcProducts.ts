@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { ICommand } from "./Calculating";
-import questions from "../data/questions";
-import { removeProducts } from "../utils/helpers";
+import questions from "../../data/questions";
+import { removeProducts } from "../../utils/helpers";
 import {
   UserChoicesContext,
   ProductContext,
   RecommendedContext,
-} from "../../pages/_app";
+} from "../../../pages/_app";
 
 export const useCalcProducts = () => {
   const [isCalculating, setIsCalculating] = useState(true);
