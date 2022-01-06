@@ -45,10 +45,13 @@ const Global = createGlobalStyle<{ theme: DefaultTheme }>`
     line-height: 1.8;
   }
 
+  button, a {
+    transition: 0.3s;
+  }
+
   a {
     color: ${({ theme }) => theme.textColor};
     text-decoration: none;
-      transition: 0.3s;
 
     :hover {
       color: ${({ theme }) => theme.headingColor};
