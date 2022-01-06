@@ -2,7 +2,12 @@ import React, { useContext } from "react";
 import { useCalcProducts } from "./useCalcProducts";
 import ThemeToggle from "../routine/ThemeToggle";
 import { useRoutines } from "./useRoutines";
-import { RoutineContext, IProduct, UserChoicesContext } from "../../../pages/_app";
+import {
+  RoutineContext,
+  IProduct,
+  UserChoicesContext,
+  RecommendedContext,
+} from "../../../pages/_app";
 import Morning from "../routine/Morning";
 import Night from "../routine/Night";
 import Image from "next/image";
@@ -61,9 +66,12 @@ export const NightRoutineContext = React.createContext<INightRoutineContext>({
 const Calculating: React.FC = () => {
   const { routineTheme } = useContext(RoutineContext);
   const { userChoices } = useContext(UserChoicesContext);
+      const { recommendedProducts, setRecommendedProducts } =
+        useContext(RecommendedContext);
+
   const {isCalculating, showResults, showPreResults} = useCalcProducts();
-  const {morningRoutine, nightRoutine, setMorningRoutine, setNightRoutine} =
-    useRoutines();
+  const { morningRoutine, nightRoutine, setMorningRoutine, setNightRoutine } =
+    useRoutines(recommendedProducts);
 
   return (
     <>
