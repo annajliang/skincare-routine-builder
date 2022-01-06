@@ -43,7 +43,6 @@ const StyledInnerGridItem = styled.div`
 const StyledBuyNow = styled.a`
   background-color: ${({ theme }) => theme.buyNowBgColor};
   width: 100%;
-  left: 0;
   padding: 1rem 0;
   color: ${COLORS.white};
   font-weight: bold;

@@ -10,7 +10,7 @@ const StyledMain = styled.main<{
   isHomePage: boolean;
 }>`
   min-height: 100vh;
-  padding: ${({ isResultPage }) => (isResultPage ? "6rem 0" : "4rem 0")};
+  padding: ${({ isResultPage }) => (isResultPage ? "0" : "4rem 0")};
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,10 @@ const StyledMain = styled.main<{
     padding: 5rem 0 0 0;
   }
   `}
+
+  @media (max-width: 1200px) {
+    padding: ${({ isResultPage }) => isResultPage && "6rem 0"};
+  }
 
   @media (max-width: 852px) {
     padding: ${({ isHomePage }) => isHomePage && "2.5rem 0"};
