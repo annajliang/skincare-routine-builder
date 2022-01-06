@@ -79,7 +79,7 @@ const Home: NextPage = () => {
         <p>
           Finding the right skincare routine is now a breeze! This handy
           routine-builder quiz will recommend you products across various skincare
-          categories. Whether you want to address concerns like acne and dark spots or find the right sunblock for your skin tone. Take the quiz and you’ll find the right products for your skin type, whether
+          categories. Whether you want to address concerns like acne and dark spots or find the best sunblock for your skin tone. Take the quiz and you’ll find the perfect products tailored to your skin, whether
           you’re dry, oily, combo, or normal.
         </p>
         <Link href={`/question/1`} passHref>
