@@ -77,12 +77,10 @@ const Home: NextPage = () => {
           <span>Live in Your</span> <span>Best Skin</span>
         </h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          felis neque, euismod at maximus id, pharetra sed justo. Integer
-          accumsan lacinia dui, scelerisque aliquet odio placerat ut. Aenean
-          augue eros, facilisis et purus vitae, lobortis fermentum odio. Nunc
-          accumsan scelerisque turpis, eu luctus massa semper at. In venenatis
-          augue ultrices lacus placerat, non tempor eros lacinia. 
+          Finding the right skincare routine is now a breeze! This handy
+          routine-builder quiz will recommend you products across various skincare
+          categories. Whether you want to address concerns like acne and dark spots or find the right sunblock for your skin tone. Take the quiz and you’ll find the right products for your skin type, whether
+          you’re dry, oily, combo, or normal.
         </p>
         <Link href={`/question/1`} passHref>
           <a>Start</a>
