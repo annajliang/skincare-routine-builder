@@ -17,4 +17,8 @@ export const COLORS = {
   riverBed: "#485367",
   mercury: "#E4E7EC",
   saffronMango: "#FFBB52",
+  salmonPink: "#FF7878",
+  paleSalmon: "#FEB0B0",
+  rhino: "#31405e",
+  greyBlue: "#7687A9",
 };

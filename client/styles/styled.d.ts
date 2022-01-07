@@ -13,5 +13,11 @@ declare module 'styled-components' {
     introTextColor: string;
     startBtnColor: string;
     errorTextColor: string;
+    secondaryBtn: string;
+    secondaryBtnText: string;
+    secondaryBtnShadow: string;
+    retakeQuizBtn: string;
+    secondaryBtnHover: string;
+    retakeQuizHover: string
   }
 }

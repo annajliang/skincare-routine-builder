@@ -11,6 +11,12 @@ export const morningTheme: DefaultTheme = {
   introTextColor: `${COLORS.oldCopper}`,
   startBtnColor: `${COLORS.sunshade}`,
   errorTextColor: `${COLORS.oldCopper}`,
+  secondaryBtn: `${COLORS.lightSalmonPink}`,
+  secondaryBtnText: `${COLORS.white}`,
+  secondaryBtnShadow: `${COLORS.salmonPink}`,
+  secondaryBtnHover: `${COLORS.paleSalmon}`,
+  retakeQuizBtn: `${COLORS.terraCotta}`,
+  retakeQuizHover: `${COLORS.lightSalmonPink}`,
 };
 
 export const nightTheme: DefaultTheme = {
@@ -23,4 +29,10 @@ export const nightTheme: DefaultTheme = {
   introTextColor: `${COLORS.white}`,
   startBtnColor: `${COLORS.carolinaBlue}`,
   errorTextColor: `${COLORS.white}`,
+  secondaryBtn: `${COLORS.kashmirBlue}`,
+  secondaryBtnText: `${COLORS.white}`,
+  secondaryBtnShadow: `${COLORS.rhino}`,
+  secondaryBtnHover: `${COLORS.greyBlue}`,
+  retakeQuizBtn: `${COLORS.kashmirBlue}`,
+  retakeQuizHover: `${COLORS.carolinaBlue}`,
 };
