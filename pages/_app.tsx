@@ -87,7 +87,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       const fetchProducts = async () => {
         try {
-          const response = await fetch("http://localhost:3000/api/products");
+          const response = await fetch("/api/products");
           // console.log("response", response);
 
           if (response.ok) {
