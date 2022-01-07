@@ -42,10 +42,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Sen:wght@400;700&display=swap"
             rel="stylesheet"
           />
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-          />
         </Head>
         <body>
           <script>0</script>
