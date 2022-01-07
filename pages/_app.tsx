@@ -113,13 +113,17 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Global />
       <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
         <ProductContext.Provider value={{ products, setProducts }}>
-        <RecommendedContext.Provider value={{ recommendedProducts, setRecommendedProducts }}>
-          <UserChoicesContext.Provider value={{ userChoices, setUserChoices }}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </UserChoicesContext.Provider>
-        </RecommendedContext.Provider>
+          <RecommendedContext.Provider
+            value={{ recommendedProducts, setRecommendedProducts }}
+          >
+            <UserChoicesContext.Provider
+              value={{ userChoices, setUserChoices }}
+            >
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </UserChoicesContext.Provider>
+          </RecommendedContext.Provider>
         </ProductContext.Provider>
       </RoutineContext.Provider>
     </ThemeProvider>

@@ -1,6 +1,6 @@
 import questions from "../../data/questions";
 import { useRouter } from "next/router";
-import { Animated } from "react-animated-css";
+import { fadeInLeft } from "../../styles/fadeInLeft";
 import Option from "./Option";
 import ProgressBar from "./ProgressBar";
 import styled from "styled-components";
@@ -39,6 +39,11 @@ const StyledGrid = styled.div`
   }
 `;
 
+export const StyledAnimated = styled.div`
+  animation: ${fadeInLeft} 1.3s ease;
+  will-change: transform, opacity;
+`;
+
 const Question: React.FC = () => {
   const route = useRouter();
 
@@ -51,13 +56,7 @@ const Question: React.FC = () => {
               <ProgressBar index={i} key={i} />
             )}
             {route.asPath === `/question/${i + 1}` && (
-              <Animated
-                animationIn="fadeInRight"
-                animationOut="fadeOutLeft"
-                animationInDuration={1000}
-                animationOutDuration={1000}
-                isVisible={true}
-              >
+              <StyledAnimated>
                 <h1>
                   <span>{questions[i].questionSpanOne}</span>
                   <span>{questions[i].questionSpanTwo}</span>
@@ -76,7 +75,7 @@ const Question: React.FC = () => {
                     );
                   })}
                 </StyledGrid>
-              </Animated>
+              </StyledAnimated>
             )}
           </>
         );

@@ -8,13 +8,13 @@ import {
 } from "../calculateRoutine/Calculating";
 import Routine from "./Routine";
 import styled from "styled-components";
-import { Animated } from "react-animated-css";
+import { StyledAnimated } from "../question/Question";
 
 const StyledRountineContainer = styled.div`
   padding: 0 7rem;
   width: 100%;
   position: relative;
-  top: -4rem;
+  top: -3rem;
 
   @media (max-width: 863px) {
     top: 0;
@@ -102,13 +102,7 @@ const RoutineContainer: React.FC<{ routineType: string }> = ({
   return (
     <StyledContainer>
       <StyledRountineContainer>
-        <Animated
-          animationIn="fadeInRight"
-          animationOut="fadeOutLeft"
-          animationInDuration={1000}
-          animationOutDuration={1000}
-          isVisible={true}
-        >
+        <StyledAnimated>
           <StyledH1Container>
             {routineTheme === "morning" ? (
               <StyledSun src="/sun.svg" alt="" />
@@ -130,7 +124,7 @@ const RoutineContainer: React.FC<{ routineType: string }> = ({
               <RetakeQuizLink />
             </StyleBtnContainer>
           )}
-        </Animated>
+        </StyledAnimated>
       </StyledRountineContainer>
     </StyledContainer>
   );

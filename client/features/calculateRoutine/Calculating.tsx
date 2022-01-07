@@ -11,7 +11,7 @@ import {
 import Morning from "../routine/Morning";
 import Night from "../routine/Night";
 import Image from "next/image";
-import { Animated } from "react-animated-css";
+import { fadeIn } from "../../styles/fadeIn";
 import styled from "styled-components";
 
 const StyledCentered = styled.div`
@@ -35,6 +35,11 @@ const StyledCentered = styled.div`
       font-size: 4.4rem;
     }
   }
+`;
+
+const StyledAnimated = styled.div`
+  animation: ${fadeIn} 1s ease;
+  will-change: opacity;
 `;
 
 export interface ICommand {
@@ -77,13 +82,7 @@ const Calculating: React.FC = () => {
     <>
       {isCalculating && userChoices.length !== 0 && (
         <StyledCentered>
-          <Animated
-            animationIn="fadeIn"
-            animationOut="fadeOut"
-            animationInDuration={1000}
-            animationOutDuration={1000}
-            isVisible={true}
-          >
+          <StyledAnimated>
             <h1>
               <span>Calculating</span> <span>routine...</span>
             </h1>
@@ -104,19 +103,13 @@ const Calculating: React.FC = () => {
                 priority
               />
             )}
-          </Animated>
+          </StyledAnimated>
         </StyledCentered>
       )}
 
       {showPreResults && userChoices.length !== 0 && (
         <StyledCentered>
-          <Animated
-            animationIn="fadeIn"
-            animationOut="fadeOut"
-            animationInDuration={1000}
-            animationOutDuration={1000}
-            isVisible={true}
-          >
+          <StyledAnimated>
             <h1>
               <span>Your results</span> <span>are in!</span>
             </h1>
@@ -137,7 +130,7 @@ const Calculating: React.FC = () => {
                 priority
               />
             )}
-          </Animated>
+          </StyledAnimated>
         </StyledCentered>
       )}
 
