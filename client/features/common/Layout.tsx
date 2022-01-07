@@ -68,7 +68,7 @@ const StyledOuterContainer = styled.div`
     }
   }
 
-  @media (max-width: 852px) {
+  @media (max-width: 852px) and (orientation: portrait) {
     .morningTabBg,
     .nightTabBg {
       display: none !important;
@@ -77,6 +77,20 @@ const StyledOuterContainer = styled.div`
     .morningMobileBg,
     .morningPatternBg,
     .nightMobileBg,
+    .nightPatternBg {
+      display: block !important;
+    }
+  }
+
+  @media (max-width: 852px) and (orientation: landscape) {
+    .morningTabBg,
+    .nightTabBg,
+    .morningMobileBg,
+    .nightMobileBg {
+      display: none !important;
+    }
+
+    .morningPatternBg,
     .nightPatternBg {
       display: block !important;
     }
@@ -106,7 +120,7 @@ const Layout: React.FC = ({ children }) => {
   const bgToShow = () => {
     const imageNameSuffixes = ["DesktopBg", "TabBg", "PatternBg", "MobileBg"];
 
-    if (router.asPath === "/" && routineTheme === "morning") {
+    if (router.asPath === "/") {
       return imageNameSuffixes.map((imageNameSuffix) => {
         return (
           <>
@@ -122,37 +136,10 @@ const Layout: React.FC = ({ children }) => {
           </>
         );
       });
-    } else if (router.asPath === "/" && routineTheme === "night") {
-      return imageNameSuffixes.map((imageNameSuffix) => {
-        return (
-          <>
-            <Image
-              src={`/${routineTheme}${imageNameSuffix}.svg`}
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className={`${routineTheme}${imageNameSuffix}`}
-              priority
-            />
-          </>
-        );
-      });
-    } else if (router.asPath !== "/" && routineTheme === "morning") {
+    } else if (router.asPath !== "/") {
       return (
         <Image
-          src="/morningPatternBg.svg"
-          alt=""
-          layout="fill"
-          objectFit="cover"
-          objectPosition="bottom"
-          priority
-        />
-      );
-    } else if (router.asPath !== "/" && routineTheme === "night") {
-      return (
-        <Image
-          src="/nightPatternBg.svg"
+          src={`/${routineTheme}PatternBg.svg`}
           alt=""
           layout="fill"
           objectFit="cover"
