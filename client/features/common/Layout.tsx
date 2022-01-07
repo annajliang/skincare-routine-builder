@@ -68,7 +68,7 @@ const StyledOuterContainer = styled.div`
     }
   }
 
-  @media (max-width: 852px) {
+  @media (max-width: 852px) and (orientation: portrait) {
     .morningTabBg,
     .nightTabBg {
       display: none !important;
@@ -77,6 +77,20 @@ const StyledOuterContainer = styled.div`
     .morningMobileBg,
     .morningPatternBg,
     .nightMobileBg,
+    .nightPatternBg {
+      display: block !important;
+    }
+  }
+
+  @media (max-width: 852px) and (orientation: landscape) {
+    .morningTabBg,
+    .nightTabBg,
+    .morningMobileBg,
+    .nightMobileBg {
+      display: none !important;
+    }
+
+    .morningPatternBg,
     .nightPatternBg {
       display: block !important;
     }
