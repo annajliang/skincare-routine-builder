@@ -1,4 +1,4 @@
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 import { RoutineContext } from "../../../pages/_app";
 import { useContext } from "react";
 import styled from "styled-components";
@@ -100,132 +100,83 @@ const StyledOuterContainer = styled.div`
 `;
 
 const Layout: React.FC = ({ children }) => {
-    const { routineTheme } = useContext(RoutineContext);
-    const router = useRouter();
+  const { routineTheme } = useContext(RoutineContext);
+  const router = useRouter();
 
+  const bgToShow = () => {
+    const imageNameSuffixes = ["DesktopBg", "TabBg", "PatternBg", "MobileBg"];
 
-    const bgToShow = () => {
-      if (router.asPath === "/" && routineTheme === "morning") {
+    if (router.asPath === "/" && routineTheme === "morning") {
+      return imageNameSuffixes.map((imageNameSuffix) => {
         return (
           <>
             <Image
-              src="/morningDesktopBg.svg"
+              src={`/${routineTheme}${imageNameSuffix}.svg`}
               alt=""
               layout="fill"
               objectFit="cover"
               objectPosition="bottom"
-              className="morningDesktopBg"
-              priority
-            />
-            <Image
-              src="/morningTabBg.svg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className="morningTabBg"
-              priority
-            />
-            <Image
-              src="/morningPatternBg.svg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className="morningPatternBg"
-              priority
-            />
-            <Image
-              src="/morningMobileBg.svg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className="morningMobileBg"
+              className={`${routineTheme}${imageNameSuffix}`}
               priority
             />
           </>
         );
-      } else if (router.asPath === "/" && routineTheme === "night") {
+      });
+    } else if (router.asPath === "/" && routineTheme === "night") {
+      return imageNameSuffixes.map((imageNameSuffix) => {
         return (
           <>
             <Image
-              src="/nightDesktopBg.svg"
+              src={`/${routineTheme}${imageNameSuffix}.svg`}
               alt=""
               layout="fill"
               objectFit="cover"
               objectPosition="bottom"
-              className="nightDesktopBg"
-              priority
-            />
-            <Image
-              src="/nightTabBg.svg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className="nightTabBg"
-              priority
-            />
-            <Image
-              src="/nightPatternBg.svg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className="nightPatternBg"
-              priority
-            />
-            <Image
-              src="/nightMobileBg.svg"
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              objectPosition="bottom"
-              className="nightMobileBg"
+              className={`${routineTheme}${imageNameSuffix}`}
               priority
             />
           </>
-        );        
-      } else if (router.asPath !== "/" && routineTheme === "morning") {
-        return (
-          <Image
-            src="/morningPatternBg.svg"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            objectPosition="bottom"
-            priority
-          />
         );
-      } else if (router.asPath !== "/" && routineTheme === "night") {
-        return (
-          <Image
-            src="/nightPatternBg.svg"
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            objectPosition="bottom"
-            priority
-          />
-        );
-      }
-    };
+      });
+    } else if (router.asPath !== "/" && routineTheme === "morning") {
+      return (
+        <Image
+          src="/morningPatternBg.svg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          objectPosition="bottom"
+          priority
+        />
+      );
+    } else if (router.asPath !== "/" && routineTheme === "night") {
+      return (
+        <Image
+          src="/nightPatternBg.svg"
+          alt=""
+          layout="fill"
+          objectFit="cover"
+          objectPosition="bottom"
+          priority
+        />
+      );
+    }
+  };
 
-    return (
-      <StyledOuterContainer>
-        {bgToShow()}
-        <StyledContainer>
-          <StyledMain
-            isHomePage={router.asPath === "/"}
-            isQuizPage={router.asPath.includes("/question")}
-            isResultPage={router.asPath === "/result"}
-          >
-            {children}
-          </StyledMain>
-        </StyledContainer>
-      </StyledOuterContainer>
-    );
-}
+  return (
+    <StyledOuterContainer>
+      {bgToShow()}
+      <StyledContainer>
+        <StyledMain
+          isHomePage={router.asPath === "/"}
+          isQuizPage={router.asPath.includes("/question")}
+          isResultPage={router.asPath === "/result"}
+        >
+          {children}
+        </StyledMain>
+      </StyledContainer>
+    </StyledOuterContainer>
+  );
+};
 
 export default Layout;
