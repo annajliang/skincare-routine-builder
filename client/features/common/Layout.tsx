@@ -136,7 +136,7 @@ const Layout: React.FC = ({ children }) => {
           </>
         );
       });
-    } else if (router.asPath !== "/") {
+    } else {
       return (
         <Image
           src={`/${routineTheme}PatternBg.svg`}
