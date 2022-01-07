@@ -4,7 +4,7 @@ import {
   filterQuestion2,
   filterQuestion3,
   filterQuestion4,
-  filterQuestion5B,
+  filterQuestion5,
   filterQuestion6,
 } from "../utils/helpers";
 import { ICommand } from "../features/calculateRoutine/Calculating";
@@ -207,21 +207,21 @@ const questions: IQuestion[] = [
         id: 2,
         text: "Medium",
         filterFn: (products) => {
-          return filterQuestion5B(products);
+          return filterQuestion5(products);
         },
       },
       {
         id: 3,
         text: "Olive",
         filterFn: (products) => {
-          return filterQuestion5B(products);
+          return filterQuestion5(products);
         },
       },
       {
         id: 4,
         text: "Dark",
         filterFn: (products) => {
-          return filterQuestion5B(products);
+          return filterQuestion5(products);
         },
       },
     ],

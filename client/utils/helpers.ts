@@ -63,7 +63,7 @@ export const filterQuestion4 = (products: IProduct[], productTexture: string): I
     });
 };
 
-export const filterQuestion5B = (products: IProduct[]): ICommand[] => {
+export const filterQuestion5 = (products: IProduct[]): ICommand[] => {
   return products
     .filter(
       (product) =>

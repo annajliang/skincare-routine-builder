@@ -83,16 +83,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [recommendedProducts, setRecommendedProducts] = useState<Array<IProduct>>([]);
 
     useEffect(() => {
-      // console.log("routineTheme", routineTheme);
-
       const fetchProducts = async () => {
         try {
           const response = await fetch("/api/products");
-          // console.log("response", response);
 
           if (response.ok) {
             const data = await response.json();
-            // console.log("data", data.data);
             setProducts([...data.data]);
           } else {
             throw new Error(response.statusText);

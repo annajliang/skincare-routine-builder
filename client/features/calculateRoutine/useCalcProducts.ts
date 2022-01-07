@@ -20,7 +20,7 @@ export const useCalcProducts = () => {
   useEffect(() => {
     console.log("userChoices", userChoices);
     const evaluateAnswers = () => {
-      // console.log("userChoices", userChoices);
+
       // todo use map rather than foreachs
       let productCommands: ICommand[] = [];
 
@@ -41,9 +41,6 @@ export const useCalcProducts = () => {
         return productCommand.action === "remove";
       });
 
-      // console.log("products", productCommands);
-      // console.log("productsToAdd", addCommands);
-      // console.log("productsToRemove", removeCommands);
       const results = removeProducts(addCommands, removeCommands);
 
       const finalProducts = results.map((productCommand) => {

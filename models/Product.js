@@ -33,5 +33,4 @@ const productSchema = new Schema({
   },
 });
 
-// create a collection called 'sunscreens' whose documents will look like productSchema
 module.exports = mongoose.models.Product || model("Product", productSchema);

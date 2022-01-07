@@ -5,7 +5,6 @@ dbConnect();
 
 const getProducts = async (req, res) => {
     const { method } = req;
-    console.log(method)
 
     if (method === 'GET') {
         try {
