@@ -1,6 +1,6 @@
 import questions from "../../data/questions";
 import { useRouter } from "next/router";
-import { Animated } from "react-animated-css";
+import { fadeInLeft } from "../../styles/fadeInLeft";
 import Option from "./Option";
 import ProgressBar from "./ProgressBar";
 import styled from "styled-components";
@@ -39,8 +39,9 @@ const StyledGrid = styled.div`
   }
 `;
 
-const StyledAnimated = styled.div`
-  animation: slideInRight 1s;
+export const StyledAnimated = styled.div`
+  animation: ${fadeInLeft} 1.3s ease;
+  will-change: transform, opacity;
 `;
 
 const Question: React.FC = () => {
