@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { morningTheme, nightTheme } from "../client/styles/Theme";
 import Normalize from "../client/styles/Normalize";
 import Global from "../client/styles/Global";
+import Animations from "../client/styles/Animations";
 import Layout from "../client/features/common/Layout";
 import type { AppProps } from "next/app";
 
@@ -111,15 +112,20 @@ function MyApp({ Component, pageProps }: AppProps) {
     >
       <Normalize />
       <Global />
+      <Animations />
       <RoutineContext.Provider value={{ routineTheme, setRoutineTheme }}>
         <ProductContext.Provider value={{ products, setProducts }}>
-        <RecommendedContext.Provider value={{ recommendedProducts, setRecommendedProducts }}>
-          <UserChoicesContext.Provider value={{ userChoices, setUserChoices }}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </UserChoicesContext.Provider>
-        </RecommendedContext.Provider>
+          <RecommendedContext.Provider
+            value={{ recommendedProducts, setRecommendedProducts }}
+          >
+            <UserChoicesContext.Provider
+              value={{ userChoices, setUserChoices }}
+            >
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </UserChoicesContext.Provider>
+          </RecommendedContext.Provider>
         </ProductContext.Provider>
       </RoutineContext.Provider>
     </ThemeProvider>

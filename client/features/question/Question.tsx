@@ -39,6 +39,10 @@ const StyledGrid = styled.div`
   }
 `;
 
+const StyledAnimated = styled.div`
+  animation: slideInRight 1s;
+`;
+
 const Question: React.FC = () => {
   const route = useRouter();
 
@@ -51,13 +55,7 @@ const Question: React.FC = () => {
               <ProgressBar index={i} key={i} />
             )}
             {route.asPath === `/question/${i + 1}` && (
-              <Animated
-                animationIn="fadeInRight"
-                animationOut="fadeOutLeft"
-                animationInDuration={1000}
-                animationOutDuration={1000}
-                isVisible={true}
-              >
+              <StyledAnimated>
                 <h1>
                   <span>{questions[i].questionSpanOne}</span>
                   <span>{questions[i].questionSpanTwo}</span>
@@ -76,7 +74,7 @@ const Question: React.FC = () => {
                     );
                   })}
                 </StyledGrid>
-              </Animated>
+              </StyledAnimated>
             )}
           </>
         );
