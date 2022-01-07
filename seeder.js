@@ -1,8 +1,13 @@
 const seeder = require("mongoose-seed");
-const { MONGO_URI } = require("./server/constants/connectionString");
+const dotenv = require("dotenv");
 
-if (MONGO_URI) {
-  seeder.connect(MONGO_URI, function () {
+const result = dotenv.config();
+
+if (result.error) {
+  // don't proceed if there was an error loading env vars
+  throw result.error;
+} else {
+  seeder.connect(`${process.env.MONGO_URI}`, function () {
     seeder.loadModels(["./models/Product.js"]);
     seeder.clearModels(["Product"], function () {
       // Callback to populate DB once collections have been cleared
