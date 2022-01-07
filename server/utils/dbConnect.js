@@ -7,16 +7,13 @@ const dbConnect = async () => {
     return;
   }
 
-  try {
-    const db = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    connection.isConnected = db.connections[0].readyState;
-    console.log(connection.isConnected);
-  } catch (err) {
-    console.error(err);
-  }
+  const db = await mongoose.connect('tes', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  connection.isConnected = db.connections[0].readyState;
+  console.log(connection.isConnected);
 };
 
 export default dbConnect;
