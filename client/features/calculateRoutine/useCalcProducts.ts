@@ -18,7 +18,6 @@ export const useCalcProducts = () => {
   const { products } = useContext(ProductContext);
 
   useEffect(() => {
-    console.log("userChoices", userChoices);
     const evaluateAnswers = () => {
 
       // todo use map rather than foreachs
