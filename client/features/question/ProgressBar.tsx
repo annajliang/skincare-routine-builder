@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { COLORS } from "../../constants/colors";
+import questions from '../../data/questions';
 import styled from 'styled-components';
 
 const StyledProgressBar = styled.div`
@@ -23,7 +24,7 @@ const ProgressBar: React.FC<{ index: number }> = ({ index }) => {
     const [progressWidth, setProgressWidth] = useState("");
     
     useEffect(() => {
-      let initialProgressWidth = 10;
+      let initialProgressWidth = 100 / questions.length;
       initialProgressWidth = initialProgressWidth * (index + 1);
       setProgressWidth(initialProgressWidth + "%");
     }, [index, progressWidth]);
