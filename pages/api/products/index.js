@@ -11,6 +11,7 @@ const getProducts = async (req, res) => {
             const products = await Product.find();
             res.status(200).json({ success: true, data: products })
         } catch (err) {
+            console.error(err)
             res.status(400).json({ success: false });
         }
     }
