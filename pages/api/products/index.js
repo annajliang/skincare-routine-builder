@@ -8,7 +8,7 @@ const getProducts = async (req, res) => {
 
     if (method === 'GET') {
         try {
-            const products = await Product.find();
+            const products = await Product.find().limit(100);
             res.status(200).json({ success: true, data: products })
         } catch (err) {
             console.error(err)
