@@ -68,7 +68,7 @@ const StyledOuterContainer = styled.div`
     }
   }
 
-  @media (max-width: 852px) and (orientation: portrait) {
+  @media (max-width: 852px) {
     .morningTabBg,
     .nightTabBg {
       display: none !important;
@@ -77,20 +77,6 @@ const StyledOuterContainer = styled.div`
     .morningMobileBg,
     .morningPatternBg,
     .nightMobileBg,
-    .nightPatternBg {
-      display: block !important;
-    }
-  }
-
-  @media (max-width: 852px) and (orientation: landscape) {
-    .morningTabBg,
-    .nightTabBg,
-    .morningMobileBg,
-    .nightMobileBg {
-      display: none !important;
-    }
-
-    .morningPatternBg,
     .nightPatternBg {
       display: block !important;
     }
@@ -107,6 +93,23 @@ const StyledOuterContainer = styled.div`
     .morningMobileBg,
     .morningPatternBg,
     .nightMobileBg,
+    .nightPatternBg {
+      display: block !important;
+    }
+  }
+
+  //https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+    @media only screen and (min-device-width: 320px) and
+    (max-device-width: 852px) and (-webkit-min-device-pixel-ratio: 2) and
+    (orientation: landscape) {
+    .morningTabBg,
+    .nightTabBg,
+    .morningMobileBg,
+    .nightMobileBg {
+      display: none !important;
+    }
+
+    .morningPatternBg,
     .nightPatternBg {
       display: block !important;
     }
