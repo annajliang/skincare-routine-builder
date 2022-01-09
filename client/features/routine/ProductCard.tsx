@@ -26,18 +26,19 @@ const StyledProductName = styled.p`
   text-overflow: ellipsis;
 `;
 
-const StyledInnerGridItem = styled.div`
+const StyledImgContainer = styled.div`
   background: ${COLORS.seashell};
+  height: 16rem;
   width: 100%;
-  height: 60%;
-  padding: 1rem 0;
-  height: 18rem;
+  position: relative;
+`;
 
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-  }
+const StyledOuterImgContainer = styled.div`
+  background: ${COLORS.seashell};
+  height: 18rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledBuyNow = styled.a`
@@ -74,7 +75,6 @@ const StyledContainer = styled.div<{ numOfProducts: number }>`
   margin: 0 10px;
 
   @media (max-width: 1200px) {
-    /* width: calc((100% / 3) - 20px); */
     width: ${({ numOfProducts }) =>
       numOfProducts % 2 === 0
         ? "calc((100% / 2) - 20px)"
@@ -82,7 +82,6 @@ const StyledContainer = styled.div<{ numOfProducts: number }>`
   }
 
   @media (max-width: 863px) {
-    /* width: calc((100% / 3) - 20px); */
     width: ${({ numOfProducts }) =>
       numOfProducts % 2 !== 0 && "calc((100% / 2) - 20px)"};
   }
@@ -104,16 +103,26 @@ const ProductCard: React.FC<{
       <StyledStep routineTheme={routineTheme}>
         Step {index + 1}. {recommendedProduct.routine_step}
       </StyledStep>
+
       <StyledGridItem>
-        <StyledInnerGridItem>
-          <img src={recommendedProduct.img_url} alt="" />
-        </StyledInnerGridItem>
+        <StyledOuterImgContainer>
+          <StyledImgContainer>
+            <Image
+              src={recommendedProduct.img_url}
+              alt=""
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </StyledImgContainer>
+        </StyledOuterImgContainer>
         <StyledProductName>
           {recommendedProduct.name.length >= 43
             ? `${recommendedProduct.name.substring(0, 43)}...`
             : recommendedProduct.name}
         </StyledProductName>
       </StyledGridItem>
+
       <Link href={recommendedProduct.buy_link} passHref>
         <StyledBuyNow target="_blank">BUY NOW</StyledBuyNow>
       </Link>

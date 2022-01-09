@@ -59,7 +59,13 @@ const NewRoutineBtn = () => {
   return (
     <StyledButton onClick={getNewRoutine}>
       <StyledImage>
-        <Image src="/skincareIcon.svg" height={25} width={20} alt="" />
+        <Image
+          src="/skincareIcon.svg"
+          height={25}
+          width={20}
+          priority
+          alt=""
+        />
       </StyledImage>
       Get new routine
     </StyledButton>

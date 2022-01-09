@@ -47,6 +47,7 @@ const RetakeQuizLink: React.FC = () => {
               src="/morningRedoIconHover.svg"
               height={25}
               width={20}
+              priority
               alt=""
             />
           )}
@@ -56,6 +57,7 @@ const RetakeQuizLink: React.FC = () => {
               src="/nightRedoIconHover.svg"
               height={25}
               width={20}
+              priority
               alt=""
             />
           )}
@@ -69,6 +71,7 @@ const RetakeQuizLink: React.FC = () => {
               }
               height={25}
               width={20}
+              priority
               alt=""
             />
           )}
