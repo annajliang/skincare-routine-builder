@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
-import { useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import { COLORS } from "../../constants/colors";
 import { IProduct, RoutineContext } from "../../../pages/_app";
 import Link from "next/link";
@@ -31,6 +31,9 @@ const StyledImgContainer = styled.div`
   height: 16rem;
   width: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledOuterImgContainer = styled.div`
@@ -96,7 +99,16 @@ const ProductCard: React.FC<{
   numOfProducts: number;
   index: number
 }> = ({ recommendedProduct, numOfProducts, index }) => {
+  const [isLoadingImage, setIsLoadingImage] = useState(true);
+  const imageContainer = useRef<HTMLInputElement | null>(null);
   const { routineTheme } = useContext(RoutineContext);
+
+
+  useEffect(() => {
+    if (imageContainer.current?.lastChild) {
+      setIsLoadingImage(false);
+    }
+  }, []);
 
   return (
     <StyledContainer numOfProducts={numOfProducts}>
@@ -106,14 +118,24 @@ const ProductCard: React.FC<{
 
       <StyledGridItem>
         <StyledOuterImgContainer>
-          <StyledImgContainer>
-            <Image
-              src={recommendedProduct.img_url}
-              alt=""
-              layout="fill"
-              objectFit="contain"
-              priority
-            />
+          <StyledImgContainer ref={imageContainer}>
+            {isLoadingImage ? (
+              <Image
+                src="/spinner.gif"
+                alt=""
+                height={100}
+                width={100}
+                priority
+              />
+            ) : (
+              <Image
+                src={recommendedProduct.img_url}
+                alt=""
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            )}
           </StyledImgContainer>
         </StyledOuterImgContainer>
         <StyledProductName>
