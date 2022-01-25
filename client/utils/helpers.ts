@@ -1,9 +1,17 @@
 import { IProduct } from "../../pages/_app";
 import { ICommand } from "../features/calculateRoutine/Calculating";
 
-export const removeProducts = (arr1: ICommand[], arr2: ICommand[]) => {
-  return arr1.filter((x) => {
-    return arr2.findIndex((t) => t.product.name === x.product.name) === -1;
+export const removeDuplicateProducts = (
+  addCommands: ICommand[],
+  removeCommands: ICommand[]
+) => {
+  return addCommands.filter((addCommand) => {
+    return (
+      removeCommands.findIndex(
+        (removeCommand) =>
+          removeCommand.product.name === addCommand.product.name
+      ) === -1
+    );
   });
 };
 

@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { ICommand } from "./Calculating";
 import questions from "../../data/questions";
-import { removeProducts } from "../../utils/helpers";
+import { removeDuplicateProducts } from "../../utils/helpers";
 import {
   UserChoicesContext,
   ProductContext,
   RecommendedContext,
+  IProduct,
 } from "../../../pages/_app";
 
 export const useCalcProducts = () => {
@@ -13,38 +14,45 @@ export const useCalcProducts = () => {
   const [showPreResults, setShowPreResults] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const { userChoices } = useContext(UserChoicesContext);
-  const { recommendedProducts, setRecommendedProducts } =
-    useContext(RecommendedContext);
+  const { setRecommendedProducts } = useContext(RecommendedContext);
   const { products } = useContext(ProductContext);
 
+  const getAllCommands = () => {
+    return userChoices.reduce((accum: ICommand[], userChoice, i) => {
+      const index = userChoice.answer;
+      const filterFn = questions[i].options[index].filterFn;
+      const filteredProducts = filterFn ? filterFn(products) : [];
+
+      return [...accum, ...filteredProducts];
+    }, []);
+  };
+
+  const getAddCommands = (_productCommands: ICommand[]) => {
+    return _productCommands.filter((productCommand) => {
+      return productCommand.action === "add";
+    });
+  };
+
+  const getRemoveCommands = (_productCommands: ICommand[]) => {
+    return _productCommands.filter((productCommand) => {
+      return productCommand.action === "remove";
+    });
+  };
+
+  const getFinalProducts = (_finalAddCommands: ICommand[]) => {
+    return _finalAddCommands.map((addCommand) => {
+      return addCommand.product;
+    });
+  };
+
   useEffect(() => {
-    const evaluateAnswers = () => {
+    const handleProducts = () => {
+      const allCommands = getAllCommands();
+      const addCommands = getAddCommands(allCommands);
+      const removeCommands = getRemoveCommands(allCommands);
+      const finalAddCommands = removeDuplicateProducts(addCommands, removeCommands);
+      const finalProducts = getFinalProducts(finalAddCommands);
 
-      // todo use map rather than foreachs
-      let productCommands: ICommand[] = [];
-
-      // get products for each question
-      userChoices.forEach((userChoice, i) => {
-        const index = userChoice.answer;
-        const filterFn = questions[i].options[index].filterFn;
-        const filteredProducts = filterFn ? filterFn(products) : [];
-
-        productCommands.push(...filteredProducts);
-      });
-
-      const addCommands = productCommands.filter((productCommand) => {
-        return productCommand.action === "add";
-      });
-
-      const removeCommands = productCommands.filter((productCommand) => {
-        return productCommand.action === "remove";
-      });
-
-      const results = removeProducts(addCommands, removeCommands);
-
-      const finalProducts = results.map((productCommand) => {
-        return productCommand.product;
-      });
       setRecommendedProducts(finalProducts);
     };
 
@@ -57,12 +65,12 @@ export const useCalcProducts = () => {
           setShowResults(true);
         }, 2000);
 
-        evaluateAnswers();
+        handleProducts();
       }, 4000);
     } else {
       setShowPreResults(false);
       setShowResults(true);
-      evaluateAnswers();
+      handleProducts();
     }
   }, [products, setRecommendedProducts, userChoices]);
   return { isCalculating, showResults, showPreResults };
