@@ -72,12 +72,7 @@ export const useRoutines = (_recommendedProducts: IProduct[]) => {
       addProduct(filteredProducts, morningRoutine, nightRoutine);
     };
 
-    if (
-      (_recommendedProducts.length > 0 &&
-        morningRoutine.length === 0 &&
-        nightRoutine.length === 0) ||
-      changeRoutine
-    ) {
+    if ((_recommendedProducts.length > 0 && morningRoutine.length === 0 && nightRoutine.length === 0) || changeRoutine) {
       if (userChoices[2].answer === 0) {
         findAndAddMoisturizerWithSpf(unsortedMorningRoutine);
         findAndAddMoisturizerWithoutSpf(unsortedNightRoutine);
@@ -148,6 +143,7 @@ export const useRoutines = (_recommendedProducts: IProduct[]) => {
       // remove empty array slots with filter
       setMorningRoutine(sortedMorningRoutine.filter((n) => n));
       setNightRoutine(sortedNightRoutine.filter((n) => n));
+      setChangeRoutine(false);
     }
   }, [
     morningRoutine,
