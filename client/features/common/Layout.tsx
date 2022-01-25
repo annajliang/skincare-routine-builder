@@ -124,9 +124,9 @@ const Layout: React.FC = ({ children }) => {
     const imageNameSuffixes = ["DesktopBg", "TabBg", "PatternBg", "MobileBg"];
 
     if (router.asPath === "/") {
-      return imageNameSuffixes.map((imageNameSuffix) => {
+      return imageNameSuffixes.map((imageNameSuffix, i) => {
         return (
-          <>
+          <div key={i}>
             <Image
               src={`/${routineTheme}${imageNameSuffix}.svg`}
               alt=""
@@ -136,7 +136,7 @@ const Layout: React.FC = ({ children }) => {
               className={`${routineTheme}${imageNameSuffix}`}
               priority
             />
-          </>
+          </div>
         );
       });
     } else {

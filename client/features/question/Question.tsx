@@ -51,9 +51,9 @@ const Question: React.FC = () => {
     <StyledQuestion>
       {questions.map((question, i) => {
         return (
-          <>
+          <div key={i}>
             {route.asPath === `/question/${i + 1}` && (
-              <ProgressBar index={i} key={i} />
+              <ProgressBar index={i} />
             )}
             {route.asPath === `/question/${i + 1}` && (
               <StyledAnimated>
@@ -77,7 +77,7 @@ const Question: React.FC = () => {
                 </StyledGrid>
               </StyledAnimated>
             )}
-          </>
+          </div>
         );
       })}
     </StyledQuestion>
