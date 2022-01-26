@@ -6,8 +6,27 @@ import {
   UserChoicesContext,
   ProductContext,
   RecommendedContext,
-  IProduct,
 } from "../../../pages/_app";
+
+// PURE FUNCTIONS
+
+const getAddCommands = (_productCommands: ICommand[]) => {
+  return _productCommands.filter((productCommand) => {
+    return productCommand.action === "add";
+  });
+};
+
+const getRemoveCommands = (_productCommands: ICommand[]) => {
+  return _productCommands.filter((productCommand) => {
+    return productCommand.action === "remove";
+  });
+};
+
+const getFinalProducts = (_finalAddCommands: ICommand[]) => {
+  return _finalAddCommands.map((addCommand) => {
+    return addCommand.product;
+  });
+};
 
 export const useCalcProducts = () => {
   const [isCalculating, setIsCalculating] = useState(true);
@@ -17,40 +36,25 @@ export const useCalcProducts = () => {
   const { setRecommendedProducts } = useContext(RecommendedContext);
   const { products } = useContext(ProductContext);
 
-  const getAllCommands = () => {
-    return userChoices.reduce((accum: ICommand[], userChoice, i) => {
-      const index = userChoice.answer;
-      const filterFn = questions[i].options[index].filterFn;
-      const filteredProducts = filterFn ? filterFn(products) : [];
-
-      return [...accum, ...filteredProducts];
-    }, []);
-  };
-
-  const getAddCommands = (_productCommands: ICommand[]) => {
-    return _productCommands.filter((productCommand) => {
-      return productCommand.action === "add";
-    });
-  };
-
-  const getRemoveCommands = (_productCommands: ICommand[]) => {
-    return _productCommands.filter((productCommand) => {
-      return productCommand.action === "remove";
-    });
-  };
-
-  const getFinalProducts = (_finalAddCommands: ICommand[]) => {
-    return _finalAddCommands.map((addCommand) => {
-      return addCommand.product;
-    });
-  };
-
   useEffect(() => {
+    const getAllCommands = () => {
+      return userChoices.reduce((accum: ICommand[], userChoice, i) => {
+        const index = userChoice.answer;
+        const filterFn = questions[i].options[index].filterFn;
+        const filteredProducts = filterFn ? filterFn(products) : [];
+
+        return [...accum, ...filteredProducts];
+      }, []);
+    };
+
     const handleProducts = () => {
       const allCommands = getAllCommands();
       const addCommands = getAddCommands(allCommands);
       const removeCommands = getRemoveCommands(allCommands);
-      const finalAddCommands = removeDuplicateProducts(addCommands, removeCommands);
+      const finalAddCommands = removeDuplicateProducts(
+        addCommands,
+        removeCommands
+      );
       const finalProducts = getFinalProducts(finalAddCommands);
 
       setRecommendedProducts(finalProducts);
